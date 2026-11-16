@@ -1,0 +1,64 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+out/
+*.tsbuildinfo
+.vite/
+.turbo/
+
+# Environment & secrets (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+directus/.env
+
+# Directus / database runtime data
+directus/uploads/
+directus/database/
+directus/extensions/node_modules/
+pgdata/
+*.db
+*.sqlite
+*.sqlite3
+docker-data/
+
+# Tests & coverage
+coverage/
+.nyc_output/
+playwright-report/
+test-results/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Deployment
+.vercel/
+.netlify/
+
+# Claude Code personal settings (shared settings.json IS committed)
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Editors & OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Scratch
+.write_test
+*.tmp
