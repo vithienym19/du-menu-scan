@@ -22,20 +22,53 @@
                                       └──────────────────┘
 ```
 
-## 2. Stack
+## 2. Stack (decided 2026-11-23)
 
-| Layer | Choice | Reason |
+**Approach:** web first. One React codebase serves the mobile web (PWA) that students open from the QR code; the same build is wrapped with Capacitor for iOS/Android later. No separate native codebase.
+
+| Layer | Choice | Benefit |
 |---|---|---|
-| Frontend | React 18, TypeScript, Vite | Team experience |
+| **Database** | **PostgreSQL** | Relational model (dish ↔ ingredient ↔ allergen) with exact filtering; best-supported database for Directus; JSON columns where flexibility is needed |
+| **Backend / API** | **Directus** | REST API, admin UI for cafeteria staff, auth, roles and file management out of the box; team already knows it |
+| Frontend | React 18 + TypeScript + Vite | Team experience; small, fast bundle for first load after a QR scan |
+| Styling | Tailwind CSS | Fast mobile-first UI without custom CSS |
 | Routing | React Router | Routes in `screen-specification.md` |
-| Data fetching | TanStack Query | Caching, offline-friendly |
-| i18n | i18next (ko, en, vi, zh) | Standard, JSON resource files |
-| Styling | Tailwind CSS | Fast mobile-first UI |
-| PWA | vite-plugin-pwa | Add to home screen, cache last menu |
-| Backend | Directus | Admin UI, roles, REST, files out of the box |
-| Database | PostgreSQL | |
-| Hosting | Frontend: Vercel / Netlify · Directus + DB: Railway or a small VPS | Free/low-cost tiers |
-| QR | `qrcode` npm package | Generate PNG/PDF in admin tool |
+| Data fetching | TanStack Query | Caching, background refresh, offline-friendly |
+| i18n | i18next (ko, en, vi, zh) | One JSON file per language; adding a language = adding a file |
+| PWA | vite-plugin-pwa | Add to home screen; last loaded menu available offline |
+| Mobile apps | **Capacitor** (Phase 4+) | Wraps the same web build as iOS/Android apps; no rewrite |
+| Images | Directus file storage → S3-compatible storage later | Directus transforms resize and convert to WebP for mobile data |
+| QR | `qrcode` npm package | Generate PNG/PDF in the admin tool |
+| Local dev | Docker Compose (PostgreSQL + Directus) | Whole team runs the same backend with one command |
+| Testing | Vitest (unit, incl. `warning.ts`), Playwright (QR → menu → detail flow) | Protects the safety-critical warning logic and the main flow |
+| CI | GitHub Actions | Lint, typecheck and tests on every pull request |
+
+### 2.1 Why PostgreSQL
+
+| Option | Verdict |
+|---|---|
+| **PostgreSQL** | ✅ Chosen. Many-to-many relations are explicit; queries such as "dishes with no pork, including hidden broth" are exact and fast |
+| MySQL | Would work; no advantage over PostgreSQL here |
+| SQLite | Fine for local experiments; not for concurrent writes in production |
+| MongoDB | Poor fit: embedding ingredients in each dish duplicates allergen data, so one correction must be repeated in many places |
+| Firebase / Firestore | Quick start, but weak multi-condition filtering, no staff admin UI, vendor lock-in |
+
+Deciding factor: **allergen data safety**. Each ingredient is stored once and diet tags are derived from ingredients (BR5), so one correction fixes every dish that uses it.
+
+### 2.2 Deployment
+
+| Component | Staging / test | Pilot / production |
+|---|---|---|
+| Web (PWA) | Vercel or Cloudflare Pages | Same (HTTPS + CDN included) |
+| Directus + PostgreSQL | Team-owned Ubuntu server or small VPS | Managed PostgreSQL with automatic backups (e.g. Railway, Supabase, Neon) |
+| Domain | Team domain from day one | Same |
+
+**Rule:** printed QR codes point to the team's own domain (e.g. `https://<domain>/r/{code}`), never to a hosting provider's URL, so hosting can change without reprinting QR codes.
+
+### 2.3 Translation workflow
+
+- Phase 1–2: drafts produced with Claude or Gemini, pasted into Directus as `source=ai, status=draft`, approved by a student reviewer (BR7). No paid API required.
+- Later, if budget allows: a Directus Flow calls a translation API to create drafts automatically (backlog 1.5).
 
 ## 3. API (Directus REST, public read role)
 

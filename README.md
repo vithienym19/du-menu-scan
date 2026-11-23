@@ -28,9 +28,11 @@ Scan the QR code at the cafeteria entrance or kiosk → see today's menu with ph
 
 | Decision | Choice | Why |
 |---|---|---|
-| Platform | Mobile web (PWA), not a native app | A QR code opens a URL directly; no install barrier |
+| Platform | Mobile web (PWA) first; same build wrapped with Capacitor for iOS/Android later | A QR code opens a URL directly; one codebase for web and apps |
 | Student accounts | None; preferences stored on the device | Zero sign-up friction; no personal data on the server |
-| Backend | Directus on PostgreSQL | Built-in admin UI, auth, roles, file storage and REST API |
+| Backend | Directus on PostgreSQL | Built-in admin UI, auth, roles, file storage and REST API; relational model keeps allergen data consistent |
+| Frontend | React + TypeScript + Vite, Tailwind, TanStack Query, i18next | Team experience; fast first load after a QR scan |
+| QR target | Team-owned domain | Hosting can change without reprinting QR codes |
 | Data model | Reusable **dish dictionary** + daily menu that references it | Staff pick dishes each day instead of re-translating |
 | Languages | ko, en, vi, zh | Top origins of international students in Korea (China 30.2%, Vietnam 29.7%, 2025) |
 | Safety | Every dish shows "last verified" date and "confirm with staff" note | Allergen errors can cause harm |
