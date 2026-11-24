@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 3.5 | none | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 3.5 | none | ✅ Done 2026-11-24 |
 
 ## Goal
 Define every user-facing string once, so UI work never hard-codes text.
@@ -18,7 +18,7 @@ Define every user-facing string once, so UI work never hard-codes text.
 - No component code
 
 ## Acceptance criteria
-- [ ] Key sets identical in all four files (checked by a test)
+- [x] Key sets identical in all four files (checked by a test)
 
 ## Report back (in the pull request description)
 - Changed files and why

@@ -1,0 +1,109 @@
+{
+  "common": {
+    "appName": "DU-Menu Scan",
+    "back": "Quay lại",
+    "settings": "Cài đặt",
+    "save": "Lưu",
+    "skip": "Bỏ qua",
+    "loading": "Đang tải…",
+    "retry": "Thử lại",
+    "close": "Đóng",
+    "language": "Ngôn ngữ"
+  },
+  "entry": {
+    "invalidTitle": "Không tìm thấy căn tin này",
+    "invalidBody": "Mã QR có thể đã cũ. Hãy chọn căn tin bên dưới.",
+    "chooseCafeteria": "Chọn căn tin"
+  },
+  "welcome": {
+    "title": "Xem món hôm nay có gì",
+    "subtitle": "Nguyên liệu, độ cay và chất gây dị ứng bằng ngôn ngữ của bạn — trước khi gọi món.",
+    "chooseLanguage": "Chọn ngôn ngữ",
+    "setDiet": "Thiết lập chế độ ăn",
+    "skip": "Để sau"
+  },
+  "menu": {
+    "title": "Menu hôm nay",
+    "lunch": "Bữa trưa",
+    "dinner": "Bữa tối",
+    "filters": "Bộ lọc",
+    "filterNotSpicy": "Không cay",
+    "filterNoPork": "Không thịt heo",
+    "filterVegetarian": "Món chay",
+    "noResults": "Không có món nào phù hợp bộ lọc.",
+    "clearFilters": "Xóa bộ lọc",
+    "emptyTitle": "Chưa có menu",
+    "emptyBody": "Menu hôm nay chưa được đăng. Bạn quay lại sau nhé.",
+    "openingHours": "Giờ mở cửa",
+    "closedTitle": "Hôm nay nghỉ",
+    "closedBody": "Căn tin này hôm nay không mở cửa.",
+    "offline": "Bạn đang ngoại tuyến. Menu này có thể chưa cập nhật.",
+    "errorTitle": "Đã xảy ra lỗi",
+    "errorBody": "Không tải được menu. Kiểm tra kết nối mạng rồi thử lại.",
+    "hiddenIngredient": "Thành phần ẩn: {{name}}",
+    "translationPending": "Đang chờ bản dịch"
+  },
+  "dish": {
+    "description": "Giới thiệu món",
+    "spiceLevel": "Độ cay",
+    "spice": {
+      "0": "Không cay",
+      "1": "Hơi cay",
+      "2": "Cay vừa",
+      "3": "Cay",
+      "4": "Rất cay"
+    },
+    "mainIngredients": "Nguyên liệu chính",
+    "hiddenIngredients": "Thành phần ẩn",
+    "hiddenIngredientsHint": "Khó nhận ra qua tên món, ví dụ trong nước dùng hoặc nước sốt.",
+    "allergens": "Chất gây dị ứng",
+    "noneListed": "Không có",
+    "dietInfo": "Thông tin ăn uống",
+    "halal": "Halal",
+    "vegetarian": "Món chay",
+    "suitable": "Phù hợp",
+    "notSuitable": "Không phù hợp",
+    "lastVerified": "Xác nhận lần cuối {{date}}",
+    "confirmWithStaff": "Nếu bạn bị dị ứng nặng, hãy hỏi lại nhân viên để chắc chắn.",
+    "backToMenu": "Về danh sách món",
+    "otherLanguages": "Ngôn ngữ khác"
+  },
+  "status": {
+    "ok": "Bạn ăn được",
+    "caution": "Lưu ý",
+    "avoid": "Nên tránh",
+    "unverified": "Chưa xác nhận",
+    "reasonContains": "Có {{item}} — bạn đã chọn tránh",
+    "reasonSpicy": "Cay hơn mức bạn chọn",
+    "reasonUnverified": "Nguyên liệu chưa được xác nhận"
+  },
+  "tags": {
+    "pork": "Thịt heo",
+    "beef": "Thịt bò",
+    "chicken": "Thịt gà",
+    "seafood": "Hải sản",
+    "vegetarian": "Món chay",
+    "alcohol": "Rượu"
+  },
+  "settings": {
+    "title": "Chế độ ăn của tôi",
+    "iAvoid": "Tôi tránh",
+    "nuts": "Các loại hạt",
+    "milkEgg": "Sữa và trứng",
+    "wheat": "Lúa mì",
+    "spiceTolerance": "Mức cay chịu được",
+    "spiceNone": "Chỉ món không cay",
+    "spiceSome": "Hơi cay cũng được",
+    "spiceAny": "Cay mấy cũng được",
+    "dietType": "Kiểu ăn",
+    "dietNone": "Không kiêng",
+    "dietVegetarian": "Ăn chay",
+    "dietHalal": "Halal",
+    "privacyNote": "Cài đặt chỉ lưu trên điện thoại này.",
+    "saved": "Đã lưu"
+  },
+  "notFound": {
+    "title": "Không tìm thấy trang",
+    "body": "Quét mã QR ở lối vào căn tin để xem menu hôm nay."
+  }
+}

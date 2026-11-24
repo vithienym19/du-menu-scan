@@ -19,6 +19,7 @@ Scan the QR code at the cafeteria entrance or kiosk → see today's menu with ph
 | [`product/product-specification.md`](product/product-specification.md) | Problem, users, goals, scope, feature list (MVP vs later), business rules |
 | [`product/user-flows.md`](product/user-flows.md) | Step-by-step flows for students and cafeteria staff |
 | [`product/screen-specification.md`](product/screen-specification.md) | Every screen: purpose, components, states, behaviour |
+| [`product/design-system.md`](product/design-system.md) | Colours, typography, spacing, icons, component specs |
 | [`product/data-specification.md`](product/data-specification.md) | Entities, fields, relationships, enums, seed data |
 | [`product/technical-architecture.md`](product/technical-architecture.md) | Stack, system diagram, API, warning logic, repo layout, non-functional requirements |
 | [`product/development-backlog.md`](product/development-backlog.md) | Epics and user stories with acceptance criteria and priority |
@@ -40,6 +41,14 @@ Scan the QR code at the cafeteria entrance or kiosk → see today's menu with ph
 ## Team
 
 4 members (3 international students, 1 Korean student). Course: 창의문제해결, Daegu University, 2026 Fall.
+
+## Getting started
+
+```bash
+nvm use          # Node 22
+npm install
+npm run lint && npm run typecheck && npm test
+```
 
 ## Repository layout
 

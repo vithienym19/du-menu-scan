@@ -1,0 +1,109 @@
+{
+  "common": {
+    "appName": "DU-Menu Scan",
+    "back": "Back",
+    "settings": "Settings",
+    "save": "Save",
+    "skip": "Skip",
+    "loading": "Loading…",
+    "retry": "Try again",
+    "close": "Close",
+    "language": "Language"
+  },
+  "entry": {
+    "invalidTitle": "We couldn't find this cafeteria",
+    "invalidBody": "The QR code may be old. Choose your cafeteria below.",
+    "chooseCafeteria": "Choose a cafeteria"
+  },
+  "welcome": {
+    "title": "See what's in today's menu",
+    "subtitle": "Ingredients, spice level and allergens in your language — before you order.",
+    "chooseLanguage": "Choose your language",
+    "setDiet": "Set my diet",
+    "skip": "Skip for now"
+  },
+  "menu": {
+    "title": "Today's menu",
+    "lunch": "Lunch",
+    "dinner": "Dinner",
+    "filters": "Filters",
+    "filterNotSpicy": "Not spicy",
+    "filterNoPork": "No pork",
+    "filterVegetarian": "Vegetarian",
+    "noResults": "No dishes match these filters.",
+    "clearFilters": "Clear filters",
+    "emptyTitle": "Menu not available yet",
+    "emptyBody": "Today's menu hasn't been published. Please check again later.",
+    "openingHours": "Opening hours",
+    "closedTitle": "Closed today",
+    "closedBody": "This cafeteria is closed today.",
+    "offline": "You're offline. This menu may be outdated.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "We couldn't load the menu. Check your connection and try again.",
+    "hiddenIngredient": "Hidden: {{name}}",
+    "translationPending": "Translation pending"
+  },
+  "dish": {
+    "description": "About this dish",
+    "spiceLevel": "Spice level",
+    "spice": {
+      "0": "Not spicy",
+      "1": "Mild",
+      "2": "Medium",
+      "3": "Hot",
+      "4": "Very hot"
+    },
+    "mainIngredients": "Main ingredients",
+    "hiddenIngredients": "Hidden ingredients",
+    "hiddenIngredientsHint": "Not obvious from the name, e.g. in the broth or sauce.",
+    "allergens": "Allergens",
+    "noneListed": "None listed",
+    "dietInfo": "Diet info",
+    "halal": "Halal",
+    "vegetarian": "Vegetarian",
+    "suitable": "Suitable",
+    "notSuitable": "Not suitable",
+    "lastVerified": "Last verified {{date}}",
+    "confirmWithStaff": "Please confirm with staff if you have a severe allergy.",
+    "backToMenu": "Back to menu",
+    "otherLanguages": "Other languages"
+  },
+  "status": {
+    "ok": "OK for you",
+    "caution": "Caution",
+    "avoid": "Avoid",
+    "unverified": "Not verified",
+    "reasonContains": "Contains {{item}} — you chose to avoid it",
+    "reasonSpicy": "Spicier than your setting",
+    "reasonUnverified": "Ingredients have not been verified yet"
+  },
+  "tags": {
+    "pork": "Pork",
+    "beef": "Beef",
+    "chicken": "Chicken",
+    "seafood": "Seafood",
+    "vegetarian": "Vegetarian",
+    "alcohol": "Alcohol"
+  },
+  "settings": {
+    "title": "My diet",
+    "iAvoid": "I avoid",
+    "nuts": "Nuts",
+    "milkEgg": "Milk & egg",
+    "wheat": "Wheat",
+    "spiceTolerance": "Spice tolerance",
+    "spiceNone": "Not spicy only",
+    "spiceSome": "A little spicy",
+    "spiceAny": "Any",
+    "dietType": "Diet type",
+    "dietNone": "No restriction",
+    "dietVegetarian": "Vegetarian",
+    "dietHalal": "Halal",
+    "privacyNote": "Your settings stay on this phone.",
+    "saved": "Saved"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "body": "Scan the QR code at the cafeteria entrance to see today's menu."
+  }
+}

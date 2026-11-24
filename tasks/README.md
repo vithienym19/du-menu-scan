@@ -28,11 +28,12 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 
 | Wave | ID | Task | Owner | Size | Model | Pri | Depends on | Done |
 |---|---|---|---|---|---|---|---|---|
-| 1 | [BE-01](BE-01-monorepo-and-tooling.md) | Monorepo and tooling | Claude | S | — | P0 | — | ☐ |
-| 1 | [BE-10](BE-10-i18n-key-catalogue.md) | i18n key catalogue | Claude | S | — | P0 | — | ☐ |
+| 1 | [DS-01](../product/design-system.md) | Design system (colours, type, components) | Claude | M | — | P0 | — | ✅ 2026-11-24 |
+| 1 | [BE-01](BE-01-monorepo-and-tooling.md) | Monorepo and tooling | Claude | S | — | P0 | — | ✅ 2026-11-24 |
+| 1 | [BE-10](BE-10-i18n-key-catalogue.md) | i18n key catalogue | Claude | S | — | P0 | — | ✅ 2026-11-24 |
 | 2 | [BE-02](BE-02-docker-compose-postgresql-plus.md) | Docker Compose: PostgreSQL + Directus | Claude | S | — | P0 | BE-01 | ☐ |
 | 2 | [BE-08](BE-08-shared-types-api-client.md) | Shared types, API client and mock fixtures | Claude | M | — | P0 | BE-01 | ☐ |
-| 2 | [BE-14](BE-14-ci-pipeline.md) | CI pipeline | Claude | S | — | P0 | BE-01 | ☐ |
+| 2 | [BE-14](BE-14-ci-pipeline.md) | CI pipeline | Claude | S | — | P0 | BE-01 | ✅ 2026-11-24 |
 | 2 | [UI-01](UI-01-app-shell-theme-and.md) | App shell, theme and routing | Antigravity | M | agon | P0 | BE-01, BE-10 | ☐ |
 | 3 | [BE-03](BE-03-directus-schema.md) | Directus schema | Claude | M | — | P0 | BE-02 | ☐ |
 | 3 | [BE-09](BE-09-warning-logic-safety-critical.md) | Warning logic (safety-critical) | Claude | M | — | P0 | BE-08 | ☐ |

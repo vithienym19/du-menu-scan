@@ -1,0 +1,109 @@
+{
+  "common": {
+    "appName": "DU-Menu Scan",
+    "back": "返回",
+    "settings": "设置",
+    "save": "保存",
+    "skip": "跳过",
+    "loading": "加载中…",
+    "retry": "重试",
+    "close": "关闭",
+    "language": "语言"
+  },
+  "entry": {
+    "invalidTitle": "找不到这个食堂",
+    "invalidBody": "二维码可能已过期，请在下方选择食堂。",
+    "chooseCafeteria": "选择食堂"
+  },
+  "welcome": {
+    "title": "看看今天的菜里有什么",
+    "subtitle": "点餐前，用你的语言查看食材、辣度和过敏原。",
+    "chooseLanguage": "选择语言",
+    "setDiet": "设置我的饮食",
+    "skip": "以后再说"
+  },
+  "menu": {
+    "title": "今日菜单",
+    "lunch": "午餐",
+    "dinner": "晚餐",
+    "filters": "筛选",
+    "filterNotSpicy": "不辣",
+    "filterNoPork": "不含猪肉",
+    "filterVegetarian": "素食",
+    "noResults": "没有符合筛选条件的菜品。",
+    "clearFilters": "清除筛选",
+    "emptyTitle": "菜单尚未发布",
+    "emptyBody": "今天的菜单还没有发布，请稍后再看。",
+    "openingHours": "营业时间",
+    "closedTitle": "今日休息",
+    "closedBody": "这个食堂今天不营业。",
+    "offline": "当前处于离线状态，菜单可能不是最新的。",
+    "errorTitle": "出错了",
+    "errorBody": "无法加载菜单，请检查网络后重试。",
+    "hiddenIngredient": "隐藏成分：{{name}}",
+    "translationPending": "翻译待审核"
+  },
+  "dish": {
+    "description": "菜品介绍",
+    "spiceLevel": "辣度",
+    "spice": {
+      "0": "不辣",
+      "1": "微辣",
+      "2": "中辣",
+      "3": "辣",
+      "4": "特辣"
+    },
+    "mainIngredients": "主要食材",
+    "hiddenIngredients": "隐藏成分",
+    "hiddenIngredientsHint": "从菜名看不出来的成分，例如汤底或酱料中的食材。",
+    "allergens": "过敏原",
+    "noneListed": "无",
+    "dietInfo": "饮食信息",
+    "halal": "清真",
+    "vegetarian": "素食",
+    "suitable": "适合",
+    "notSuitable": "不适合",
+    "lastVerified": "最近确认 {{date}}",
+    "confirmWithStaff": "如有严重过敏，请向工作人员确认。",
+    "backToMenu": "返回菜单",
+    "otherLanguages": "其他语言"
+  },
+  "status": {
+    "ok": "可以食用",
+    "caution": "注意",
+    "avoid": "建议避免",
+    "unverified": "未确认",
+    "reasonContains": "含有{{item}}——你已设置避免",
+    "reasonSpicy": "比你设置的辣度更辣",
+    "reasonUnverified": "食材尚未确认"
+  },
+  "tags": {
+    "pork": "猪肉",
+    "beef": "牛肉",
+    "chicken": "鸡肉",
+    "seafood": "海鲜",
+    "vegetarian": "素食",
+    "alcohol": "酒精"
+  },
+  "settings": {
+    "title": "我的饮食",
+    "iAvoid": "我不吃",
+    "nuts": "坚果",
+    "milkEgg": "牛奶和鸡蛋",
+    "wheat": "小麦",
+    "spiceTolerance": "能吃辣的程度",
+    "spiceNone": "只吃不辣的",
+    "spiceSome": "可以吃一点辣",
+    "spiceAny": "都可以",
+    "dietType": "饮食类型",
+    "dietNone": "没有限制",
+    "dietVegetarian": "素食",
+    "dietHalal": "清真",
+    "privacyNote": "设置只保存在这部手机上。",
+    "saved": "已保存"
+  },
+  "notFound": {
+    "title": "页面不存在",
+    "body": "扫描食堂入口的二维码即可查看今日菜单。"
+  }
+}

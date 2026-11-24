@@ -1,0 +1,119 @@
+/*
+ * DU-Menu Scan design tokens (Tailwind CSS v4).
+ * Source of truth: product/design-system.md. Owner: Claude (lead engineer).
+ *
+ * Usage in apps/web/src/index.css:
+ *   @import "tailwindcss";
+ *   @import "@du-menu-scan/shared/design/theme.css";
+ *   @import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
+ *
+ * Every pairing below was checked for WCAG 2.1 AA:
+ * text >= 4.5:1, status borders and spice dots >= 3:1.
+ */
+
+@theme {
+  /* Typography */
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
+    "Apple SD Gothic Neo", "Noto Sans KR", "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+    "Segoe UI", Roboto, sans-serif;
+
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.625rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+
+  /* Brand */
+  --color-brand: #1f4fd1;
+  --color-brand-strong: #183fa8;
+  --color-brand-soft: #eaf0ff;
+
+  /* Neutrals (warm, like rice paper) */
+  --color-canvas: #faf8f5;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f3f1ed;
+  --color-line: #e4e0d9;
+  --color-ink: #1c1a17;
+  --color-ink-muted: #57524c;
+  --color-ink-subtle: #736d66;
+
+  /* Warning status (always paired with an icon + text label) */
+  --color-avoid: #b42318;
+  --color-avoid-soft: #fef3f2;
+  --color-avoid-line: #d92d20;
+
+  --color-caution: #b54708;
+  --color-caution-soft: #fffaeb;
+  --color-caution-line: #dc6803;
+
+  --color-ok: #067647;
+  --color-ok-soft: #ecfdf3;
+
+  --color-unverified: #475467;
+  --color-unverified-soft: #f2f4f7;
+  --color-unverified-line: #667085;
+
+  /* Spice meter (orange, never the Avoid red) */
+  --color-spice: #e04f16;
+  --color-spice-empty: #e4e0d9;
+
+  /* Shape */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+
+  --shadow-card: 0 1px 2px rgb(28 26 23 / 0.06), 0 1px 3px rgb(28 26 23 / 0.08);
+  --shadow-sheet: 0 -4px 16px rgb(28 26 23 / 0.12);
+
+  /* Layout */
+  --container-app: 30rem;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    -webkit-font-smoothing: antialiased;
+    word-break: keep-all;
+    overflow-wrap: anywhere;
+  }
+
+  :lang(zh) body,
+  body:lang(zh) {
+    word-break: normal;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}

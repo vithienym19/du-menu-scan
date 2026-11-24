@@ -1,0 +1,109 @@
+{
+  "common": {
+    "appName": "DU-Menu Scan",
+    "back": "뒤로",
+    "settings": "설정",
+    "save": "저장",
+    "skip": "건너뛰기",
+    "loading": "불러오는 중…",
+    "retry": "다시 시도",
+    "close": "닫기",
+    "language": "언어"
+  },
+  "entry": {
+    "invalidTitle": "식당을 찾을 수 없어요",
+    "invalidBody": "오래된 QR 코드일 수 있어요. 아래에서 식당을 선택해 주세요.",
+    "chooseCafeteria": "식당 선택"
+  },
+  "welcome": {
+    "title": "오늘 메뉴에 무엇이 들어 있는지 확인하세요",
+    "subtitle": "주문하기 전에 재료, 맵기, 알레르기 정보를 내 언어로 볼 수 있어요.",
+    "chooseLanguage": "언어를 선택하세요",
+    "setDiet": "내 식단 설정하기",
+    "skip": "나중에 하기"
+  },
+  "menu": {
+    "title": "오늘의 메뉴",
+    "lunch": "점심",
+    "dinner": "저녁",
+    "filters": "필터",
+    "filterNotSpicy": "안 매운",
+    "filterNoPork": "돼지고기 없음",
+    "filterVegetarian": "채식",
+    "noResults": "조건에 맞는 메뉴가 없어요.",
+    "clearFilters": "필터 해제",
+    "emptyTitle": "아직 메뉴가 없어요",
+    "emptyBody": "오늘 메뉴가 아직 올라오지 않았어요. 잠시 후 다시 확인해 주세요.",
+    "openingHours": "운영 시간",
+    "closedTitle": "오늘은 휴무예요",
+    "closedBody": "이 식당은 오늘 운영하지 않아요.",
+    "offline": "오프라인 상태예요. 이 메뉴는 최신이 아닐 수 있어요.",
+    "errorTitle": "문제가 발생했어요",
+    "errorBody": "메뉴를 불러오지 못했어요. 인터넷 연결을 확인하고 다시 시도해 주세요.",
+    "hiddenIngredient": "숨은 재료: {{name}}",
+    "translationPending": "번역 준비 중"
+  },
+  "dish": {
+    "description": "메뉴 설명",
+    "spiceLevel": "맵기",
+    "spice": {
+      "0": "안 매움",
+      "1": "약간 매움",
+      "2": "보통",
+      "3": "매움",
+      "4": "아주 매움"
+    },
+    "mainIngredients": "주재료",
+    "hiddenIngredients": "숨은 재료",
+    "hiddenIngredientsHint": "육수나 양념처럼 이름만으로는 알기 어려운 재료예요.",
+    "allergens": "알레르기 유발 성분",
+    "noneListed": "없음",
+    "dietInfo": "식이 정보",
+    "halal": "할랄",
+    "vegetarian": "채식",
+    "suitable": "가능",
+    "notSuitable": "불가",
+    "lastVerified": "최근 확인일 {{date}}",
+    "confirmWithStaff": "알레르기가 심하다면 직원에게 꼭 확인해 주세요.",
+    "backToMenu": "메뉴 목록으로",
+    "otherLanguages": "다른 언어"
+  },
+  "status": {
+    "ok": "먹어도 괜찮아요",
+    "caution": "주의",
+    "avoid": "피해야 함",
+    "unverified": "확인 전",
+    "reasonContains": "{{item}} 포함 — 피하기로 설정한 재료예요",
+    "reasonSpicy": "설정한 맵기보다 매워요",
+    "reasonUnverified": "재료가 아직 확인되지 않았어요"
+  },
+  "tags": {
+    "pork": "돼지고기",
+    "beef": "소고기",
+    "chicken": "닭고기",
+    "seafood": "해산물",
+    "vegetarian": "채식",
+    "alcohol": "알코올"
+  },
+  "settings": {
+    "title": "내 식단",
+    "iAvoid": "피하는 재료",
+    "nuts": "견과류",
+    "milkEgg": "우유·달걀",
+    "wheat": "밀",
+    "spiceTolerance": "맵기 허용",
+    "spiceNone": "안 매운 것만",
+    "spiceSome": "조금 매운 것까지",
+    "spiceAny": "상관없음",
+    "dietType": "식단 유형",
+    "dietNone": "제한 없음",
+    "dietVegetarian": "채식",
+    "dietHalal": "할랄",
+    "privacyNote": "설정은 이 휴대폰에만 저장돼요.",
+    "saved": "저장했어요"
+  },
+  "notFound": {
+    "title": "페이지를 찾을 수 없어요",
+    "body": "식당 입구의 QR 코드를 스캔하면 오늘의 메뉴를 볼 수 있어요."
+  }
+}

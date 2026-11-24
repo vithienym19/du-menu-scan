@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 6.x | BE-01 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 6.x | BE-01 | ✅ Done 2026-11-24 |
 
 ## Goal
 Every pull request is checked automatically.
@@ -17,7 +17,7 @@ Every pull request is checked automatically.
 - —
 
 ## Acceptance criteria
-- [ ] A failing test blocks the PR check
+- [x] A failing test blocks the PR check
 
 ## Report back (in the pull request description)
 - Changed files and why

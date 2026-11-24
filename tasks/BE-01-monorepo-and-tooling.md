@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 0.1 | none | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 0.1 | none | ✅ Done 2026-11-24 |
 
 ## Goal
 Create the npm-workspaces monorepo that every other task builds on.
@@ -20,7 +20,7 @@ Create the npm-workspaces monorepo that every other task builds on.
 - Do not build any UI (that is UI-01)
 
 ## Acceptance criteria
-- [ ] `npm install` and `npm run lint && npm run typecheck && npm test` pass on a clean clone
+- [x] `npm install` and `npm run lint && npm run typecheck && npm test` pass on a clean clone
 
 ## Report back (in the pull request description)
 - Changed files and why

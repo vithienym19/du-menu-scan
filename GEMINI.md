@@ -25,6 +25,7 @@ Need a new i18n key, a new field in `types.ts`, a change to `warning.ts`, or a s
 - @product/user-flows.md — how students move through the app
 - @product/product-specification.md — business rules BR1–BR9
 - @product/technical-architecture.md — stack, NFRs (§6)
+- @product/design-system.md — colours, typography, spacing, icons and component specs (decided)
 - `packages/shared/src/` — types, API client, mock fixtures, warning logic (use, never copy)
 
 ## Stack
@@ -38,7 +39,8 @@ React 18 + TypeScript (strict) + Vite · Tailwind CSS · React Router · TanStac
 3. **i18n.** No hard-coded user-facing text. Use keys from `apps/web/src/i18n/{ko,en,vi,zh}.json`.
 4. **Accessibility.** Every icon has a text label; never rely on colour alone; WCAG AA contrast; touch targets ≥ 44 px; keyboard operable.
 5. **Mobile first.** Design for 360–430 px. The menu screen must be interactive within 2 s on 4G; lazy-load images.
-6. **Every state.** Build loading, empty, error, closed and offline states listed in the screen spec, not just the happy path.
+6. **Design system.** Use only the tokens in `packages/shared/src/design/theme.css` (`bg-brand`, `text-ink-muted`, `bg-avoid-soft` …). No raw hex colours, no Tailwind default palette colours, no new font sizes. Status colours are reserved for warnings.
+7. **Every state.** Build loading, empty, error, closed and offline states listed in the screen spec, not just the happy path.
 
 ## Workflow
 
