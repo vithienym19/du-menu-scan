@@ -66,7 +66,7 @@ Report back: changed files, how you tested, open questions
 - **Safety (BR3, BR6):** unknown or unverified dish data is never shown as OK; every dish detail shows "Last verified" and "confirm with staff".
 - **Privacy (BR8):** no student accounts, no personal data sent to the server; preferences stay in localStorage.
 - **Warning logic** lives only in `packages/shared/src/warning.ts` and must keep its unit tests passing.
-- **i18n:** no hard-coded user-facing strings in components; ko/en/vi/zh resource files stay in sync.
+- **i18n:** no hard-coded user-facing strings in components; all i18n resource files stay in sync (`npm run check:i18n`).
 - **Secrets:** never commit `.env` or keys; only `.env.example`.
 
 ## Git conventions

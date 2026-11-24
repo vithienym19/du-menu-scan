@@ -13,7 +13,7 @@ Small interactive controls used on S2 and S4.
 
 ## Do
 - `FilterChips` (Not spicy, No pork, Vegetarian) — toggle, accessible as buttons with `aria-pressed`
-- `LanguageSwitch` component reused in header and S4
+- Reuse `LanguagePicker` from UI-01 in S4 (no second implementation)
 
 ## Do not
 - —

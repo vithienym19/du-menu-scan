@@ -16,7 +16,7 @@
   --font-sans:
     "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui,
     "Apple SD Gothic Neo", "Noto Sans KR", "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
-    "Segoe UI", Roboto, sans-serif;
+    "Noto Sans Devanagari", "Kohinoor Devanagari", "Segoe UI", Roboto, sans-serif;
 
   --text-xs: 0.75rem;
   --text-xs--line-height: 1rem;

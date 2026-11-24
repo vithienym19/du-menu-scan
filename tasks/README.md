@@ -32,7 +32,8 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | 1 | [BE-01](BE-01-monorepo-and-tooling.md) | Monorepo and tooling | Claude | S | — | P0 | — | ✅ 2026-11-24 |
 | 1 | [BE-10](BE-10-i18n-key-catalogue.md) | i18n key catalogue | Claude | S | — | P0 | — | ✅ 2026-11-24 |
 | 2 | [BE-02](BE-02-docker-compose-postgresql-plus.md) | Docker Compose: PostgreSQL + Directus | Claude | S | — | P0 | BE-01 | ☐ |
-| 2 | [BE-08](BE-08-shared-types-api-client.md) | Shared types, API client and mock fixtures | Claude | M | — | P0 | BE-01 | ☐ |
+| 2 | [BE-18](BE-18-more-languages.md) | Add uz, mn, ne + single language list | Claude | S | — | P0 | BE-10 | ✅ 2026-11-25 |
+| 2 | [BE-08](BE-08-shared-types-api-client.md) | Shared types, API client and mock fixtures | Claude | M | — | P0 | BE-01 | ✅ 2026-11-25 |
 | 2 | [BE-14](BE-14-ci-pipeline.md) | CI pipeline | Claude | S | — | P0 | BE-01 | ✅ 2026-11-24 |
 | 2 | [UI-01](UI-01-app-shell-theme-and.md) | App shell, theme and routing | Antigravity | M | agon | P0 | BE-01, BE-10 | ☐ |
 | 3 | [BE-03](BE-03-directus-schema.md) | Directus schema | Claude | M | — | P0 | BE-02 | ☐ |
@@ -59,6 +60,10 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | 6 | [BE-16](BE-16-translation-review-workflow.md) | Translation review workflow | Claude | S | — | P1 | BE-04 | ☐ |
 | 6 | [BE-17](BE-17-copy-previous-menu.md) | Copy previous menu | Claude | S | — | P1 | BE-03 | ☐ |
 
+## Dispatching to Antigravity
+
+Ready-to-paste prompts for every UI task, in order, are in [`DISPATCH.md`](DISPATCH.md).
+
 ## How a task moves
 
 1. Owner picks a task whose dependencies are ✅.
@@ -74,5 +79,6 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | Confirm dish ingredients and allergens | Korean teammate (+ cafeteria staff if possible) | BE-07 |
 | Check the official MFDS allergen list | Team | BE-06 |
 | Team domain and hosting account | Thiện | BE-15 |
-| Review zh and vi translations | International teammates | BE-10, BE-16 |
+| Review vi translations | Vietnamese teammates | BE-10 |
+| Review zh, uz, mn, ne translations (drafts) | Native-speaking students — ask the international office or student associations | BE-10, BE-18 |
 | Usability test with 5 international students | Team | after UI-11 |

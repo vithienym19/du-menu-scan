@@ -1,0 +1,39 @@
+[
+  { "code": "ko", "nativeName": "한국어", "englishName": "Korean", "dir": "ltr", "status": "done" },
+  {
+    "code": "en",
+    "nativeName": "English",
+    "englishName": "English",
+    "dir": "ltr",
+    "status": "source"
+  },
+  {
+    "code": "vi",
+    "nativeName": "Tiếng Việt",
+    "englishName": "Vietnamese",
+    "dir": "ltr",
+    "status": "done"
+  },
+  {
+    "code": "zh",
+    "nativeName": "中文",
+    "englishName": "Chinese (Simplified)",
+    "dir": "ltr",
+    "status": "draft"
+  },
+  {
+    "code": "uz",
+    "nativeName": "Oʻzbekcha",
+    "englishName": "Uzbek",
+    "dir": "ltr",
+    "status": "draft"
+  },
+  {
+    "code": "mn",
+    "nativeName": "Монгол",
+    "englishName": "Mongolian",
+    "dir": "ltr",
+    "status": "draft"
+  },
+  { "code": "ne", "nativeName": "नेपाली", "englishName": "Nepali", "dir": "ltr", "status": "draft" }
+]

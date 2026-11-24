@@ -1,12 +1,13 @@
 # Screen Specification
 
-Student screens S0–S4 are mobile-first (360–430 px wide). Staff screens M0–M4 are desktop/tablet-first. All student text comes from i18n files (ko, en, vi, zh); icons always appear with a text label.
+Student screens S0–S4 are mobile-first (360–430 px wide). Staff screens M0–M4 are desktop/tablet-first. All student text comes from i18n files (ko, en, vi, zh, uz, mn, ne); icons always appear with a text label.
 
 ## Common elements
 
 | Element | Spec |
 |---|---|
-| Header | Back (◀) where applicable, title, language switch `KO | EN | VI | 中` |
+| Header | Back (◀) where applicable, title, language button (globe icon + current language's native name) opening the **language picker** |
+| Language picker | Bottom sheet listing every language from `languages.json` by native name (한국어, English, Tiếng Việt, 中文, Oʻzbekcha, Монгол, नेपाली), current one checked; tap = switch + close. Scales to any number of languages |
 | Icon set | 🌶 spice (0–4), 🐷 pork, 🐄 beef, 🐔 chicken, 🐟 seafood, 🥬 vegetarian, ⚠ hidden ingredient |
 | Warning status | OK (no badge) · Caution (amber badge "Caution") · Avoid (red outline + "Avoid") · Not verified (grey badge) |
 | Safety footer | On S3: "Last verified {date} · Please confirm with staff if you have a severe allergy." |
@@ -19,7 +20,7 @@ Student screens S0–S4 are mobile-first (360–430 px wide). Staff screens M0�
 |---|---|
 | Route | `/welcome?next=/r/{code}` |
 | Purpose | Choose language; offer diet setup |
-| Components | Logo · 4 language buttons (pre-selected from browser) · primary button "Set my diet" · text button "Skip" |
+| Components | Logo · language list by native name, one per row (pre-selected from browser) · primary button "Set my diet" · text button "Skip" |
 | Behaviour | Language saved immediately. "Set my diet" → S4; "Skip" → S2. Never shown again once settings exist. |
 
 ## S1 QR entry
@@ -89,7 +90,7 @@ Queue of dish × language with status Draft (AI) / Approved. Side-by-side Korean
 
 ## M4 QR codes
 
-Select cafeteria → preview → download PNG and printable A5 PDF with QR + "Scan to see today's menu" in ko/en/vi/zh.
+Select cafeteria → preview → download PNG and printable A5 PDF with QR + "Scan to see today's menu" in every supported language.
 
 ---
 

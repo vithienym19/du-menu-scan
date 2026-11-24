@@ -1,9 +1,23 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, join } from "node:path";
 
 const dir = join(dirname(fileURLToPath(import.meta.url)), "..", "apps", "web", "src", "i18n");
-const languages = ["en", "ko", "vi", "zh"];
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const languages = JSON.parse(
+  readFileSync(join(root, "packages", "shared", "src", "languages.json"), "utf8"),
+).map((l) => l.code);
+const onDisk = readdirSync(dir)
+  .filter((f) => f.endsWith(".json"))
+  .map((f) => f.replace(/\.json$/, ""));
+const listMismatch = [
+  ...languages.filter((l) => !onDisk.includes(l)).map((l) => `missing file ${l}.json`),
+  ...onDisk.filter((l) => !languages.includes(l)).map((l) => `${l}.json is not in languages.json`),
+];
+if (listMismatch.length) {
+  console.error(`i18n check failed:\n- ${listMismatch.join("\n- ")}`);
+  process.exit(1);
+}
 const placeholder = /\{\{\s*(\w+)\s*\}\}/g;
 
 function flatten(obj, prefix = "", out = new Map()) {

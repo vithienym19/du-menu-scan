@@ -25,7 +25,7 @@ Read the sections the brief points to, at minimum:
 
 - React 18 + TypeScript strict, Vite, React Router, TanStack Query, i18next, Tailwind.
 - Mobile-first (360–430 px). Touch targets ≥ 44 px. WCAG AA contrast. Every icon has a text label; never rely on colour alone.
-- No hard-coded user-facing strings: add keys to all four files `apps/web/src/i18n/{ko,en,vi,zh}.json`. If you cannot translate, copy English and mark the key in your report.
+- No hard-coded user-facing strings: ask the PM to add keys to every file in `apps/web/src/i18n/`. If you cannot translate, copy English and mark the key in your report.
 - Warning status comes **only** from `packages/shared/src/warning.ts`. Do not re-implement it in components.
 - Unverified or incomplete dish data must never render as OK (BR6). Dish detail always shows last verified date and the "confirm with staff" note (BR3).
 - Student preferences stay in localStorage (`lib/prefs.ts`). Never send them to the server (BR8).

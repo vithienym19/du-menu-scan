@@ -31,7 +31,7 @@ Observed coping behaviour: picking only familiar dishes, copying the person in f
 
 ## 4. Scope
 
-**In scope (MVP):** one cafeteria, its corners, daily lunch/dinner menu, 4 languages, icons, hidden ingredients, allergens, personal warnings, staff menu entry, QR codes.
+**In scope (MVP):** one cafeteria, its corners, daily lunch/dinner menu, 7 languages (ko, en, vi, zh, uz, mn, ne — more can be added), icons, hidden ingredients, allergens, personal warnings, staff menu entry, QR codes.
 
 **Out of scope (for now):** ordering or payment, nutrition/calories, reviews, user accounts for students, native apps, other universities.
 
@@ -42,7 +42,7 @@ Observed coping behaviour: picking only familiar dishes, copying the person in f
 | ID | Feature | Description |
 |---|---|---|
 | F1 | QR entry | QR at entrance/kiosk opens that cafeteria's menu for today |
-| F2 | Language | ko / en / vi / zh; auto-detected from phone, changeable, remembered |
+| F2 | Language | ko, en, vi, zh, uz, mn, ne (list in `packages/shared/src/languages.json`); auto-detected from phone, changeable, remembered. Adding a language = one i18n file + one list entry |
 | F3 | Today's menu | Dish cards grouped by corner: photo, Korean name, translated name, icons, price |
 | F4 | Dish detail | Description, spice level (0–4), main ingredients, allergens, diet info, hidden ingredients, last verified date |
 | F5 | Hidden-ingredient warning | Ingredients flagged as hidden are shown with ⚠ on card and detail |

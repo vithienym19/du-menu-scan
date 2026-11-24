@@ -7,7 +7,7 @@ Decided by the lead engineer on 2026-11-24. Tokens live in `packages/shared/src/
 1. **Decide in 10 seconds.** The menu is read while queuing. Big names, few words, icons with labels.
 2. **Safety is visible, never decorative.** Warning status always uses icon + text + colour together.
 3. **Calm and trustworthy.** Warm off-white background, one blue brand colour, no gradients or heavy shadows.
-4. **Four scripts, one layout.** Korean, English, Vietnamese and Chinese must fit without truncating important words.
+4. **Many scripts, one layout.** Hangul, Latin (incl. Vietnamese and Uzbek), Chinese, Cyrillic (Mongolian) and Devanagari (Nepali) must fit without truncating important words. Never set fixed widths on text.
 
 ## 2. Colour
 
@@ -39,7 +39,7 @@ Contrast (WCAG 2.1 AA) verified: body text 16.4:1, muted 7.3:1, white on brand 6
 
 ## 3. Typography
 
-**Font:** Pretendard Variable (Korean + Latin incl. Vietnamese), loaded as a dynamic subset from the `pretendard` npm package with `font-display: swap`. Chinese falls back to the system font (PingFang SC / Noto Sans SC / Microsoft YaHei) to keep the download small.
+**Font:** Pretendard Variable (Korean + Latin incl. Vietnamese), loaded as a dynamic subset from the `pretendard` npm package with `font-display: swap`. Chinese, Mongolian (Cyrillic) and Nepali (Devanagari) fall back to the phone's system fonts to keep the download small. Devanagari needs extra line height: use `leading-relaxed` on body text when `lang=ne`.
 
 | Token | Size / line height | Weight | Use |
 |---|---|---|---|

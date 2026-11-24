@@ -12,7 +12,7 @@ Load the most frequent cafeteria dishes so the app has real content.
 
 ## Do
 - Collect frequent dishes from 4–6 weeks of the school's published menus
-- `directus/seed/dishes.csv`: ingredients with hidden flags, allergens, spice level, ko/en/vi/zh names
+- `directus/seed/dishes.csv`: ingredients with hidden flags, allergens, spice level, ko name + translations (at least en; others when available)
 - Mark each dish `verified_by` / `verified_at` only after the Korean teammate confirms it
 
 ## Do not

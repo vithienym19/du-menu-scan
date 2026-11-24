@@ -18,7 +18,8 @@ Create the student PWA skeleton every screen lives in.
 - `src/index.css`: `@import "tailwindcss"; @import "@du-menu-scan/shared/design/theme.css";` plus the Pretendard dynamic-subset CSS from the `pretendard` package — do not define new colours or font sizes
 - React Router routes: `/r/:code`, `/r/:code/today`, `/dish/:id`, `/welcome`, `/settings`, 404
 - i18next wired to `src/i18n/*.json`, language auto-detect + persisted choice
-- Header component with back button, title and `KO | EN | VI | 中` switch
+- Header component with back button, title and a language button (globe icon + native name)
+- `LanguagePicker` bottom sheet listing `LANGUAGES` from `@du-menu-scan/shared` by native name; set `<html lang>` on change
 
 ## Do not
 - Do not edit `packages/shared` (incl. `theme.css`) or the i18n key set (ask for new keys)

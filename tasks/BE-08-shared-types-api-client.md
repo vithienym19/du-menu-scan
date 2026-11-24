@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | M | — | P0 | 3.1–3.4 | BE-01 | ☐ Todo |
+| Claude (lead engineer) | M | — | P0 | 3.1–3.4 | BE-01 | ✅ Done 2026-11-25 |
 
 ## Goal
 Give the UI a typed data layer it can build against before the backend is live.
@@ -21,8 +21,8 @@ Give the UI a typed data layer it can build against before the backend is live.
 - No UI code
 
 ## Acceptance criteria
-- [ ] UI can render every screen state from fixtures alone
-- [ ] Types compile in strict mode
+- [x] UI can render every screen state from fixtures alone
+- [x] Types compile in strict mode
 
 ## Report back (in the pull request description)
 - Changed files and why

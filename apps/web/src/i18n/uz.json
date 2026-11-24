@@ -1,0 +1,109 @@
+{
+  "common": {
+    "appName": "DU-Menu Scan",
+    "back": "Orqaga",
+    "settings": "Sozlamalar",
+    "save": "Saqlash",
+    "skip": "O‘tkazib yuborish",
+    "loading": "Yuklanmoqda…",
+    "retry": "Qayta urinish",
+    "close": "Yopish",
+    "language": "Til"
+  },
+  "entry": {
+    "invalidTitle": "Bu oshxona topilmadi",
+    "invalidBody": "QR kod eskirgan bo‘lishi mumkin. Quyidan oshxonani tanlang.",
+    "chooseCafeteria": "Oshxonani tanlang"
+  },
+  "welcome": {
+    "title": "Bugungi taomlar tarkibini ko‘ring",
+    "subtitle": "Buyurtma berishdan oldin masalliqlar, achchiqlik darajasi va allergenlarni o‘z tilingizda biling.",
+    "chooseLanguage": "Tilni tanlang",
+    "setDiet": "Ovqatlanish tartibimni sozlash",
+    "skip": "Keyinroq"
+  },
+  "menu": {
+    "title": "Bugungi menyu",
+    "lunch": "Tushlik",
+    "dinner": "Kechki ovqat",
+    "filters": "Filtrlar",
+    "filterNotSpicy": "Achchiq emas",
+    "filterNoPork": "Cho‘chqa go‘shtisiz",
+    "filterVegetarian": "Vegetarian",
+    "noResults": "Filtrlarga mos taom yo‘q.",
+    "clearFilters": "Filtrlarni tozalash",
+    "emptyTitle": "Menyu hali e’lon qilinmagan",
+    "emptyBody": "Bugungi menyu hali chiqmagan. Keyinroq qayta tekshiring.",
+    "openingHours": "Ish vaqti",
+    "closedTitle": "Bugun yopiq",
+    "closedBody": "Bu oshxona bugun ishlamaydi.",
+    "offline": "Siz oflayndasiz. Bu menyu eskirgan bo‘lishi mumkin.",
+    "errorTitle": "Xatolik yuz berdi",
+    "errorBody": "Menyuni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.",
+    "hiddenIngredient": "Yashirin: {{name}}",
+    "translationPending": "Tarjima kutilmoqda"
+  },
+  "dish": {
+    "description": "Taom haqida",
+    "spiceLevel": "Achchiqlik",
+    "spice": {
+      "0": "Achchiq emas",
+      "1": "Biroz achchiq",
+      "2": "O‘rtacha",
+      "3": "Achchiq",
+      "4": "Juda achchiq"
+    },
+    "mainIngredients": "Asosiy masalliqlar",
+    "hiddenIngredients": "Yashirin masalliqlar",
+    "hiddenIngredientsHint": "Nomidan bilinmaydi, masalan, sho‘rva yoki sous tarkibida.",
+    "allergens": "Allergenlar",
+    "noneListed": "Ko‘rsatilmagan",
+    "dietInfo": "Ovqatlanish ma’lumoti",
+    "halal": "Halol",
+    "vegetarian": "Vegetarian",
+    "suitable": "Mos",
+    "notSuitable": "Mos emas",
+    "lastVerified": "Oxirgi tekshiruv: {{date}}",
+    "confirmWithStaff": "Kuchli allergiyangiz bo‘lsa, xodimdan albatta so‘rang.",
+    "backToMenu": "Menyuga qaytish",
+    "otherLanguages": "Boshqa tillar"
+  },
+  "status": {
+    "ok": "Siz uchun mos",
+    "caution": "Ehtiyot bo‘ling",
+    "avoid": "Tavsiya etilmaydi",
+    "unverified": "Tasdiqlanmagan",
+    "reasonContains": "Tarkibida {{item}} bor — siz undan saqlanishni tanlagansiz",
+    "reasonSpicy": "Siz tanlagan darajadan achchiqroq",
+    "reasonUnverified": "Masalliqlar hali tasdiqlanmagan"
+  },
+  "tags": {
+    "pork": "Cho‘chqa go‘shti",
+    "beef": "Mol go‘shti",
+    "chicken": "Tovuq go‘shti",
+    "seafood": "Dengiz mahsulotlari",
+    "vegetarian": "Vegetarian",
+    "alcohol": "Spirtli ichimlik"
+  },
+  "settings": {
+    "title": "Ovqatlanish tartibim",
+    "iAvoid": "Men yemayman",
+    "nuts": "Yong‘oqlar",
+    "milkEgg": "Sut va tuxum",
+    "wheat": "Bug‘doy",
+    "spiceTolerance": "Achchiqqa chidamlilik",
+    "spiceNone": "Faqat achchiq bo‘lmagan",
+    "spiceSome": "Biroz achchiq bo‘lsa ham mayli",
+    "spiceAny": "Farqi yo‘q",
+    "dietType": "Ovqatlanish turi",
+    "dietNone": "Cheklov yo‘q",
+    "dietVegetarian": "Vegetarian",
+    "dietHalal": "Halol",
+    "privacyNote": "Sozlamalar faqat shu telefonda saqlanadi.",
+    "saved": "Saqlandi"
+  },
+  "notFound": {
+    "title": "Sahifa topilmadi",
+    "body": "Bugungi menyuni ko‘rish uchun oshxona kirishidagi QR kodni skanerlang."
+  }
+}

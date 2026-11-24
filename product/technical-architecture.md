@@ -34,7 +34,7 @@
 | Styling | Tailwind CSS | Fast mobile-first UI without custom CSS |
 | Routing | React Router | Routes in `screen-specification.md` |
 | Data fetching | TanStack Query | Caching, background refresh, offline-friendly |
-| i18n | i18next (ko, en, vi, zh) | One JSON file per language; adding a language = adding a file |
+| i18n | i18next (ko, en, vi, zh, uz, mn, ne; list in `packages/shared/src/languages.json`) | One JSON file per language; adding a language = adding a file |
 | PWA | vite-plugin-pwa | Add to home screen; last loaded menu available offline |
 | Mobile apps | **Capacitor** (Phase 4+) | Wraps the same web build as iOS/Android apps; no rewrite |
 | Images | Directus file storage → S3-compatible storage later | Directus transforms resize and convert to WebP for mobile data |

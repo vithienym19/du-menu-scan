@@ -35,7 +35,7 @@ Scan the QR code at the cafeteria entrance or kiosk → see today's menu with ph
 | Frontend | React + TypeScript + Vite, Tailwind, TanStack Query, i18next | Team experience; fast first load after a QR scan |
 | QR target | Team-owned domain | Hosting can change without reprinting QR codes |
 | Data model | Reusable **dish dictionary** + daily menu that references it | Staff pick dishes each day instead of re-translating |
-| Languages | ko, en, vi, zh | Top origins of international students in Korea (China 30.2%, Vietnam 29.7%, 2025) |
+| Languages | ko, en, vi, zh, uz, mn, ne (extensible) | Top origins of international students in Korea: China 30.2%, Vietnam 29.7%, Uzbekistan 6.2%, Mongolia 6.0% (2025), Nepal fast-growing. Untranslated dish data falls back to English |
 | Safety | Every dish shows "last verified" date and "confirm with staff" note | Allergen errors can cause harm |
 
 ## Team

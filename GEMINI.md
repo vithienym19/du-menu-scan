@@ -36,7 +36,7 @@ React 18 + TypeScript (strict) + Vite · Tailwind CSS · React Router · TanStac
 
 1. **Safety (BR3, BR6).** Warning status comes only from `evaluate()` in `packages/shared/src/warning.ts`. Unverified or incomplete data is never shown as OK. Every dish detail shows "Last verified {date}" and "Please confirm with staff if you have a severe allergy."
 2. **Privacy (BR8).** Student preferences stay in localStorage (`apps/web/src/lib/prefs.ts`). Never send them to any server.
-3. **i18n.** No hard-coded user-facing text. Use keys from `apps/web/src/i18n/{ko,en,vi,zh}.json`.
+3. **i18n.** No hard-coded user-facing text. Use keys from `apps/web/src/i18n/*.json` (7 languages, list in `packages/shared/src/languages.json`). Never assume a fixed number of languages in layouts.
 4. **Accessibility.** Every icon has a text label; never rely on colour alone; WCAG AA contrast; touch targets ≥ 44 px; keyboard operable.
 5. **Mobile first.** Design for 360–430 px. The menu screen must be interactive within 2 s on 4G; lazy-load images.
 6. **Design system.** Use only the tokens in `packages/shared/src/design/theme.css` (`bg-brand`, `text-ink-muted`, `bg-avoid-soft` …). No raw hex colours, no Tailwind default palette colours, no new font sizes. Status colours are reserved for warnings.

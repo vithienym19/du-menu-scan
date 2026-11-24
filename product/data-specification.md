@@ -50,7 +50,7 @@ scan_event n──1 cafeteria
 | Field | Type | Notes |
 |---|---|---|
 | dish_id | fk | |
-| lang | enum | `en`, `vi`, `zh` |
+| lang | string | Any code in `packages/shared/src/languages.json` except `ko` (en, vi, zh, uz, mn, ne …) |
 | name | string | |
 | description | text | |
 | source | enum | `ai`, `human` |
@@ -60,7 +60,8 @@ scan_event n──1 cafeteria
 | Field | Type | Notes |
 |---|---|---|
 | id | uuid | |
-| name_ko, name_en, name_vi, name_zh | string | |
+| name_ko | string | Source |
+| names | json | Other languages, e.g. `{ "en": "Anchovy broth", "vi": "Nước dùng cá cơm" }`; missing keys fall back per BR2 |
 
 ### dish_ingredient
 | Field | Type | Notes |
@@ -73,7 +74,8 @@ scan_event n──1 cafeteria
 | Field | Type | Notes |
 |---|---|---|
 | code | string pk | e.g. `egg`, `milk`, `soy`, `wheat`, `pork`, `beef`, `chicken`, `shrimp`, `crab`, `mackerel`, `shellfish`, `peanut`, `walnut`, `peach`, `tomato`, `buckwheat`, `squid`, `sulfite`, `pine_nut` |
-| name_ko, name_en, name_vi, name_zh | string | |
+| name_ko | string | Source |
+| names | json | Other languages, as for ingredient |
 
 Seed from Korea's mandatory allergen labelling list (MFDS). Verify the current official list before launch.
 

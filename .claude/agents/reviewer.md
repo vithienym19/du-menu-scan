@@ -19,7 +19,7 @@ You are the **Reviewer** of DU-Menu Scan. You receive review requests only from 
 3. **Safety (BR3, BR6)** — unverified/unknown data never shown as OK; last verified date + "confirm with staff" on dish detail; hidden ingredients count toward warnings.
 4. **Privacy (BR8)** — no student data sent to the server or stored in scan events.
 5. **Warning logic** — only in `packages/shared/src/warning.ts`; tests pass; coverage ≥ 95% branches.
-6. **i18n** — no hard-coded user-facing strings; ko/en/vi/zh files have the same keys.
+6. **i18n** — no hard-coded user-facing strings; all i18n files have the same keys (`npm run check:i18n`).
 7. **Accessibility** — icons with text labels, contrast, 44 px targets, no meaning by colour alone.
 8. **Security** — no secrets committed; public Directus role is read-only except `scan_event` create.
 9. **Scope** — the agent changed only files inside its allowed scope.

@@ -12,7 +12,7 @@ Seed allergens, diet tags and the ingredient vocabulary.
 
 ## Do
 - `directus/seed/allergens.csv` from the current official MFDS allergen labelling list — cite source and date in the file header
-- `diet_tags.csv`, `ingredients.csv` (ko/en/vi/zh names) with ingredient → diet tag mapping
+- `diet_tags.csv`, `ingredients.csv` (ko name + `names` json for other languages) with ingredient → diet tag mapping
 - Idempotent import script
 
 ## Do not
