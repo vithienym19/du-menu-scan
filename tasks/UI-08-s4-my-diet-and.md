@@ -1,0 +1,34 @@
+# UI-08 — S4 My diet and local preferences
+
+| Owner | Size | Model | Priority | Stories | Depends on | Status |
+|---|---|---|---|---|---|---|
+| Antigravity (Gemini) | M | agon | P0 | 4.2, BR8 | UI-03, BE-09 | ☐ Todo |
+
+## Goal
+Students set what they avoid once; it stays on their phone.
+
+## Read first
+- GEMINI.md (your rules)
+- product/screen-specification.md
+- product/screen-specification.md § S4
+- product/data-specification.md § Client-side data
+
+## Do
+- `lib/prefs.ts`: read/write prefs in localStorage (schema from `types.ts`)
+- Form: language, avoid checkboxes, spice tolerance, diet type; halal/vegetarian auto-tick via `expandDietType`
+- Privacy note “Your settings stay on this phone.”
+
+## Do not
+- Never send prefs to the server
+
+## Acceptance criteria
+- [ ] Saving updates S2 warnings immediately
+- [ ] Prefs survive reload; clearing storage resets to onboarding
+
+## Report back (in the pull request description)
+- Changed files and why
+- How you tested (commands + results)
+- Screens/states covered (UI tasks: screenshots at 375 px)
+- Open questions or spec gaps
+
+Branch: `feat/ui-08-s4-my-diet-and`

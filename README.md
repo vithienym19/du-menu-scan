@@ -45,7 +45,9 @@ Scan the QR code at the cafeteria entrance or kiosk → see today's menu with ph
 
 ```
 du-menu-scan/
-├── CLAUDE.md            # Product Manager agent: how work is planned and delegated
+├── CLAUDE.md            # Claude: product manager + lead engineer
+├── GEMINI.md            # Antigravity: UI developer rules
+├── tasks/               # task board + one brief per task
 ├── .claude/
 │   ├── agents/          # frontend-developer, backend-developer, reviewer
 │   └── settings.json    # shared tool permissions for all agents
@@ -57,13 +59,11 @@ du-menu-scan/
 
 ## Working with the AI agents
 
-This repo is set up for Claude Code. The main session acts as **Product Manager**: it talks with the product owner, keeps `product/` up to date, splits work into tasks, and delegates them to sub-agents:
-
-| Agent | Owns | Can change |
+| Who | Role | Rules |
 |---|---|---|
-| Product Manager (main session) | Scope, specs, backlog, task breakdown | `product/`, `README.md`, `CLAUDE.md` |
-| `frontend-developer` | Student PWA | `apps/web/`, `packages/shared/` |
-| `backend-developer` | Directus, database, seed data, infra | `directus/`, `docker-compose.yml`, `packages/shared/` types |
-| `reviewer` | Code review against the specs | Nothing (read-only, reports findings) |
+| Claude (main session) | Product manager + lead engineer: specs, task board, backend, data, shared logic, CI, review | `CLAUDE.md` |
+| Antigravity (Gemini) | UI developer for `apps/web` — model by task size: S `hydrogen`, M `agon`, L `nexon` | `GEMINI.md` |
+| `reviewer` sub-agent | Read-only review of every pull request | `.claude/agents/reviewer.md` |
+| Thiện | Product owner, merges to `main` | — |
 
-See `CLAUDE.md` and `.claude/agents/` for the full rules.
+The task board with all tasks, owners and dependencies is [`tasks/README.md`](tasks/README.md).
