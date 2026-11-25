@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | L | nexon | P0 | 3.4, BR3, BR6 | UI-02, BE-09 | ☐ Todo |
+| Antigravity (Gemini) | L | neon | P0 | 3.4, BR3, BR6 | UI-02, BE-09 | ☐ Todo |
 
 ## Goal
 Full dish information with the safety rules always visible.

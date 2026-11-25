@@ -12,7 +12,7 @@ Read @AGENTS.md (project overview) and @STATUS.md (current progress) before star
 
 - Work only on `UI-*` tasks listed in @tasks/README.md, one task at a time.
 - Start a task only when every task in its "Depends on" column is ✅.
-- Use the model the board assigns to the task size: **S → `hydrogen`, M → `agon`, L → `nexon`**.
+- Use the model the board assigns to the task size: **S → `hydrogen`, M → `argon`, L → `neon`**.
 - Each task file in `tasks/` is your brief: Goal, Read first, Do, Do not, Acceptance criteria.
 
 ## Scope

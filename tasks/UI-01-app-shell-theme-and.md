@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | M | agon | P0 | 3.x | BE-01, BE-10 | ☐ Todo |
+| Antigravity (Gemini) | M | argon | P0 | 3.x | BE-01, BE-10 | ☐ Todo |
 
 ## Goal
 Create the student PWA skeleton every screen lives in.

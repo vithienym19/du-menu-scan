@@ -47,10 +47,10 @@ Nothing half-done. Working tree clean after the handoff-docs commit.
 
 | Who | Task | Notes |
 |---|---|---|
-| Antigravity (`agon`) | **UI-01** app shell, theme, routing, language picker | Owner is starting it in Antigravity (branch `feat/ui-01-app-shell-theme-and`) |
+| Antigravity (`argon`) | **UI-01** app shell, theme, routing, language picker | Owner is starting it in Antigravity (branch `feat/ui-01-app-shell-theme-and`) |
 | Claude / lead engineer | **BE-04** roles, **BE-05** derived tags + publish guard + uniqueness hooks, **BE-06** reference seed | All unblocked by BE-03; can run in parallel |
 | Antigravity (`hydrogen`) | UI-02, UI-03, UI-04, UI-05 | After UI-01 is merged |
-| Antigravity | UI-06 (`nexon`), UI-07 (`nexon`), UI-08 (`agon`) | BE-09 done; prompts ready in `tasks/DISPATCH.md`; wait for UI-02..05 |
+| Antigravity | UI-06 (`neon`), UI-07 (`neon`), UI-08 (`argon`) | BE-09 done; prompts ready in `tasks/DISPATCH.md`; wait for UI-02..05 |
 
 Note: port 8055 on the owner's Mac is used by another project's Directus (`translate-realtime-ai-directus-1`). Set `DIRECTUS_PORT=8056` and `PUBLIC_URL=http://localhost:8056` in `.env`, or stop that container.
 
@@ -66,4 +66,4 @@ Note: port 8055 on the owner's Mac is used by another project's Directus (`trans
 ## Open questions
 
 - Which cafeteria(s) and meal times does the pilot cover? (assumed: one cafeteria, lunch)
-- Exact Antigravity model names/tiers — assumed S `hydrogen`, M `agon`, L `nexon`; change in `tasks/README.md` if different.
+- Exact Antigravity model names/tiers — assumed S `hydrogen`, M `argon`, L `neon`; change in `tasks/README.md` if different.

@@ -78,7 +78,7 @@ du-menu-scan/
 | Who | Role | Rules |
 |---|---|---|
 | Claude (main session) | Product manager + lead engineer: specs, task board, backend, data, shared logic, CI, review | `CLAUDE.md` |
-| Antigravity (Gemini) | UI developer for `apps/web` — model by task size: S `hydrogen`, M `agon`, L `nexon` | `GEMINI.md` |
+| Antigravity (Gemini) | UI developer for `apps/web` — model by task size: S `hydrogen`, M `argon`, L `neon` | `GEMINI.md` |
 | `reviewer` sub-agent | Read-only review of every pull request | `.claude/agents/reviewer.md` |
 | Thiện | Product owner, merges to `main` | — |
 

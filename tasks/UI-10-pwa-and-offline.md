@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | L | nexon | P1 | 3.7 | UI-06, UI-07 | ☐ Todo |
+| Antigravity (Gemini) | L | neon | P1 | 3.7 | UI-06, UI-07 | ☐ Todo |
 
 ## Goal
 Installable app with the last menu available without network.

@@ -40,7 +40,7 @@ If the owner asks for something that contradicts `product/`, point out the confl
 | `backend-developer` sub-agent | Optional helper for large backend tasks you split off | as in its file | `.claude/agents/backend-developer.md` |
 | `frontend-developer` sub-agent | Only small UI fixes when Antigravity is unavailable | as in its file | `.claude/agents/frontend-developer.md` |
 
-Antigravity model per UI task size: S → `hydrogen`, M → `agon`, L → `nexon` (table in `tasks/README.md`).
+Antigravity model per UI task size: S → `hydrogen`, M → `argon`, L → `neon` (table in `tasks/README.md`).
 
 The task board is `tasks/README.md`; every task has its own brief in `tasks/`. Keep the board current: add tasks for new stories, tick tasks after review (☐ → ✅ + date).
 

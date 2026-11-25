@@ -33,7 +33,7 @@ If something you need is not written down, ask the product owner and then **writ
 | Role | Who usually plays it | Rules file | Owns |
 |---|---|---|---|
 | Product manager + lead engineer | Claude Code (Codex may take over) | [`CLAUDE.md`](CLAUDE.md) | Specs (`product/`), task board (`tasks/`), backend (`directus/`), shared logic (`packages/shared/`), i18n key set, CI, deployment, code review |
-| UI developer | Antigravity (Gemini) — model by task size: S `hydrogen`, M `agon`, L `nexon` | [`GEMINI.md`](GEMINI.md) | `apps/web/**` except the i18n key set |
+| UI developer | Antigravity (Gemini) — model by task size: S `hydrogen`, M `argon`, L `neon` | [`GEMINI.md`](GEMINI.md) | `apps/web/**` except the i18n key set |
 | Reviewer | Claude `reviewer` sub-agent or any agent asked to review | [`.claude/agents/reviewer.md`](.claude/agents/reviewer.md) | Read-only review |
 | Product owner | Thiện (human) | — | Priorities, approvals, merging to `main`, pushing to GitHub |
 

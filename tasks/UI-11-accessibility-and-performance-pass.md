@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | M | agon | P0 | 6.1, 6.2 | UI-06, UI-07, UI-08 | ☐ Todo |
+| Antigravity (Gemini) | M | argon | P0 | 6.1, 6.2 | UI-06, UI-07, UI-08 | ☐ Todo |
 
 ## Goal
 Meet the non-functional requirements before the usability test.

@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | L | nexon | P0 | 3.2, 3.6, 4.4 | UI-03, UI-04, UI-05, BE-09 | ☐ Todo |
+| Antigravity (Gemini) | L | neon | P0 | 3.2, 3.6, 4.4 | UI-03, UI-04, UI-05, BE-09 | ☐ Todo |
 
 ## Goal
 The core screen: decide what to eat in under 10 seconds.

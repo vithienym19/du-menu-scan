@@ -1,5 +1,15 @@
 # Dispatch — Antigravity
 
+**Default (D-021):** Claude dispatches UI tasks through the Antigravity CLI. A `frontend-developer` sub-agent creates the task branch in its own worktree, runs
+
+```bash
+agy -p "<prompt below>" --model <model id from tasks/README.md> --mode accept-edits
+```
+
+from the repo root, then checks scope, runs format/lint/typecheck/test/build and commits; the `reviewer` reviews before Claude merges. Never `--dangerously-skip-permissions`.
+
+**Manual alternative:**
+
 How to start a UI task in Antigravity:
 
 1. Open the repository root as the workspace (Antigravity then loads `GEMINI.md` automatically).
@@ -11,7 +21,7 @@ Only start a task when every dependency on the board is ✅.
 
 ## Ready now
 
-### UI-01 — App shell, theme and routing · model `agon`
+### UI-01 — App shell, theme and routing · model `argon`
 
 ```
 Implement task UI-01 exactly as described in tasks/UI-01-app-shell-theme-and.md.
@@ -65,7 +75,7 @@ Open a PR "UI-05: Dish card" with screenshots in vi, mn and ne.
 Shared API for all three: `evaluate`, `sortByStatus`, `applyFilters`, `NO_FILTERS`, `dietCompatibility`,
 `expandDietType`, `sanitizePrefs`, `DEFAULT_PREFS` from `@du-menu-scan/shared` (see product/technical-architecture.md §4).
 
-### UI-08 — S4 My diet and local preferences · model `agon` (needs UI-03)
+### UI-08 — S4 My diet and local preferences · model `argon` (needs UI-03)
 
 ```
 Implement task UI-08 as described in tasks/UI-08-s4-my-diet-and.md, following GEMINI.md and product/screen-specification.md § S4.
@@ -75,7 +85,7 @@ Test: corrupt localStorage values (bad JSON, "Halal", missing spiceTolerance) mu
 Open a PR "UI-08: S4 My diet" with screenshots of halal and vegetarian auto-tick.
 ```
 
-### UI-07 — S3 Dish detail (safety-critical) · model `nexon` (needs UI-02)
+### UI-07 — S3 Dish detail (safety-critical) · model `neon` (needs UI-02)
 
 ```
 Implement task UI-07 as described in tasks/UI-07-s3-dish-detail-safety-critical.md, following GEMINI.md and
@@ -86,7 +96,7 @@ The safety footer (Last verified + confirm with staff) is always visible. Test w
 Open a PR "UI-07: S3 Dish detail" with 375 px screenshots of ok, caution, avoid, unverified and translation-pending.
 ```
 
-### UI-06 — S2 Today's menu · model `nexon` (needs UI-03, UI-04, UI-05)
+### UI-06 — S2 Today's menu · model `neon` (needs UI-03, UI-04, UI-05)
 
 ```
 Implement task UI-06 as described in tasks/UI-06-s2-todays-menu.md, following GEMINI.md and product/screen-specification.md § S2.
@@ -100,8 +110,8 @@ Open a PR "UI-06: S2 Today's menu" with 375 px screenshots of each state and of 
 | Task | Model | Starts when |
 |---|---|---|
 | UI-09 S0 Welcome | `hydrogen` | UI-08 ✅ |
-| UI-10 PWA and offline | `nexon` | UI-06, UI-07 ✅ |
-| UI-11 Accessibility and performance | `agon` | UI-06, UI-07, UI-08 ✅ |
-| UI-12 End-to-end tests | `agon` | UI-06, UI-07, UI-08 ✅ |
+| UI-10 PWA and offline | `neon` | UI-06, UI-07 ✅ |
+| UI-11 Accessibility and performance | `argon` | UI-06, UI-07, UI-08 ✅ |
+| UI-12 End-to-end tests | `argon` | UI-06, UI-07, UI-08 ✅ |
 
 Prompts for these will be added here when they are unblocked.
