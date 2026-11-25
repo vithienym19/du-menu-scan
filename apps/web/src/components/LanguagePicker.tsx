@@ -1,9 +1,9 @@
-import { isLanguage, LANGUAGES, type Language } from "@du-menu-scan/shared";
+import { DEFAULT_LANGUAGE, isLanguage, LANGUAGES, type Language } from "@du-menu-scan/shared";
 import { Check, X } from "lucide-react";
-import { useEffect } from "react";
+import { type KeyboardEvent, useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 
-import { changeAppLanguage, getLanguageInfo } from "../lib/i18n";
+import { changeAppLanguage } from "../lib/i18n";
 
 export interface LanguagePickerProps {
   isOpen: boolean;
@@ -12,20 +12,29 @@ export interface LanguagePickerProps {
 
 export function LanguagePicker({ isOpen, onClose }: LanguagePickerProps) {
   const { t, i18n } = useTranslation();
-  const currentLang: Language = isLanguage(i18n.language)
-    ? i18n.language
-    : getLanguageInfo("en").code;
+  const currentLang: Language = isLanguage(i18n.language) ? i18n.language : DEFAULT_LANGUAGE;
+
+  const dialogRef = useRef<HTMLDivElement>(null);
+  const selectedButtonRef = useRef<HTMLButtonElement>(null);
+  const triggerElementRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     if (!isOpen) return;
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
+
+    const active = document.activeElement;
+    triggerElementRef.current = active instanceof HTMLElement ? active : null;
+
+    document.body.classList.add("overflow-hidden");
+    selectedButtonRef.current?.focus();
+
+    return () => {
+      document.body.classList.remove("overflow-hidden");
+      if (triggerElementRef.current && document.contains(triggerElementRef.current)) {
+        triggerElementRef.current.focus();
       }
+      triggerElementRef.current = null;
     };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
+  }, [isOpen]);
 
   if (!isOpen) {
     return null;
@@ -34,6 +43,45 @@ export function LanguagePicker({ isOpen, onClose }: LanguagePickerProps) {
   const handleSelect = (code: Language) => {
     void changeAppLanguage(code);
     onClose();
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "Escape") {
+      event.stopPropagation();
+      onClose();
+      return;
+    }
+
+    if (event.key === "Tab" && dialogRef.current) {
+      const focusable = Array.from(
+        dialogRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (!first || !last) return;
+
+      if (event.shiftKey) {
+        if (
+          document.activeElement === first ||
+          !dialogRef.current.contains(document.activeElement)
+        ) {
+          event.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (
+          document.activeElement === last ||
+          !dialogRef.current.contains(document.activeElement)
+        ) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+    }
   };
 
   return (
@@ -45,9 +93,11 @@ export function LanguagePicker({ isOpen, onClose }: LanguagePickerProps) {
         data-testid="language-picker-backdrop"
       />
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="language-picker-title"
+        onKeyDown={handleKeyDown}
         className="relative z-10 mx-auto w-full max-w-app rounded-t-lg border-t border-line bg-surface p-4 shadow-sheet transition-transform duration-150"
       >
         <div className="mb-3 flex items-center justify-between border-b border-line pb-2">
@@ -65,15 +115,15 @@ export function LanguagePicker({ isOpen, onClose }: LanguagePickerProps) {
           </button>
         </div>
 
-        <ul className="flex max-h-80 flex-col gap-1 overflow-y-auto" role="listbox">
+        <ul className="flex max-h-80 flex-col gap-1 overflow-y-auto">
           {LANGUAGES.map((lang) => {
             const selected = lang.code === currentLang;
             return (
               <li key={lang.code}>
                 <button
+                  ref={selected ? selectedButtonRef : undefined}
                   type="button"
-                  role="option"
-                  aria-selected={selected}
+                  aria-current={selected ? "true" : undefined}
                   onClick={() => handleSelect(lang.code)}
                   className={`flex min-h-11 w-full items-center justify-between rounded-md border px-3 py-2 text-left text-base transition-colors duration-150 ${
                     selected

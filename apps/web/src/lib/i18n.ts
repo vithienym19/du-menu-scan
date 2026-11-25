@@ -18,7 +18,6 @@ import vi from "../i18n/vi.json";
 import zh from "../i18n/zh.json";
 
 export const LANGUAGE_STORAGE_KEY = "du-menu-scan:lang";
-export const PREFS_STORAGE_KEY = "du-menu-scan:prefs";
 
 const resources = {
   ko: { translation: ko },
@@ -32,16 +31,10 @@ const resources = {
 
 export function getLanguageInfo(code: Language): LanguageInfo {
   const found = LANGUAGES.find((item) => item.code === code);
-  if (found) return found;
-  return (
-    LANGUAGES.find((item) => item.code === DEFAULT_LANGUAGE) ?? {
-      code: DEFAULT_LANGUAGE,
-      nativeName: "English",
-      englishName: "English",
-      dir: "ltr",
-      status: "source",
-    }
-  );
+  if (!found) {
+    throw new Error(`Unsupported language code: ${code}`);
+  }
+  return found;
 }
 
 export function readStoredLanguage(): Language | null {
@@ -50,15 +43,8 @@ export function readStoredLanguage(): Language | null {
     if (direct && isLanguage(direct)) {
       return direct;
     }
-    const rawPrefs = window.localStorage.getItem(PREFS_STORAGE_KEY);
-    if (rawPrefs) {
-      const parsed = JSON.parse(rawPrefs) as { lang?: unknown };
-      if (typeof parsed?.lang === "string" && isLanguage(parsed.lang)) {
-        return parsed.lang;
-      }
-    }
   } catch {
-    // Ignore storage access or JSON errors
+    // Ignore storage access errors
   }
   return null;
 }
@@ -94,14 +80,6 @@ export function persistLanguage(lang: Language): void {
   if (typeof window === "undefined") return;
   try {
     window.localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
-    const rawPrefs = window.localStorage.getItem(PREFS_STORAGE_KEY);
-    if (rawPrefs) {
-      const parsed = JSON.parse(rawPrefs) as Record<string, unknown>;
-      if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
-        parsed.lang = lang;
-        window.localStorage.setItem(PREFS_STORAGE_KEY, JSON.stringify(parsed));
-      }
-    }
   } catch {
     // Ignore storage write errors
   }

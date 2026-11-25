@@ -11,7 +11,7 @@ export interface AppShellProps {
 
 export function AppShell({ title, showBack = true, onBack, children }: AppShellProps) {
   return (
-    <div className="min-h-screen bg-canvas text-ink">
+    <div className="min-h-dvh bg-canvas text-ink">
       <Header title={title} showBack={showBack} onBack={onBack} />
       <main className="mx-auto w-full max-w-app px-4 py-4">{children}</main>
     </div>

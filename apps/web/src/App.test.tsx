@@ -1,15 +1,11 @@
 import { LANGUAGES } from "@du-menu-scan/shared";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { AppRoutes } from "./App";
-import {
-  changeAppLanguage,
-  detectInitialLanguage,
-  LANGUAGE_STORAGE_KEY,
-  PREFS_STORAGE_KEY,
-} from "./lib/i18n";
+import { changeAppLanguage, detectInitialLanguage, LANGUAGE_STORAGE_KEY } from "./lib/i18n";
 
 function renderAt(route: string) {
   return render(
@@ -42,24 +38,34 @@ describe("UI-01 App shell, theme, routing and language picker", () => {
     }
   });
 
-  it("opens LanguagePicker with all languages by native name and updates header, <html lang> and localStorage", () => {
+  it("opens LanguagePicker with all languages by native name, marks current with aria-current, and updates header, <html lang> and localStorage", async () => {
+    const user = userEvent.setup();
     renderAt("/r/main-hall/today");
 
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Today's menu");
 
     const langButton = screen.getByRole("button", { name: /Language: English/i });
-    fireEvent.click(langButton);
+    await user.click(langButton);
 
     const dialog = screen.getByRole("dialog");
     expect(dialog).toBeInTheDocument();
+    expect(document.body).toHaveClass("overflow-hidden");
 
     for (const lang of LANGUAGES) {
-      expect(screen.getByRole("option", { name: lang.nativeName })).toBeInTheDocument();
+      const btn = within(dialog).getByRole("button", { name: lang.nativeName });
+      expect(btn).toBeInTheDocument();
+      if (lang.code === "en") {
+        expect(btn).toHaveAttribute("aria-current", "true");
+        expect(btn).toHaveFocus();
+      } else {
+        expect(btn).not.toHaveAttribute("aria-current");
+      }
     }
 
-    fireEvent.click(screen.getByRole("option", { name: "Tiếng Việt" }));
+    await user.click(within(dialog).getByRole("button", { name: "Tiếng Việt" }));
 
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(document.body).not.toHaveClass("overflow-hidden");
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Menu hôm nay");
     expect(document.documentElement.lang).toBe("vi");
     expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("vi");
@@ -80,34 +86,55 @@ describe("UI-01 App shell, theme, routing and language picker", () => {
     });
   });
 
-  it("applies leading-relaxed on body when Nepali (ne) is selected and syncs existing prefs", () => {
-    window.localStorage.setItem(PREFS_STORAGE_KEY, JSON.stringify({ lang: "en", onboarded: true }));
+  it("applies leading-relaxed on body when Nepali (ne) is selected", async () => {
+    const user = userEvent.setup();
     renderAt("/settings");
 
-    fireEvent.click(screen.getByRole("button", { name: /Language: English/i }));
-    fireEvent.click(screen.getByRole("option", { name: "नेपाली" }));
+    await user.click(screen.getByRole("button", { name: /Language: English/i }));
+    const dialog = screen.getByRole("dialog");
+    await user.click(within(dialog).getByRole("button", { name: "नेपाली" }));
 
     expect(document.documentElement.lang).toBe("ne");
     expect(document.body.classList.contains("leading-relaxed")).toBe(true);
-    const savedPrefs = JSON.parse(window.localStorage.getItem(PREFS_STORAGE_KEY) ?? "{}") as {
-      lang?: string;
-    };
-    expect(savedPrefs.lang).toBe("ne");
+    expect(window.localStorage.getItem(LANGUAGE_STORAGE_KEY)).toBe("ne");
   });
 
-  it("closes LanguagePicker on Escape key or close button", () => {
+  it("traps focus inside LanguagePicker with Tab and Shift+Tab, and returns focus on Escape or Close", async () => {
+    const user = userEvent.setup();
     renderAt("/settings");
 
-    fireEvent.click(screen.getByRole("button", { name: /Language: English/i }));
-    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    const langButton = screen.getByRole("button", { name: /Language: English/i });
+    await user.click(langButton);
 
-    fireEvent.keyDown(window, { key: "Escape" });
+    const dialog = screen.getByRole("dialog");
+    const closeButton = within(dialog).getByRole("button", { name: "Close" });
+    const englishButton = within(dialog).getByRole("button", { name: "English" });
+    const lastLang = LANGUAGES[LANGUAGES.length - 1]!;
+    const lastLangButton = within(dialog).getByRole("button", { name: lastLang.nativeName });
+
+    // Opening the sheet moves focus to the currently selected language button
+    expect(englishButton).toHaveFocus();
+
+    // Focus the last button, then Tab wraps to the first button (Close)
+    lastLangButton.focus();
+    expect(lastLangButton).toHaveFocus();
+    await user.tab();
+    expect(closeButton).toHaveFocus();
+
+    // Shift+Tab from the first button wraps to the last button
+    await user.tab({ shift: true });
+    expect(lastLangButton).toHaveFocus();
+
+    // Escape closes the dialog and returns focus to the language button
+    await user.keyboard("{Escape}");
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(langButton).toHaveFocus();
 
-    fireEvent.click(screen.getByRole("button", { name: /Language: English/i }));
+    // Re-open and close via Close button, focus also returns to the language button
+    await user.click(langButton);
     expect(screen.getByRole("dialog")).toBeInTheDocument();
-
-    fireEvent.click(screen.getByRole("button", { name: "Close" }));
+    await user.click(screen.getByRole("button", { name: "Close" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(langButton).toHaveFocus();
   });
 });

@@ -26,6 +26,11 @@ export function Header({ title, showBack = true, onBack }: HeaderProps) {
       onBack();
       return;
     }
+    const idx = (window.history.state as { idx?: number } | null)?.idx;
+    if (!idx) {
+      navigate("/");
+      return;
+    }
     navigate(-1);
   };
 
