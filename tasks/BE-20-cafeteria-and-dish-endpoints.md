@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 3.1, 3.4 | BE-11 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 3.1, 3.4 | BE-11 | ✅ 2026-11-25 |
 
 ## Goal
 S1 and S3 work against the live backend (`VITE_USE_MOCK=false`), not only on mock fixtures.

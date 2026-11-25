@@ -16,6 +16,7 @@ Installable app with the last menu available without network.
 - vite-plugin-pwa: manifest, icons, service worker
 - Cache last loaded menu + dish details; offline banner “may be outdated”
 - Update prompt when a new version is deployed
+- Build on `lib/menuCache.ts` (UI-06, D-025) instead of a second cache. Harden it (UI-06 review): reject entries whose `cafeteria.code` differs from the requested code or whose corners/items have the wrong shape; tests for corrupt JSON, other cafeteria, older date; when the cached menu's date is not today, say so (needs an i18n key — ask Claude)
 
 ## Do not
 - Do not cache API responses forever — menu must refresh when online

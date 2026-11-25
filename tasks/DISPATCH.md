@@ -119,13 +119,28 @@ Filters are session-only state. Build loading, empty, closed, offline and error 
 Open a PR "UI-06: S2 Today's menu" with 375 px screenshots of each state and of each filter chip on.
 ```
 
+## Ready now (UI-01 to UI-09 merged, 2026-11-25)
+
+Branch every task from the **local `main`** (`git checkout -b <branch> main`): agent worktrees can start from an older commit. Wait for `agy` to exit before verifying and committing.
+
+### UI-10 — PWA and offline · model `gemini-4-neon-high` · branch `feat/ui-10-pwa-and-offline`
+
+```
+Implement task UI-10 as described in tasks/UI-10-pwa-and-offline.md, following GEMINI.md, product/technical-architecture.md (PWA, NFRs) and product/decision-log.md D-025. Work only in apps/web; never edit apps/web/src/i18n/*.json (report missing keys). Use vite-plugin-pwa: manifest (name from common.appName, theme colours from the design tokens), icons, service worker with network-first for API/menu requests and cache-first for static assets; never serve a cached menu as current when online. Reuse and harden lib/menuCache.ts as the brief says. Update prompt on new version. Tests for menuCache hardening. Run npm run format, lint, typecheck, test and build -w @du-menu-scan/web and fix every failure. Do not commit.
+```
+
+### UI-11 — Accessibility and performance pass · model `gemini-4-argon-medium` · branch `feat/ui-11-a11y-perf` (after UI-10 to avoid conflicts)
+
+```
+Implement task UI-11 as described in tasks/UI-11-accessibility-and-performance-pass.md, following GEMINI.md and product/design-system.md. Audit S0–S4 for contrast AA, labels, focus order and visible focus, 44 px targets, alt text, heading order; fix in apps/web only (no i18n JSON edits). Use photo transforms from directus/README.md (Dish photos). Run a Lighthouse mobile audit on /r/main-hall/today with VITE_USE_MOCK=true on a production build (npm run build && npm run preview) with throttled 4G and report the scores and time to interactive. Run npm run format, lint, typecheck, test and build -w @du-menu-scan/web. Do not commit.
+```
+
+### UI-12 — End-to-end tests · model `gemini-4-argon-medium` · branch `feat/ui-12-e2e`
+
+```
+Implement task UI-12 as described in tasks/UI-12-end-to-end-tests.md, following GEMINI.md. Add Playwright (dev dependency of apps/web, config in apps/web, mobile viewport 375x812, VITE_USE_MOCK=true). Scenarios: QR /r/main-hall -> S2 -> S3 -> Back returns to the same cafeteria and date; first visit -> S0 -> S4 (set halal) -> S2 shows Avoid labels and sorts Avoid last; language switch persists across reload; invalid code shows the cafeteria list; S3 safety footer visible on every fixture dish. Add an npm script test:e2e in apps/web (not part of npm test). Run it and npm run format, lint, typecheck, test, build. Do not commit.
+```
+
 ## Later
 
-| Task | Model | Starts when |
-|---|---|---|
-| UI-09 S0 Welcome | `hydrogen` | UI-08 ✅ |
-| UI-10 PWA and offline | `neon` | UI-06, UI-07 ✅ |
-| UI-11 Accessibility and performance | `argon` | UI-06, UI-07, UI-08 ✅ |
-| UI-12 End-to-end tests | `argon` | UI-06, UI-07, UI-08 ✅ |
-
-Prompts for these will be added here when they are unblocked.
+All UI tasks on the board are now dispatched or ready. New prompts are added here when new UI tasks appear.

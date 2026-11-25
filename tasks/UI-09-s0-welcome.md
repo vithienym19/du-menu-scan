@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | S | hydrogen | P1 | 4.1 | UI-08 | ☐ Todo |
+| Antigravity (Gemini) | S | hydrogen | P1 | 4.1 | UI-08 | ✅ 2026-11-25 |
 
 ## Goal
 First-visit onboarding in two taps.

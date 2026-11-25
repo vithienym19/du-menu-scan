@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P1 | 2.2 | BE-03 | ☐ Todo |
+| Claude (lead engineer) | S | — | P1 | 2.2 | BE-03 | ✅ 2026-11-25 |
 
 ## Goal
 Cut staff effort when menus repeat.

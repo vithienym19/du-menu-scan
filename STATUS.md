@@ -2,55 +2,44 @@
 
 > Living progress log. **Every agent updates this file at the end of each session** (see `AGENTS.md` §2).
 
-**Last updated:** 2026-11-25 (night) by Claude (lead engineer) — handoff point
+**Last updated:** 2026-11-25 (late night) by Claude (lead engineer)
 
-**Local path:** `~/Antigravity/du-menu-scan` (moved out of `~/Documents` on 2026-11-25 — see D-016)
+**Local path:** `~/Antigravity/du-menu-scan` (D-016)
 
 ## Handoff — read this first
 
-- **Phase 1 — MVP build, wave 4 of 6.** Backend data layer is complete (schema, permissions, integrity hooks, reference seed). Student UI has the app shell (UI-01), the dish primitives (UI-02), filter chips (UI-03) and the QR entry route (UI-04). No S2/S3/S4 screens yet.
-- **Everything is merged into `main` and pushed.** No open branches with unmerged work.
-- **How work flows now:** Claude (lead engineer) writes specs/tasks, builds `BE-*`, dispatches `UI-*` to Antigravity through the `agy` CLI (D-021, `tasks/DISPATCH.md`), runs the `reviewer` sub-agent on every branch, and merges into `main` itself after APPROVE + green checks (D-018).
+- **Phase 1 — MVP build, wave 5 of 6.** All student screens exist on mock data: S0 welcome, S1 QR entry, S2 today's menu, S3 dish detail, S4 my diet. Backend has schema, permissions, guards, reference seed, the public read endpoints (`/du/menu/{code}/today`, `/du/cafeterias`, `/du/cafeterias/{code}`, `/du/dishes/{id}`), public dish photos, scan analytics dashboard, copy-menu flow and the QR generator.
+- **Everything is merged into `main`.** No task branch holds unmerged work.
+- **How work flows:** Claude writes specs/tasks, builds or delegates `BE-*` (to `backend-developer`), dispatches `UI-*` to Antigravity via `agy` from a `frontend-developer` sub-agent (D-021), runs the `reviewer` on every branch, merges after APPROVE + green checks on the merged result (D-018).
 - **Run it locally:**
-  - Web (mock data): `VITE_USE_MOCK=true npm run dev -w @du-menu-scan/web` → http://localhost:5173/r/main-hall (also `dorm`, `engineering`, and an invalid code).
-  - Backend: `cp .env.example .env` (fill secrets; on this Mac set `DIRECTUS_PORT=8056` because 8055 is taken), then `npm run backend:up && npm run backend:schema:apply && npm run backend:permissions && npm run backend:seed`. Details in `directus/README.md`.
-  - Checks: `npm run format:check && npm run lint && npm run typecheck && npm test && npm run build -w @du-menu-scan/web`.
-- **Next tasks (in order):** UI-05 dish card → UI-06 S2 menu, UI-07 S3 detail, UI-08 S4 diet (prompts ready in `tasks/DISPATCH.md`); backend BE-19 public photos, BE-11 today-menu endpoint, BE-13 QR generator, BE-17 copy menu; BE-07 needs the Korean teammate.
+  - Web (mock data): `VITE_USE_MOCK=true npm run dev -w @du-menu-scan/web` → http://localhost:5173/r/main-hall
+  - Backend: `cp .env.example .env` (fill secrets; on this Mac `DIRECTUS_PORT=8056`), then `npm run backend:up && npm run backend:schema:apply && npm run backend:permissions && npm run backend:seed && npm run backend:dashboard && npm run backend:flows`. Details in `directus/README.md`.
+  - QR posters: `npm run qr -- --domain <team domain> --cafeteria "main-hall=학생회관 식당"`
+  - Checks: `npm run format:check && npm run lint && npm run typecheck && npm test && npm run build -w @du-menu-scan/web`
+- **Next tasks:** UI-10 PWA (then UI-11 a11y/perf), UI-12 e2e — prompts in `tasks/DISPATCH.md`; BE-07 dish seed (needs the Korean teammate); BE-15 staging (needs domain + hosting); BE-16 translation review.
 
 ## Branches
 
 | Branch | Contains | On GitHub? | Next action |
 |---|---|---|---|
-| `main` | Specs, DS-01, BE-01/02/03/04/05/06/08/09/10/14/18, UI-01/02/03/04 | ✅ pushed | Start new task branches from here |
-| `feat/*` task branches (wave-1/2, be-02…06, be-09, ui-01…04) | All merged into `main` | ✅ | Can be deleted |
-| `claude/doc-project-progress-*`, `worktree-agent-*` | Claude session/agent worktrees, nothing unmerged | local only | Safe to delete with `git worktree prune` after closing sessions |
+| `main` | Everything below | ✅ pushed (see last line of Done) | Start new task branches from here |
+| `feat/*`, `fix/*`, `docs/*` task branches | All merged into `main` | local only (except older ones) | Can be deleted |
+| `worktree-agent-*`, `.claude/worktrees/*` | Sub-agent worktrees, nothing unmerged | local only | `git worktree prune` after closing sessions |
 
 ## Done
 
 | Date | Item |
 |---|---|
-| 2026-10 → 11 | Design Thinking work for the course: problem, empathy plan, ideas with SIT tools, AI feedback, final idea, Balsamiq prototype plan (outside this repo) |
-| 2026-11-16 | Product specs in `product/`, agent roles (`CLAUDE.md`, `.claude/`) |
-| 2026-11-23 | Tech stack decided: React PWA + Capacitor later, Directus + PostgreSQL |
-| 2026-11-24 | Task board (29 tasks), `GEMINI.md` for Antigravity |
-| 2026-11-24 | **DS-01** design system · **BE-01** monorepo · **BE-10** i18n keys · **BE-14** CI |
-| 2026-11-25 | Repo moved to `~/Antigravity/du-menu-scan`; verified: git fsck clean, all branches pushed, format/lint/typecheck/tests pass |
-| 2026-11-25 | **BE-18** 7 languages (ko en vi zh uz mn ne) · **BE-08** types, `localize()`, API client (HTTP + mock), fixtures · handoff docs (`AGENTS.md`, `STATUS.md`, decision log) |
+| 2026-10 → 11 | Design Thinking course work (outside this repo) |
+| 2026-11-16 | Product specs in `product/`, agent roles |
+| 2026-11-23 | Stack: React PWA (+ Capacitor later), Directus + PostgreSQL |
+| 2026-11-24 | Task board, `GEMINI.md`; DS-01, BE-01, BE-10, BE-14 |
+| 2026-11-25 | BE-18, BE-08, BE-09, BE-02, BE-03, BE-04, BE-05, BE-06; UI-01, UI-02, UI-03, UI-04 |
+| 2026-11-25 | **UI-04 follow-up** (entry error keys, retry 1, logScan catch) · **UI-05** dish card · **UI-07** S3 dish detail (safety footer on every dish, unknown diet ≠ ✓) · **UI-08** S4 my diet (implied tags locked, D-022; spice 0/2/4 rounded down, D-023) · **UI-09** S0 welcome + cafeteria chooser on `/` · **UI-06** S2 today's menu (sortByStatus/applyFilters, all states, offline cache D-025) — all built by Antigravity via `agy`, reviewer APPROVE (UI-08, UI-09 after one fix round) |
+| 2026-11-25 | **BE-13** QR generator (refuses hosting-provider URLs; 1 fix round) · **BE-11** today-menu endpoint (D-024) · **BE-19** public dish photos only · **BE-12** scan analytics, `scan_event` accountability off so no IP/UA stored (BR8) · **BE-20** cafeteria/dish endpoints + handler tests that fail if a safety filter is removed · **BE-17** copy-menu flow (always draft) — reviewer APPROVE, follow-ups applied |
+| 2026-11-25 | Lint/format/backend tests now ignore `.claude/worktrees/**` (agent worktrees were linted and tests counted 6×) |
 
-| 2026-11-25 | **BE-09** warning logic: `evaluate`, `sanitizePrefs`, `dietCompatibility`, `sortByStatus`, `applyFilters`; 100 % branch coverage enforced; decision D-017; reviewer APPROVE (round 2) |
-| 2026-11-25 | **BE-02** Docker Compose + `.env.example` + `directus/README.md`; fail-fast env, Directus healthcheck; tested up / down -v / up; reviewer APPROVE |
-
-| 2026-11-25 | Merged wave-2, BE-09 and BE-02 into `main` after review (owner delegated merging to Claude) |
-
-| 2026-11-25 | **BE-03** Directus schema: 13 collections, script `directus/scripts/create-schema.mjs`, snapshot apply verified on an empty DB; ingredient/allergen/dish delete refused while in use; decisions D-019, D-020; reviewer APPROVE (round 2) |
-
-| 2026-11-25 | **UI-01** app shell, routing, i18n, language sheet — built by Antigravity (`gemini-4-argon-medium` via `agy` CLI), 2 review rounds, APPROVE; checked at 375 px in the browser |
-
-| 2026-11-25 | **BE-04** roles/permissions, **BE-05** `du-guards` hooks (derived tags, BR1 publish guard, uniqueness, published menus only hold published dishes), **BE-06** MFDS allergens + 72 ingredients with conservative tags — all reviewed (APPROVE), merged, and smoke-tested together on a live stack |
-
-| 2026-11-25 | **UI-02** icon row, spice meter, badges · **UI-03** filter chips · **UI-04** S1 QR entry (`/r/:code`, invalid-code state, one `logScan` per visit) — Antigravity `gemini-4-hydrogen-medium` via `agy`, reviewer APPROVE, merged |
-
-Checks on `main` (5ed5985): format ✅ lint ✅ typecheck ✅ tests 12 backend + 31 web + 77 shared ✅ build ✅ i18n 89 keys × 7 languages ✅
+Checks on `main` after the wave-5 merge: format ✅ lint ✅ typecheck ✅ tests 52 backend + 142 web + 78 shared ✅ build ✅ (107 kB gzip JS) i18n 92 keys × 7 languages ✅
 
 ## In progress
 
@@ -60,27 +49,33 @@ Nothing half-done.
 
 | Who | Task | Notes |
 |---|---|---|
-| Antigravity (`hydrogen`) | **UI-04 follow-up** (small): use `entry.errorTitle/errorBody`, QueryClient `retry: 1`, `.catch` on logScan | Prompt in `tasks/DISPATCH.md` |
-| Antigravity (`hydrogen`) | **UI-05** dish card | Unblocked; prompt in `tasks/DISPATCH.md` |
-| Antigravity | UI-08 (`argon`, needs UI-03 ✅), UI-07 (`neon`, needs UI-02 ✅), UI-06 (`neon`, needs UI-05) | Prompts ready |
-| Claude | **BE-19** public dish photos, **BE-11** today-menu endpoint, **BE-13** QR generator, **BE-17** copy menu, **BE-12** scan analytics | All unblocked |
-| Claude + Korean teammate | **BE-07** ~30 verified dishes | Needs the teammate to confirm ingredients/allergens and relax conservative tags |
+| Antigravity (`neon`) | **UI-10** PWA and offline | Includes menuCache hardening from the UI-06 review |
+| Antigravity (`argon`) | **UI-12** e2e tests (parallel with UI-10) · **UI-11** a11y + Lighthouse (after UI-10) | Lighthouse ≤ 2 s on 4G is still unverified |
+| Claude | **BE-16** translation review workflow | Unblocked |
+| Claude + Korean teammate | **BE-07** ~30 verified dishes | Needs ingredient/allergen confirmation |
+| Claude + Thiện | **BE-15** staging | Needs domain + hosting account |
+
+Not yet verified by a human or a browser (agents could not):
+- QR posters scanned with iPhone + Android camera (needs the real domain)
+- Directus Insights "Scans" dashboard rendering; copy-menu button clicked in the Directus app
+- S1/S3/S2 against the live backend (`VITE_USE_MOCK=false`) in a browser
+- 375 px screenshots of S0–S4
 
 Notes:
-- Port 8055 on the owner's Mac is used by another project's Directus (`translate-realtime-ai-directus-1`). Use `DIRECTUS_PORT=8056` in `.env`.
-- `agy` headless: run without `--mode` (accept-edits stalls on commands; auto is not available on this account).
-- Known non-blocking items: diet-tag recompute is an async action hook (rare stale read for a few ms); uniqueness is hook-only (D-020); empty spice dot contrast is low (decorative, text label carries meaning).
+- Port 8055 on the owner's Mac belongs to another project; use `DIRECTUS_PORT=8056`. Sub-agents use their own compose project and ports (8057+) with env vars inline — writing `.env` is blocked by the owner's permission rules.
+- `agy` headless: run without `--mode`; worktrees may start from an old commit, so branch from local `main`.
+- Known non-blocking items: diet-tag recompute is async; uniqueness is hook-only (D-020); the hosting-provider check in the QR script is a denylist; flow errors from the Run Script step show as generic 500s; a photo shared by a draft and a published dish is public.
 
 ## Blockers and waiting on humans
 
 | Item | Who | Blocks |
 |---|---|---|
-| Native-speaker review of zh, uz, mn, ne strings | International students | Pilot launch (not development) |
+| Native-speaker review of zh, uz, mn, ne strings | International students | Pilot launch |
 | Korean teammate verifies dish ingredients/allergens | Korean teammate | BE-07 |
-| Check current MFDS allergen list | Team | BE-06 |
-| Team domain + hosting account | Thiện | BE-15 |
+| Check current MFDS allergen list | Team | BE-06 sign-off |
+| Team domain + hosting account | Thiện | BE-15, QR printing |
 
 ## Open questions
 
 - Which cafeteria(s) and meal times does the pilot cover? (assumed: one cafeteria, lunch)
-- Antigravity model ids confirmed with `agy models`: S `gemini-4-hydrogen-medium`, M `gemini-4-argon-medium`, L `gemini-4-neon-high` (D-021).
+- Should Staff see the Insights dashboard (today: Admin only)? Should "scans today" be the calendar day instead of the last 24 h?
