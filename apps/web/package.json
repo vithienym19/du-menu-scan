@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@du-menu-scan/shared": "*",
+    "@tanstack/react-query": "^5.108.4",
     "i18next": "^24.2.2",
     "lucide-react": "^1.16.0",
     "pretendard": "^1.3.9",

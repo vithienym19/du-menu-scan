@@ -1,0 +1,6 @@
+import { createApi } from "@du-menu-scan/shared";
+
+export const api = createApi({
+  baseUrl: String(import.meta.env.VITE_API_URL ?? ""),
+  useMock: import.meta.env.VITE_USE_MOCK === "true",
+});
