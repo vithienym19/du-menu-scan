@@ -1,0 +1,3330 @@
+version: 1
+directus: 11.17.4
+vendor: postgres
+collections:
+  - collection: allergen
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: allergen
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: allergen
+  - collection: cafeteria
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: cafeteria
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: Cafeteria; code is used in the QR URL /r/{code}
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: cafeteria
+  - collection: corner
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: corner
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: corner
+  - collection: daily_menu
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: daily_menu
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: daily_menu
+  - collection: diet_tag
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: diet_tag
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: 'Codes: pork, beef, chicken, seafood, alcohol'
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: diet_tag
+  - collection: dish
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: dish
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: Dish dictionary
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: dish
+  - collection: dish_allergen
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: dish_allergen
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: dish_allergen
+  - collection: dish_ingredient
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: dish_ingredient
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: dish_ingredient
+  - collection: dish_translation
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: dish_translation
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: dish_translation
+  - collection: ingredient
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ingredient
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: ingredient
+  - collection: ingredient_diet_tag
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: ingredient_diet_tag
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: ingredient_diet_tag
+  - collection: menu_item
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: menu_item
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: null
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: menu_item
+  - collection: scan_event
+    meta:
+      accountability: all
+      archive_app_filter: true
+      archive_field: null
+      archive_value: null
+      collapse: open
+      collection: scan_event
+      color: null
+      display_template: null
+      group: null
+      hidden: false
+      icon: box
+      item_duplication_fields: null
+      note: Analytics, no personal data (BR8)
+      preview_url: null
+      singleton: false
+      sort: null
+      sort_field: null
+      translations: null
+      unarchive_value: null
+      versioning: false
+    schema:
+      name: scan_event
+fields:
+  - collection: allergen
+    field: code
+    type: string
+    meta:
+      collection: allergen
+      conditions: null
+      display: null
+      display_options: null
+      field: code
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: code
+      table: allergen
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: allergen
+    field: name_ko
+    type: string
+    meta:
+      collection: allergen
+      conditions: null
+      display: null
+      display_options: null
+      field: name_ko
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name_ko
+      table: allergen
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: allergen
+    field: names
+    type: json
+    meta:
+      collection: allergen
+      conditions: null
+      display: null
+      display_options: null
+      field: names
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: json
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: names
+      table: allergen
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: id
+    type: uuid
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: cafeteria
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: code
+    type: string
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: code
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: code
+      table: cafeteria
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: name_ko
+    type: string
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: name_ko
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name_ko
+      table: cafeteria
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: names
+    type: json
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: names
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: json
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: names
+      table: cafeteria
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: opening_hours
+    type: json
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: opening_hours
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: json
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: opening_hours
+      table: cafeteria
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: is_active
+    type: boolean
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: is_active
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: is_active
+      table: cafeteria
+      data_type: boolean
+      default_value: true
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: cafeteria
+    field: corners
+    type: alias
+    meta:
+      collection: cafeteria
+      conditions: null
+      display: null
+      display_options: null
+      field: corners
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: corner
+    field: id
+    type: uuid
+    meta:
+      collection: corner
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: corner
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: corner
+    field: cafeteria_id
+    type: uuid
+    meta:
+      collection: corner
+      conditions: null
+      display: null
+      display_options: null
+      field: cafeteria_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cafeteria_id
+      table: corner
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: cafeteria
+      foreign_key_column: id
+  - collection: corner
+    field: name_ko
+    type: string
+    meta:
+      collection: corner
+      conditions: null
+      display: null
+      display_options: null
+      field: name_ko
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name_ko
+      table: corner
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: corner
+    field: names
+    type: json
+    meta:
+      collection: corner
+      conditions: null
+      display: null
+      display_options: null
+      field: names
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: json
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: names
+      table: corner
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: corner
+    field: sort
+    type: integer
+    meta:
+      collection: corner
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: corner
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: daily_menu
+    field: id
+    type: uuid
+    meta:
+      collection: daily_menu
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: daily_menu
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: daily_menu
+    field: cafeteria_id
+    type: uuid
+    meta:
+      collection: daily_menu
+      conditions: null
+      display: null
+      display_options: null
+      field: cafeteria_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cafeteria_id
+      table: daily_menu
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: cafeteria
+      foreign_key_column: id
+  - collection: daily_menu
+    field: date
+    type: date
+    meta:
+      collection: daily_menu
+      conditions: null
+      display: null
+      display_options: null
+      field: date
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: date
+      table: daily_menu
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: daily_menu
+    field: meal
+    type: string
+    meta:
+      collection: daily_menu
+      conditions: null
+      display: null
+      display_options: null
+      field: meal
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: lunch
+            value: lunch
+          - text: dinner
+            value: dinner
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation:
+        _and:
+          - meal:
+              _in:
+                - lunch
+                - dinner
+      validation_message: 'meal must be one of: lunch, dinner'
+      width: full
+    schema:
+      name: meal
+      table: daily_menu
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: daily_menu
+    field: status
+    type: string
+    meta:
+      collection: daily_menu
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: draft
+            value: draft
+          - text: published
+            value: published
+      readonly: false
+      required: true
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation:
+        _and:
+          - status:
+              _in:
+                - draft
+                - published
+      validation_message: 'status must be one of: draft, published'
+      width: full
+    schema:
+      name: status
+      table: daily_menu
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: daily_menu
+    field: items
+    type: alias
+    meta:
+      collection: daily_menu
+      conditions: null
+      display: null
+      display_options: null
+      field: items
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: diet_tag
+    field: code
+    type: string
+    meta:
+      collection: diet_tag
+      conditions: null
+      display: null
+      display_options: null
+      field: code
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: code
+      table: diet_tag
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: id
+    type: uuid
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: dish
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: name_ko
+    type: string
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: name_ko
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name_ko
+      table: dish
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: description_ko
+    type: text
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: description_ko
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description_ko
+      table: dish
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: photo
+    type: uuid
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: photo
+      group: null
+      hidden: false
+      interface: file-image
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - file
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: photo
+      table: dish
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: directus_files
+      foreign_key_column: id
+  - collection: dish
+    field: spice_level
+    type: integer
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: spice_level
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation:
+        _and:
+          - spice_level:
+              _gte: 0
+          - spice_level:
+              _lte: 4
+      validation_message: spice_level must be 0..4
+      width: full
+    schema:
+      name: spice_level
+      table: dish
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: allergens_confirmed
+    type: boolean
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: allergens_confirmed
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: allergens_confirmed
+      table: dish
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: verified_by
+    type: string
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: verified_by
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: verified_by
+      table: dish
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: verified_at
+    type: date
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: verified_at
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 8
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: verified_at
+      table: dish
+      data_type: date
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: status
+    type: string
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: draft
+            value: draft
+          - text: published
+            value: published
+      readonly: false
+      required: true
+      searchable: true
+      sort: 9
+      special: null
+      translations: null
+      validation:
+        _and:
+          - status:
+              _in:
+                - draft
+                - published
+      validation_message: 'status must be one of: draft, published'
+      width: full
+    schema:
+      name: status
+      table: dish
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish
+    field: translations
+    type: alias
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: translations
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 10
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: dish
+    field: ingredients
+    type: alias
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: ingredients
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 11
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: dish
+    field: allergens
+    type: alias
+    meta:
+      collection: dish
+      conditions: null
+      display: null
+      display_options: null
+      field: allergens
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 12
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: dish_allergen
+    field: id
+    type: integer
+    meta:
+      collection: dish_allergen
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: dish_allergen
+      data_type: integer
+      default_value: nextval('dish_allergen_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_allergen
+    field: dish_id
+    type: uuid
+    meta:
+      collection: dish_allergen
+      conditions: null
+      display: null
+      display_options: null
+      field: dish_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: dish_id
+      table: dish_allergen
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: dish
+      foreign_key_column: id
+  - collection: dish_allergen
+    field: allergen_code
+    type: string
+    meta:
+      collection: dish_allergen
+      conditions: null
+      display: null
+      display_options: null
+      field: allergen_code
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: allergen_code
+      table: dish_allergen
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: allergen
+      foreign_key_column: code
+  - collection: dish_ingredient
+    field: id
+    type: integer
+    meta:
+      collection: dish_ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: dish_ingredient
+      data_type: integer
+      default_value: nextval('dish_ingredient_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_ingredient
+    field: dish_id
+    type: uuid
+    meta:
+      collection: dish_ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: dish_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: dish_id
+      table: dish_ingredient
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: dish
+      foreign_key_column: id
+  - collection: dish_ingredient
+    field: ingredient_id
+    type: uuid
+    meta:
+      collection: dish_ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: ingredient_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ingredient_id
+      table: dish_ingredient
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: ingredient
+      foreign_key_column: id
+  - collection: dish_ingredient
+    field: is_main
+    type: boolean
+    meta:
+      collection: dish_ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: is_main
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: is_main
+      table: dish_ingredient
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_ingredient
+    field: is_hidden
+    type: boolean
+    meta:
+      collection: dish_ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: is_hidden
+      group: null
+      hidden: false
+      interface: boolean
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special:
+        - cast-boolean
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: is_hidden
+      table: dish_ingredient
+      data_type: boolean
+      default_value: false
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_translation
+    field: id
+    type: integer
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: dish_translation
+      data_type: integer
+      default_value: nextval('dish_translation_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_translation
+    field: dish_id
+    type: uuid
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: dish_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: dish_id
+      table: dish_translation
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: dish
+      foreign_key_column: id
+  - collection: dish_translation
+    field: lang
+    type: string
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: lang
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: en
+            value: en
+          - text: vi
+            value: vi
+          - text: zh
+            value: zh
+          - text: uz
+            value: uz
+          - text: mn
+            value: mn
+          - text: ne
+            value: ne
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special: null
+      translations: null
+      validation:
+        _and:
+          - lang:
+              _in:
+                - en
+                - vi
+                - zh
+                - uz
+                - mn
+                - ne
+      validation_message: 'lang must be one of: en, vi, zh, uz, mn, ne'
+      width: full
+    schema:
+      name: lang
+      table: dish_translation
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_translation
+    field: name
+    type: string
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: name
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name
+      table: dish_translation
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_translation
+    field: description
+    type: text
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: description
+      group: null
+      hidden: false
+      interface: input-multiline
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: description
+      table: dish_translation
+      data_type: text
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_translation
+    field: source
+    type: string
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: source
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: ai
+            value: ai
+          - text: human
+            value: human
+      readonly: false
+      required: true
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation:
+        _and:
+          - source:
+              _in:
+                - ai
+                - human
+      validation_message: 'source must be one of: ai, human'
+      width: full
+    schema:
+      name: source
+      table: dish_translation
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: dish_translation
+    field: status
+    type: string
+    meta:
+      collection: dish_translation
+      conditions: null
+      display: null
+      display_options: null
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: draft
+            value: draft
+          - text: approved
+            value: approved
+      readonly: false
+      required: true
+      searchable: true
+      sort: 7
+      special: null
+      translations: null
+      validation:
+        _and:
+          - status:
+              _in:
+                - draft
+                - approved
+      validation_message: 'status must be one of: draft, approved'
+      width: full
+    schema:
+      name: status
+      table: dish_translation
+      data_type: character varying
+      default_value: draft
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ingredient
+    field: id
+    type: uuid
+    meta:
+      collection: ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - uuid
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ingredient
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ingredient
+    field: name_ko
+    type: string
+    meta:
+      collection: ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: name_ko
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: name_ko
+      table: ingredient
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ingredient
+    field: names
+    type: json
+    meta:
+      collection: ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: names
+      group: null
+      hidden: false
+      interface: input-code
+      note: null
+      options:
+        language: json
+      readonly: false
+      required: false
+      searchable: true
+      sort: 3
+      special:
+        - cast-json
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: names
+      table: ingredient
+      data_type: json
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ingredient
+    field: diet_tags
+    type: alias
+    meta:
+      collection: ingredient
+      conditions: null
+      display: null
+      display_options: null
+      field: diet_tags
+      group: null
+      hidden: false
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 4
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+  - collection: ingredient_diet_tag
+    field: id
+    type: integer
+    meta:
+      collection: ingredient_diet_tag
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: ingredient_diet_tag
+      data_type: integer
+      default_value: nextval('ingredient_diet_tag_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: ingredient_diet_tag
+    field: ingredient_id
+    type: uuid
+    meta:
+      collection: ingredient_diet_tag
+      conditions: null
+      display: null
+      display_options: null
+      field: ingredient_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: ingredient_id
+      table: ingredient_diet_tag
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: ingredient
+      foreign_key_column: id
+  - collection: ingredient_diet_tag
+    field: diet_tag_code
+    type: string
+    meta:
+      collection: ingredient_diet_tag
+      conditions: null
+      display: null
+      display_options: null
+      field: diet_tag_code
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: diet_tag_code
+      table: ingredient_diet_tag
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: diet_tag
+      foreign_key_column: code
+  - collection: menu_item
+    field: id
+    type: integer
+    meta:
+      collection: menu_item
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: menu_item
+      data_type: integer
+      default_value: nextval('menu_item_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: menu_item
+    field: daily_menu_id
+    type: uuid
+    meta:
+      collection: menu_item
+      conditions: null
+      display: null
+      display_options: null
+      field: daily_menu_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: daily_menu_id
+      table: menu_item
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: daily_menu
+      foreign_key_column: id
+  - collection: menu_item
+    field: corner_id
+    type: uuid
+    meta:
+      collection: menu_item
+      conditions: null
+      display: null
+      display_options: null
+      field: corner_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 3
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: corner_id
+      table: menu_item
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: corner
+      foreign_key_column: id
+  - collection: menu_item
+    field: dish_id
+    type: uuid
+    meta:
+      collection: menu_item
+      conditions: null
+      display: null
+      display_options: null
+      field: dish_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: dish_id
+      table: menu_item
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: dish
+      foreign_key_column: id
+  - collection: menu_item
+    field: price
+    type: integer
+    meta:
+      collection: menu_item
+      conditions: null
+      display: null
+      display_options: null
+      field: price
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: price
+      table: menu_item
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: menu_item
+    field: sort
+    type: integer
+    meta:
+      collection: menu_item
+      conditions: null
+      display: null
+      display_options: null
+      field: sort
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 6
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: sort
+      table: menu_item
+      data_type: integer
+      default_value: null
+      max_length: null
+      numeric_precision: 32
+      numeric_scale: 0
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: scan_event
+    field: id
+    type: bigInteger
+    meta:
+      collection: scan_event
+      conditions: null
+      display: null
+      display_options: null
+      field: id
+      group: null
+      hidden: true
+      interface: input
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 1
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: id
+      table: scan_event
+      data_type: bigint
+      default_value: nextval('scan_event_id_seq'::regclass)
+      max_length: null
+      numeric_precision: 64
+      numeric_scale: 0
+      is_nullable: false
+      is_unique: true
+      is_indexed: false
+      is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: true
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: scan_event
+    field: cafeteria_id
+    type: uuid
+    meta:
+      collection: scan_event
+      conditions: null
+      display: null
+      display_options: null
+      field: cafeteria_id
+      group: null
+      hidden: false
+      interface: select-dropdown-m2o
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 2
+      special:
+        - m2o
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: cafeteria_id
+      table: scan_event
+      data_type: uuid
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: cafeteria
+      foreign_key_column: id
+  - collection: scan_event
+    field: created_at
+    type: timestamp
+    meta:
+      collection: scan_event
+      conditions: null
+      display: null
+      display_options: null
+      field: created_at
+      group: null
+      hidden: false
+      interface: datetime
+      note: null
+      options: null
+      readonly: true
+      required: false
+      searchable: true
+      sort: 3
+      special:
+        - date-created
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: created_at
+      table: scan_event
+      data_type: timestamp with time zone
+      default_value: null
+      max_length: null
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: true
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: scan_event
+    field: lang
+    type: string
+    meta:
+      collection: scan_event
+      conditions: null
+      display: null
+      display_options: null
+      field: lang
+      group: null
+      hidden: false
+      interface: input
+      note: null
+      options: null
+      readonly: false
+      required: true
+      searchable: true
+      sort: 4
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: lang
+      table: scan_event
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: scan_event
+    field: entry
+    type: string
+    meta:
+      collection: scan_event
+      conditions: null
+      display: null
+      display_options: null
+      field: entry
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: qr
+            value: qr
+          - text: direct
+            value: direct
+      readonly: false
+      required: true
+      searchable: true
+      sort: 5
+      special: null
+      translations: null
+      validation:
+        _and:
+          - entry:
+              _in:
+                - qr
+                - direct
+      validation_message: 'entry must be one of: qr, direct'
+      width: full
+    schema:
+      name: entry
+      table: scan_event
+      data_type: character varying
+      default_value: null
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_indexed: false
+      is_primary_key: false
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+systemFields:
+  - collection: directus_activity
+    field: timestamp
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: activity
+    schema:
+      is_indexed: true
+  - collection: directus_revisions
+    field: parent
+    schema:
+      is_indexed: true
+relations:
+  - collection: corner
+    field: cafeteria_id
+    related_collection: cafeteria
+    meta:
+      junction_field: null
+      many_collection: corner
+      many_field: cafeteria_id
+      one_allowed_collections: null
+      one_collection: cafeteria
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: corners
+      sort_field: sort
+    schema:
+      table: corner
+      column: cafeteria_id
+      foreign_key_table: cafeteria
+      foreign_key_column: id
+      constraint_name: corner_cafeteria_id_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: daily_menu
+    field: cafeteria_id
+    related_collection: cafeteria
+    meta:
+      junction_field: null
+      many_collection: daily_menu
+      many_field: cafeteria_id
+      one_allowed_collections: null
+      one_collection: cafeteria
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: daily_menu
+      column: cafeteria_id
+      foreign_key_table: cafeteria
+      foreign_key_column: id
+      constraint_name: daily_menu_cafeteria_id_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: dish
+    field: photo
+    related_collection: directus_files
+    meta:
+      junction_field: null
+      many_collection: dish
+      many_field: photo
+      one_allowed_collections: null
+      one_collection: directus_files
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: dish
+      column: photo
+      foreign_key_table: directus_files
+      foreign_key_column: id
+      constraint_name: dish_photo_foreign
+      on_update: NO ACTION
+      on_delete: SET NULL
+  - collection: dish_allergen
+    field: dish_id
+    related_collection: dish
+    meta:
+      junction_field: null
+      many_collection: dish_allergen
+      many_field: dish_id
+      one_allowed_collections: null
+      one_collection: dish
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: allergens
+      sort_field: null
+    schema:
+      table: dish_allergen
+      column: dish_id
+      foreign_key_table: dish
+      foreign_key_column: id
+      constraint_name: dish_allergen_dish_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: dish_allergen
+    field: allergen_code
+    related_collection: allergen
+    meta:
+      junction_field: null
+      many_collection: dish_allergen
+      many_field: allergen_code
+      one_allowed_collections: null
+      one_collection: allergen
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: dish_allergen
+      column: allergen_code
+      foreign_key_table: allergen
+      foreign_key_column: code
+      constraint_name: dish_allergen_allergen_code_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: dish_ingredient
+    field: dish_id
+    related_collection: dish
+    meta:
+      junction_field: null
+      many_collection: dish_ingredient
+      many_field: dish_id
+      one_allowed_collections: null
+      one_collection: dish
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: ingredients
+      sort_field: null
+    schema:
+      table: dish_ingredient
+      column: dish_id
+      foreign_key_table: dish
+      foreign_key_column: id
+      constraint_name: dish_ingredient_dish_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: dish_ingredient
+    field: ingredient_id
+    related_collection: ingredient
+    meta:
+      junction_field: null
+      many_collection: dish_ingredient
+      many_field: ingredient_id
+      one_allowed_collections: null
+      one_collection: ingredient
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: dish_ingredient
+      column: ingredient_id
+      foreign_key_table: ingredient
+      foreign_key_column: id
+      constraint_name: dish_ingredient_ingredient_id_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: dish_translation
+    field: dish_id
+    related_collection: dish
+    meta:
+      junction_field: null
+      many_collection: dish_translation
+      many_field: dish_id
+      one_allowed_collections: null
+      one_collection: dish
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: translations
+      sort_field: null
+    schema:
+      table: dish_translation
+      column: dish_id
+      foreign_key_table: dish
+      foreign_key_column: id
+      constraint_name: dish_translation_dish_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: ingredient_diet_tag
+    field: ingredient_id
+    related_collection: ingredient
+    meta:
+      junction_field: null
+      many_collection: ingredient_diet_tag
+      many_field: ingredient_id
+      one_allowed_collections: null
+      one_collection: ingredient
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: diet_tags
+      sort_field: null
+    schema:
+      table: ingredient_diet_tag
+      column: ingredient_id
+      foreign_key_table: ingredient
+      foreign_key_column: id
+      constraint_name: ingredient_diet_tag_ingredient_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: ingredient_diet_tag
+    field: diet_tag_code
+    related_collection: diet_tag
+    meta:
+      junction_field: null
+      many_collection: ingredient_diet_tag
+      many_field: diet_tag_code
+      one_allowed_collections: null
+      one_collection: diet_tag
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: ingredient_diet_tag
+      column: diet_tag_code
+      foreign_key_table: diet_tag
+      foreign_key_column: code
+      constraint_name: ingredient_diet_tag_diet_tag_code_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: menu_item
+    field: daily_menu_id
+    related_collection: daily_menu
+    meta:
+      junction_field: null
+      many_collection: menu_item
+      many_field: daily_menu_id
+      one_allowed_collections: null
+      one_collection: daily_menu
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: items
+      sort_field: sort
+    schema:
+      table: menu_item
+      column: daily_menu_id
+      foreign_key_table: daily_menu
+      foreign_key_column: id
+      constraint_name: menu_item_daily_menu_id_foreign
+      on_update: NO ACTION
+      on_delete: CASCADE
+  - collection: menu_item
+    field: corner_id
+    related_collection: corner
+    meta:
+      junction_field: null
+      many_collection: menu_item
+      many_field: corner_id
+      one_allowed_collections: null
+      one_collection: corner
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: menu_item
+      column: corner_id
+      foreign_key_table: corner
+      foreign_key_column: id
+      constraint_name: menu_item_corner_id_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: menu_item
+    field: dish_id
+    related_collection: dish
+    meta:
+      junction_field: null
+      many_collection: menu_item
+      many_field: dish_id
+      one_allowed_collections: null
+      one_collection: dish
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: menu_item
+      column: dish_id
+      foreign_key_table: dish
+      foreign_key_column: id
+      constraint_name: menu_item_dish_id_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
+  - collection: scan_event
+    field: cafeteria_id
+    related_collection: cafeteria
+    meta:
+      junction_field: null
+      many_collection: scan_event
+      many_field: cafeteria_id
+      one_allowed_collections: null
+      one_collection: cafeteria
+      one_collection_field: null
+      one_deselect_action: nullify
+      one_field: null
+      sort_field: null
+    schema:
+      table: scan_event
+      column: cafeteria_id
+      foreign_key_table: cafeteria
+      foreign_key_column: id
+      constraint_name: scan_event_cafeteria_id_foreign
+      on_update: NO ACTION
+      on_delete: RESTRICT
