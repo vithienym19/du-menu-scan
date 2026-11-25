@@ -2,7 +2,9 @@
 
 > Living progress log. **Every agent updates this file at the end of each session** (see `AGENTS.md` §2).
 
-**Last updated:** 2026-11-25 by Claude (lead engineer)
+**Last updated:** 2026-11-25 (afternoon) by Claude (lead engineer)
+
+**Local path:** `~/Antigravity/du-menu-scan` (moved out of `~/Documents` on 2026-11-25 — see D-016)
 
 ## Where we are
 
@@ -12,11 +14,10 @@
 
 | Branch | Contains | On GitHub? | Next action |
 |---|---|---|---|
-| `main` | Specs, agent roles, tech-stack decision, task board | ⚠️ 2 commits not pushed (`39b47ca`, `73c58cb`) | Owner: `git push origin main` |
-| `feat/wave-1-foundation` | BE-01, DS-01, BE-10, BE-14 | ❌ not pushed | Owner pushes; merge into `main` (or merge wave-2, which includes it) |
-| `feat/wave-2-languages-data` | Everything in wave-1 + BE-18, BE-08, handoff docs | ❌ not pushed | Owner pushes and merges into `main` |
-
-Push all at once: `git push origin main feat/wave-1-foundation feat/wave-2-languages-data`
+| `main` | Specs, agent roles, tech-stack decision, task board (`73c58cb`) | ✅ pushed | Merge `feat/wave-2-languages-data` into it |
+| `feat/wave-1-foundation` | BE-01, DS-01, BE-10, BE-14 | ✅ pushed | Nothing — included in wave-2 |
+| `feat/wave-2-languages-data` | wave-1 + BE-18, BE-08, handoff docs | ✅ pushed up to `c056986`; later commits are local until the owner pushes | Owner: open a PR into `main` and merge; then `git push` for any newer commits |
+| `claude/doc-project-progress-*` (4) | Leftovers from earlier Claude sessions, identical to `main` | local only | Safe to delete: `git branch -d claude/doc-project-progress-103cea claude/doc-project-progress-4cc341 claude/doc-project-progress-914bc0 claude/doc-project-progress-bb00a0` |
 
 ## Done
 
@@ -27,6 +28,7 @@ Push all at once: `git push origin main feat/wave-1-foundation feat/wave-2-langu
 | 2026-11-23 | Tech stack decided: React PWA + Capacitor later, Directus + PostgreSQL |
 | 2026-11-24 | Task board (29 tasks), `GEMINI.md` for Antigravity |
 | 2026-11-24 | **DS-01** design system · **BE-01** monorepo · **BE-10** i18n keys · **BE-14** CI |
+| 2026-11-25 | Repo moved to `~/Antigravity/du-menu-scan`; verified: git fsck clean, all branches pushed, format/lint/typecheck/tests pass |
 | 2026-11-25 | **BE-18** 7 languages (ko en vi zh uz mn ne) · **BE-08** types, `localize()`, API client (HTTP + mock), fixtures · handoff docs (`AGENTS.md`, `STATUS.md`, decision log) |
 
 Checks on the latest commit: format ✅ lint ✅ typecheck ✅ tests 16/16 ✅ i18n 87 keys × 7 languages ✅
@@ -48,7 +50,7 @@ Nothing half-done. Working tree clean after the handoff-docs commit.
 
 | Item | Who | Blocks |
 |---|---|---|
-| Push the 3 branches to GitHub and merge | Thiện | CI on GitHub, Antigravity working from the remote |
+| Merge `feat/wave-2-languages-data` into `main` (PR on GitHub) | Thiện | Antigravity starting UI-01 from `main` |
 | Native-speaker review of zh, uz, mn, ne strings | International students | Pilot launch (not development) |
 | Korean teammate verifies dish ingredients/allergens | Korean teammate | BE-07 |
 | Check current MFDS allergen list | Team | BE-06 |

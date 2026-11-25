@@ -49,6 +49,7 @@ Start with [`AGENTS.md`](AGENTS.md), then [`STATUS.md`](STATUS.md) (current prog
 ## Getting started
 
 ```bash
+cd ~/Antigravity/du-menu-scan   # local path on the owner's Mac
 nvm use          # Node 22
 npm install
 npm run lint && npm run typecheck && npm test

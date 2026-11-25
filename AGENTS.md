@@ -96,6 +96,9 @@ All four checks must pass before a commit. CI runs the same.
 
 ## 8. Known environment limits
 
+- **Local path on the owner's Mac:** `~/Antigravity/du-menu-scan` (`/Users/viducthien/Antigravity/du-menu-scan`). Do not use the old `~/Documents/...` path — macOS blocks agent access to Documents.
+- Parent folders `~` and `~/Antigravity` contain their own `.git`. Always run git **inside** `du-menu-scan`; never run `git add` in a parent folder (it would embed this repo).
+
 - Claude's Cowork environment can commit locally but **cannot push** to GitHub; the owner pushes. Check `git branch -vv` for unpushed work and mention it in `STATUS.md`.
 - TypeScript is pinned to **6.0.x** (typescript-eslint does not support 7 yet) — see decision log.
 
