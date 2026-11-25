@@ -53,7 +53,7 @@ Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). De
 
 ## Roles and permissions
 
-Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> `backend:seed`.
+Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> `backend:seed` -> `backend:dashboard`.
 
 ```bash
 npm run backend:permissions   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PORT from .env
@@ -92,6 +92,21 @@ Image transforms for UI-05 / UI-07 (Directus resizes on the fly and caches; publ
 ```
 
 Add `&fit=cover&height=300` for a fixed crop and `&quality=80` to tune size. Use only these two widths so the cache stays small. `packages/shared` has no photo URL builder yet: the web app builds the URL from `dish.photo` (a file id) and the API base URL.
+
+## Scan analytics (BE-12)
+
+Students' phones create one `scan_event` per visit (`POST /items/scan_event` with `cafeteria_id`, `lang`, `entry`; anonymous). Extra fields (for example `created_at`) are rejected with 403, a language outside `languages.json` or an entry other than `qr`/`direct` with 400, and anonymous `GET /items/scan_event` returns 403. `created_at` is set by the database.
+
+BR8: the table has no IP, device or user-agent column. Directus would still record IP and user agent of every request in `directus_activity` (and a copy of the item in `directus_revisions`), so `scan_event` has `accountability: null` (no activity, no revisions; set in `create-schema.mjs` and in the snapshot). Migration for a database that already received scans before this change: `DELETE FROM directus_activity WHERE collection = 'scan_event';` (revisions cascade).
+
+Dashboard: `npm run backend:dashboard` creates the Insights dashboard "Scans" (idempotent, replaces its own panels): scans in the last 24 hours, scans all time, scans per day (last month), scans per language. Open it in the admin UI under Insights. "Today" means the last 24 hours (rolling), not the calendar day. The dashboard is visible to Admin only (Staff have no Insights access).
+
+Quick check on a running stack (CAF = any cafeteria id):
+
+```bash
+curl -s -o /dev/null -w '%{http_code}\n' -XPOST localhost:8055/items/scan_event -H 'content-type: application/json' -d '{"cafeteria_id":"CAF","lang":"en","entry":"qr"}'   # 204
+curl -s -o /dev/null -w '%{http_code}\n' localhost:8055/items/scan_event                                                                          # 403
+```
 
 ## Seed data (reference data)
 
