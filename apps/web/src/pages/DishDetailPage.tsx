@@ -31,7 +31,7 @@ import { IconRow } from "../components/IconRow";
 import { SpiceMeter } from "../components/SpiceMeter";
 import { WarningBadge } from "../components/WarningBadge";
 import { api } from "../lib/api";
-import { readPrefs } from "../lib/prefs";
+import { readPrefs, useRequireOnboarding } from "../lib/prefs";
 
 function isValidIsoDate(value: string): boolean {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) {
@@ -259,6 +259,7 @@ export function DishDetailPage() {
   const navigate = useNavigate();
   const location = useLocation();
   const [failedPhotoUrl, setFailedPhotoUrl] = useState<string | null>(null);
+  useRequireOnboarding();
 
   const currentLang: Language = isLanguage(i18n.language) ? i18n.language : DEFAULT_LANGUAGE;
   const trimmedDishId = dishId?.trim() ?? "";

@@ -1,11 +1,11 @@
-import { fixtureDishes, type DishView, type Prefs } from "@du-menu-scan/shared";
-import { render, screen, within } from "@testing-library/react";
+import { DEFAULT_PREFS, fixtureDishes, type DishView, type Prefs } from "@du-menu-scan/shared";
+import { act, render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { AppRoutes } from "../App";
 import { changeAppLanguage } from "../lib/i18n";
-import { PREFS_STORAGE_KEY } from "../lib/prefs";
+import { PREFS_STORAGE_KEY, writePrefs } from "../lib/prefs";
 import { DishCard } from "./DishCard";
 
 const dishById = (id: string): DishView => {
@@ -112,6 +112,37 @@ describe("UI-05 DishCard", () => {
     expect(cautionCard).toHaveAttribute("data-status", "caution");
     expect(cautionCard.className).not.toContain("ring-avoid-line");
     expect(within(cautionCard).getByText("Caution")).toBeInTheDocument();
+  });
+
+  it("re-renders warning status in place without remount when writePrefs is called, and respects prefs prop override", () => {
+    const jeyuk = dishById("dish-jeyuk-bokkeum");
+    render(
+      <div>
+        <DishCard dish={jeyuk} price={5500} />
+        <DishCard
+          dish={{ ...jeyuk, id: "dish-jeyuk-override" }}
+          price={5500}
+          prefs={{ ...DEFAULT_PREFS, onboarded: true }}
+        />
+      </div>,
+    );
+
+    const liveCard = screen.getByTestId("dish-card-dish-jeyuk-bokkeum");
+    const overrideCard = screen.getByTestId("dish-card-dish-jeyuk-override");
+    expect(liveCard).toHaveAttribute("data-status", "ok");
+    expect(overrideCard).toHaveAttribute("data-status", "ok");
+
+    act(() => {
+      writePrefs({
+        ...DEFAULT_PREFS,
+        avoidTags: ["pork"],
+        dietType: "halal",
+        spiceTolerance: 0,
+      });
+    });
+
+    expect(liveCard).toHaveAttribute("data-status", "avoid");
+    expect(overrideCard).toHaveAttribute("data-status", "ok");
   });
 
   it("wraps card in a Link when `to` prop is provided", () => {
