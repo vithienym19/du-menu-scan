@@ -79,7 +79,11 @@ async function main() {
 
   const list = await (await fetch(`${URL_BASE}/files?limit=-1`)).json();
   const ids = (list.data ?? []).map((f) => f.id);
-  expect("anonymous /files lists only the published photo", ids.join(","), pubFile);
+  // The database may already hold real published photos: check membership, not equality.
+  const listed = (id) => (ids.includes(id) ? "listed" : "not listed");
+  expect("anonymous /files includes the published photo", listed(pubFile), "listed");
+  expect("anonymous /files hides the draft-dish photo", listed(draftFile), "not listed");
+  expect("anonymous /files hides the unattached file", listed(freeFile), "not listed");
   console.log("fields exposed:", Object.keys(list.data?.[0] ?? {}).join(","));
 }
 

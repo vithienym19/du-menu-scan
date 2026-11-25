@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 3.2, 3.4 | BE-04 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 3.2, 3.4 | BE-04 | ✅ 2026-11-25 |
 
 ## Goal
 Students can see photos of published dishes, and nothing else in file storage.
