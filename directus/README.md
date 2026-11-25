@@ -53,7 +53,7 @@ Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). De
 
 ## Roles and permissions
 
-Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> `backend:seed` -> `backend:dashboard`.
+Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> `backend:seed` -> `backend:dashboard` -> `backend:flows`.
 
 ```bash
 npm run backend:permissions   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PORT from .env
@@ -107,6 +107,14 @@ Quick check on a running stack (CAF = any cafeteria id):
 curl -s -o /dev/null -w '%{http_code}\n' -XPOST localhost:8055/items/scan_event -H 'content-type: application/json' -d '{"cafeteria_id":"CAF","lang":"en","entry":"qr"}'   # 204
 curl -s -o /dev/null -w '%{http_code}\n' localhost:8055/items/scan_event                                                                          # 403
 ```
+
+## Copy menu to another date (BE-17)
+
+`npm run backend:flows` creates the Directus Flow "Copy menu to another date" (idempotent: replaces the flow of the same name; run it after `backend:permissions`). Staff use: open any daily menu (any date, draft or published) in the item view, click the flow button (copy icon) in the sidebar, enter the **target date**, optionally a different **meal**, confirm. A new **draft** menu is created for the same cafeteria with copies of all menu items (corner, dish, price, sort). The copy is always `draft`, never `published`; staff edit it and publish as usual (the `du-guards` publish check still applies, so a copied dish that is no longer published blocks publishing, not copying). Copying to another cafeteria is not offered because corners belong to a cafeteria.
+
+- If a menu already exists for the same cafeteria + date + meal, nothing is created and the app shows the error "A daily menu already exists for this cafeteria, date and meal (...)" (D-020 hook; the flow has `error_on_reject`, so failures are real HTTP errors, not a silent success).
+- The flow runs with the permissions of the user who clicks it. Staff already have create/read on `daily_menu` and `menu_item`; the permission script also gives Staff read access to manual flows (`directus_flows`, `trigger = manual`), otherwise the button does not appear. Anonymous calls to `POST /flows/trigger/<id>` return 403 and create nothing.
+- Missing target date through the API (the form marks it required) returns a generic 500 because Directus hides messages thrown from the script step.
 
 ## Seed data (reference data)
 

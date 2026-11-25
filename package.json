@@ -27,6 +27,7 @@
     "backend:permissions": "node --env-file-if-exists=.env directus/scripts/create-permissions.mjs",
     "backend:seed": "node --env-file-if-exists=.env directus/scripts/import-seed.mjs",
     "qr": "node directus/scripts/generate-qr.mjs",
+    "backend:flows": "node --env-file-if-exists=.env directus/scripts/create-flows.mjs",
     "backend:dashboard": "node --env-file-if-exists=.env directus/scripts/create-dashboard.mjs",
     "backend:verify:photos": "node --env-file-if-exists=.env directus/scripts/verify-public-photos.mjs"
   },
