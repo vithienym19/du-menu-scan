@@ -85,29 +85,24 @@ Optional (Phase 2): a thin endpoint `GET /api/menu/{code}/today` (Directus custo
 
 ## 4. Warning logic
 
-Single pure function in `packages/shared/src/warning.ts`, used by S2 and S3, covered by unit tests.
+Pure functions in `packages/shared/src/warning.ts`, used by S2, S3 and S4, covered by unit tests (CI fails below 95 % branch coverage). The UI never re-implements any of them.
 
-```ts
-type Status = 'ok' | 'caution' | 'avoid' | 'unverified';
+| Function | Used by | Does |
+|---|---|---|
+| `evaluate(dish, prefs)` | S2 card, S3 banner | `{ status, reasons, unverified }` |
+| `expandDietType(dietType)` / `effectiveAvoidTags(prefs)` | S4 auto-tick, `evaluate` | halal → pork, alcohol; vegetarian → pork, beef, chicken, seafood |
+| `dietCompatibility(dish)` | S3 "Diet info" | halal / vegetarian: `true` ✓, `false` ✕, `null` unknown |
+| `sortByStatus(items, prefs)` | S2 | stable order OK → Caution → Not verified → Avoid |
+| `applyFilters(items, filters)` | S2 chips | Not spicy / No pork / Vegetarian, AND-combined |
 
-function evaluate(dish: DishView, prefs: Prefs): { status: Status; reasons: string[] } {
-  if (!dish.allergensConfirmed || !dish.verifiedAt) return { status: 'unverified', reasons: [] };
+`evaluate` decides in this order (D-017):
 
-  const avoid = expand(prefs);              // dietType → tags (halal → pork, alcohol …)
-  const hits = [
-    ...dish.dietTags.filter(t => avoid.tags.includes(t)),
-    ...dish.allergens.filter(a => prefs.allergens.includes(a)),
-  ];
-  if (hits.length) return { status: 'avoid', reasons: hits };
+1. Any avoided diet tag or allergen present — hidden ingredients included → **avoid** (even if the dish is unverified: a known hit is the strongest signal).
+2. Data unverified or incomplete (`allergensConfirmed` not true, no valid `verifiedAt`, invalid spice level, missing lists) → **unverified**.
+3. `spiceLevel > prefs.spiceTolerance` → **caution**.
+4. Otherwise → **ok**.
 
-  if (dish.spiceLevel > prefs.spiceTolerance)
-    return { status: 'caution', reasons: ['spicy'] };
-
-  return { status: 'ok', reasons: [] };
-}
-```
-
-Rules: unknown data is never `ok`; hidden ingredients count the same as visible ones.
+`reasons` is a list of `{ kind: "tag" | "allergen", code }` and `{ kind: "spice", level, tolerance }`, avoid reasons first, each code once. Filters hide unverified dishes while any filter is on, because a filter claims "this has no pork". Unknown data is never `ok` and never ✓.
 
 ## 5. Repository layout
 

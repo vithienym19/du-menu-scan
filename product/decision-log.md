@@ -4,6 +4,7 @@ Newest first. Each entry: decision, why, alternatives considered. Change a decis
 
 | # | Date | Decision | Why | Alternatives rejected |
 |---|---|---|---|---|
+| D-017 | 2026-11-25 | Warning precedence: known avoided item → Avoid (even on unverified data) → Not verified → Caution → OK. Active filters hide unverified dishes. S2 order OK → Caution → Not verified → Avoid | A halal student seeing "Not verified" on a dish we *know* contains pork might gamble; "Avoid" is safer and still never OK. A filter is a positive claim, so unverified dishes cannot pass it | Unverified always first (spec sketch); showing unverified dishes under filters |
 | D-016 | 2026-11-25 | Keep the repo at `~/Antigravity/du-menu-scan`, outside `~/Documents` | macOS privacy protection (and possible iCloud sync of Documents) blocked agent access; `node_modules` should not sync to iCloud | Granting Full Disk Access to every tool |
 | D-015 | 2026-11-25 | Handoff protocol: every session starts with `AGENTS.md` → `STATUS.md` → task board, and ends by updating `STATUS.md` | Work moves between Claude, Codex and Antigravity; none of them remember previous chats | Relying on chat history |
 | D-014 | 2026-11-25 | Support 7 languages: ko, en, vi, zh, uz, mn, ne; single list in `packages/shared/src/languages.json` | Top origins of international students in Korea (2025: China 30.2 %, Vietnam 29.7 %, Uzbekistan 6.2 %, Mongolia 6.0 %; Nepal fast-growing) | Hard-coded 4 languages |

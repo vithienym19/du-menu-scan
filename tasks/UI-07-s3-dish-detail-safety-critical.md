@@ -14,10 +14,10 @@ Full dish information with the safety rules always visible.
 - product/product-specification.md BR2, BR3, BR6
 
 ## Do
-- Photo, names (ko + selected, others collapsible), description, SpiceMeter, main ingredients, ⚠ hidden ingredients, allergens, halal/vegetarian info
+- Photo, names (ko + selected, others collapsible), description, SpiceMeter, main ingredients, ⚠ hidden ingredients, allergens, halal/vegetarian info from `dietCompatibility()` (`null` = show "unknown", never ✓)
 - Personal warning banner with reasons from `evaluate()`
 - Safety footer on every dish: “Last verified {date}” + “Please confirm with staff if you have a severe allergy.”
-- Unverified dish: grey banner, never shown as OK
+- Unverified dish: grey banner, never shown as OK. If `evaluate()` returns `avoid` with `unverified: true`, show the Avoid banner **and** the "Not verified" note
 
 ## Do not
 - Never hide or shorten the safety footer

@@ -20,8 +20,8 @@ Single source of truth for OK / Caution / Avoid / Not verified.
 - Never return `ok` when data is unverified or incomplete
 
 ## Acceptance criteria
-- [ ] ≥ 95% branch coverage
-- [ ] All BR6 cases have a named test
+- [x] ≥ 95% branch coverage (100 %; enforced by `vitest.config.ts` thresholds)
+- [x] All BR6 cases have a named test (`BR6-*` in `warning.test.ts`)
 
 ## Report back (in the pull request description)
 - Changed files and why
