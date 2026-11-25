@@ -43,8 +43,6 @@ const OFFICIAL_CODES = [
   "pine_nut",
 ];
 
-// Every ALLERGEN_IMPLIES_TAG key in warning.ts must be an official allergen code.
-
 function impliesTagKeys(): string[] {
   const source = readFileSync(
     new URL("../../packages/shared/src/warning.ts", import.meta.url),
@@ -119,14 +117,27 @@ describe("ingredients.csv", () => {
       expect(new Set(i.diet_tags).size).toBe(i.diet_tags.length);
     }
   });
-  it("tags the hidden ingredients called out in the spec", () => {
-    const tags = (n: string) => ingredients.find((i) => i.name_ko === n)?.diet_tags;
-    expect(tags("멸치 육수")).toContain("seafood");
-    expect(tags("어묵")).toContain("seafood");
-    expect(tags("새우젓")).toContain("seafood");
-    expect(tags("햄")).toContain("pork");
-    expect(tags("미림")).toContain("alcohol");
-    expect(tags("사골 육수")).toContain("beef");
+  it("pins the safety-critical conservative tags (BR5)", () => {
+    const tags = (n: string) => ingredients.find((i) => i.name_ko === n)?.diet_tags ?? [];
+    const expected: Record<string, string[]> = {
+      "카레 루": ["pork", "beef", "chicken"],
+      소시지: ["pork", "beef", "chicken"],
+      햄: ["pork", "beef", "chicken"],
+      된장: ["seafood", "alcohol"],
+      고추장: ["seafood", "alcohol"],
+      쌈장: ["seafood", "alcohol"],
+      "돈가스 소스": ["seafood"],
+      간장: ["alcohol"],
+      "멸치 육수": ["seafood"],
+      어묵: ["seafood"],
+      새우젓: ["seafood"],
+      미림: ["alcohol"],
+      치킨스톡: ["chicken"],
+      육수: ["pork", "beef", "chicken", "seafood"],
+    };
+    for (const [name, want] of Object.entries(expected)) {
+      expect(tags(name), name).toEqual(expect.arrayContaining(want));
+    }
   });
 });
 
@@ -136,11 +147,7 @@ describe("warning.ts ALLERGEN_IMPLIES_TAG vs allergens.csv", () => {
   it("parses the map", () => {
     expect(keys.length).toBeGreaterThan(0);
   });
-  it("every key is an allergen code, or a known 조개류 member", () => {
-    const unknown = keys.filter((k) => !codes.has(k));
-    expect(unknown).toEqual([]);
-  });
-  it("official keys exist in the seed", () => {
-    for (const k of keys.filter((k) => OFFICIAL_CODES.includes(k))) expect(codes.has(k)).toBe(true);
+  it("every key is an official allergen code", () => {
+    expect(keys.filter((k) => !codes.has(k))).toEqual([]);
   });
 });

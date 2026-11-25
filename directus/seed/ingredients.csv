@@ -1,7 +1,9 @@
 # Ingredient vocabulary. Vocabulary draft — diet-tag mapping to be confirmed by the Korean teammate (BE-07).
 # Includes hidden ingredients (broths, fish sauces, processed meats, cooking wine). Translations (en, vi, zh) are drafts.
-# diet_tags: pipe-separated codes from diet_tags.csv (may be empty). Tags describe the ingredient itself;
-# products whose recipe varies (돈가스 소스, 카레 루, 고추장, 된장) are left untagged until the teammate checks real labels.
+# diet_tags: pipe-separated codes from diet_tags.csv (may be empty). Tags are CONSERVATIVE BY DESIGN (BR5: a missing tag is the
+# dangerous direction). Products whose recipe varies (sauces, pastes, roux, sausage, ham, stock) carry every tag they may contain.
+# BE-07 confirms or relaxes them against real labels; never remove a tag without a checked label.
+# 치즈 has no tag: animal rennet is out of scope of the 5 diet tags.
 # Ingredients carry no allergen link in this schema. name_ko is the upsert key.
 name_ko,names,diet_tags
 "돼지고기","{""en"":""Pork"",""vi"":""Thịt heo"",""zh"":""猪肉""}",pork
@@ -9,8 +11,8 @@ name_ko,names,diet_tags
 "소고기","{""en"":""Beef"",""vi"":""Thịt bò"",""zh"":""牛肉""}",beef
 "닭고기","{""en"":""Chicken"",""vi"":""Thịt gà"",""zh"":""鸡肉""}",chicken
 "오리고기","{""en"":""Duck"",""vi"":""Thịt vịt"",""zh"":""鸭肉""}",
-"햄","{""en"":""Ham"",""vi"":""Giăm bông"",""zh"":""火腿""}",pork
-"소시지","{""en"":""Sausage"",""vi"":""Xúc xích"",""zh"":""香肠""}",pork
+"햄","{""en"":""Ham"",""vi"":""Giăm bông"",""zh"":""火腿""}",pork|beef|chicken
+"소시지","{""en"":""Sausage"",""vi"":""Xúc xích"",""zh"":""香肠""}",pork|beef|chicken
 "베이컨","{""en"":""Bacon"",""vi"":""Thịt xông khói"",""zh"":""培根""}",pork
 "스팸","{""en"":""Luncheon meat (Spam)"",""vi"":""Thịt hộp"",""zh"":""午餐肉""}",pork
 "라드","{""en"":""Lard"",""vi"":""Mỡ heo"",""zh"":""猪油""}",pork
@@ -40,12 +42,12 @@ name_ko,names,diet_tags
 "맛술","{""en"":""Cooking wine (matsul)"",""vi"":""Rượu nấu ăn"",""zh"":""料酒""}",alcohol
 "미림","{""en"":""Mirin"",""vi"":""Mirin (rượu gạo nấu ăn)"",""zh"":""味淋""}",alcohol
 "청주","{""en"":""Rice wine (cheongju)"",""vi"":""Rượu gạo"",""zh"":""清酒""}",alcohol
-"고추장","{""en"":""Gochujang (chili paste)"",""vi"":""Tương ớt Hàn Quốc"",""zh"":""辣椒酱""}",
-"된장","{""en"":""Doenjang (soybean paste)"",""vi"":""Tương đậu Hàn Quốc"",""zh"":""大酱""}",
-"쌈장","{""en"":""Ssamjang"",""vi"":""Tương ssamjang"",""zh"":""包饭酱""}",
-"간장","{""en"":""Soy sauce"",""vi"":""Nước tương"",""zh"":""酱油""}",
-"돈가스 소스","{""en"":""Tonkatsu sauce"",""vi"":""Sốt tonkatsu"",""zh"":""炸猪排酱""}",
-"카레 루","{""en"":""Curry roux"",""vi"":""Viên cà ri"",""zh"":""咖喱块""}",
+"고추장","{""en"":""Gochujang (chili paste)"",""vi"":""Tương ớt Hàn Quốc"",""zh"":""辣椒酱""}",seafood|alcohol
+"된장","{""en"":""Doenjang (soybean paste)"",""vi"":""Tương đậu Hàn Quốc"",""zh"":""大酱""}",seafood|alcohol
+"쌈장","{""en"":""Ssamjang"",""vi"":""Tương ssamjang"",""zh"":""包饭酱""}",seafood|alcohol
+"간장","{""en"":""Soy sauce"",""vi"":""Nước tương"",""zh"":""酱油""}",alcohol
+"돈가스 소스","{""en"":""Tonkatsu sauce"",""vi"":""Sốt tonkatsu"",""zh"":""炸猪排酱""}",seafood
+"카레 루","{""en"":""Curry roux"",""vi"":""Viên cà ri"",""zh"":""咖喱块""}",pork|beef|chicken
 "마요네즈","{""en"":""Mayonnaise"",""vi"":""Mayonnaise"",""zh"":""蛋黄酱""}",
 "케첩","{""en"":""Ketchup"",""vi"":""Tương cà chua"",""zh"":""番茄酱""}",
 "고춧가루","{""en"":""Chili powder"",""vi"":""Bột ớt"",""zh"":""辣椒粉""}",
@@ -71,3 +73,8 @@ name_ko,names,diet_tags
 "콩나물","{""en"":""Soybean sprouts"",""vi"":""Giá đỗ"",""zh"":""豆芽""}",
 "시금치","{""en"":""Spinach"",""vi"":""Rau chân vịt"",""zh"":""菠菜""}",
 "애호박","{""en"":""Zucchini"",""vi"":""Bí xanh"",""zh"":""西葫芦""}",
+"치킨스톡","{""en"": ""Chicken stock"", ""vi"": ""Nước dùng gà cô đặc"", ""zh"": ""鸡汤块""}",chicken
+"다시다","{""en"": ""Dashida (seasoning powder)"", ""vi"": ""Hạt nêm Dashida"", ""zh"": ""多时多调味粉""}",beef|seafood
+"쇠고기 다시다","{""en"": ""Beef dashida (seasoning powder)"", ""vi"": ""Hạt nêm vị bò Dashida"", ""zh"": ""牛肉多时多调味粉""}",beef|seafood
+"육수","{""en"": ""Broth (unspecified)"", ""vi"": ""Nước dùng (chưa rõ loại)"", ""zh"": ""高汤(未指明)""}",pork|beef|chicken|seafood
+"젓갈","{""en"": ""Salted fermented seafood (jeotgal)"", ""vi"": ""Hải sản muối lên men"", ""zh"": ""腌制海鲜酱""}",seafood
