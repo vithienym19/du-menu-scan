@@ -70,6 +70,14 @@ npm run backend:permissions   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PO
 
 Staff and Reviewer have app access, no admin access. `scan_event.created_at` is set by the database (`DEFAULT CURRENT_TIMESTAMP`, not null) and cannot be written by the public.
 
+Notes:
+
+- If the script fails midway, re-run it. New rows are created before old ones are deleted, so there is never a moment without permissions.
+- The ingredient vocabulary (`ingredient`, `ingredient_diet_tag`) is public by design: it is reference data, not tied to a dish status.
+- Directus filters cannot enforce relations across rows. A published menu must never contain a draft dish; the public `menu_item` filter hides such items, and BE-05 hooks must prevent publishing them.
+- Rate limiting for anonymous `scan_event` writes is a BE-15 (deployment) item.
+- `dish.verified_by` must hold a role name (for example "Cafeteria staff"), not a personal name (BR8).
+
 Known gap: the Public policy has no access to `directus_files`, so dish photos are not yet served to students (a filter cannot express "file used by a published dish" without a reverse relation on `directus_files`). To be decided with the PM.
 
 ## Folders

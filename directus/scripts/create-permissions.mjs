@@ -15,6 +15,12 @@ const EMAIL = process.env.ADMIN_EMAIL;
 const PASSWORD = process.env.ADMIN_PASSWORD;
 if (!EMAIL || !PASSWORD) throw new Error("Set ADMIN_EMAIL and ADMIN_PASSWORD");
 
+import { readFileSync } from "node:fs";
+
+const LANG_CODES = JSON.parse(
+  readFileSync(new URL("../../packages/shared/src/languages.json", import.meta.url), "utf8"),
+).map((l) => l.code);
+
 let token;
 async function api(method, path, body) {
   const res = await fetch(`${URL_BASE}${path}`, {
@@ -65,7 +71,12 @@ const PUBLIC = [
   p("allergen", "read"),
   p("diet_tag", "read"),
   // BR8: write-only analytics; no read/update/delete
-  p("scan_event", "create", { fields: ["cafeteria_id", "lang", "entry"] }),
+  p("scan_event", "create", {
+    fields: ["cafeteria_id", "lang", "entry"],
+    validation: {
+      _and: [{ lang: { _in: LANG_CODES } }, { entry: { _in: ["qr", "direct"] } }],
+    },
+  }),
   // directus_files: intentionally NOT granted (see directus/README.md, open question)
 ];
 
@@ -106,6 +117,7 @@ const STAFF = [
   p("dish_translation", "update", {
     permissions: eq("status", "draft"),
     validation: eq("status", "draft"),
+    fields: ["name", "description", "lang"],
   }),
   // read-only vocabularies
   p("allergen", "read"),
@@ -135,19 +147,20 @@ async function findOrCreate(path, name, create) {
   return api("POST", path, create);
 }
 
+// Create the new rows first, then delete the old ones: never a moment with zero permissions.
 async function replacePermissions(policy, rules, label) {
   const old = await api("GET", `/permissions?filter[policy][_eq]=${policy}&limit=-1&fields=id`);
+  await api(
+    "POST",
+    "/permissions",
+    rules.map((r) => ({ ...r, policy })),
+  );
   if (old.length)
     await api(
       "DELETE",
       "/permissions",
       old.map((o) => o.id),
     );
-  await api(
-    "POST",
-    "/permissions",
-    rules.map((r) => ({ ...r, policy })),
-  );
   console.log(`${label}: ${rules.length} permissions`);
 }
 
@@ -158,9 +171,10 @@ async function main() {
   // Public policy = policy attached to no role and no user
   const publicAccess = await api(
     "GET",
-    "/access?filter[role][_null]=true&filter[user][_null]=true&limit=1",
+    "/access?filter[role][_null]=true&filter[user][_null]=true&limit=2",
   );
-  if (!publicAccess.length) throw new Error("Public policy not found");
+  if (publicAccess.length !== 1)
+    throw new Error(`Expected exactly 1 Public policy, found ${publicAccess.length}`);
   await replacePermissions(publicAccess[0].policy, PUBLIC, "Public");
 
   for (const m of MANAGED) {
