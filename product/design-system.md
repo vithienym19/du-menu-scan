@@ -65,7 +65,7 @@ Rules: minimum 16 px for body text (prevents iOS zoom on inputs); weights 400, 5
 
 | Kind | Source | Rule |
 |---|---|---|
-| Food categories | Emoji 🐷 🐄 🐔 🐟 🥬 inside a 28 px `surface-muted` circle | Always followed by its text label (`tags.*`) |
+| Food categories | Emoji 🐷 🐄 🐔 🐟 🥬 (🍺 for `alcohol`, relevant for halal) inside a 28 px `surface-muted` circle | Always followed by its text label (`tags.*`) |
 | Hidden ingredient | `triangle-alert` (lucide) in `caution` colour + ingredient name | Text label required |
 | Spice | 4 dots (`spice` / `spice-empty`) + text label (`dish.spice.*`) | Never dots alone |
 | UI | `lucide-react` (chevron-left, settings, wifi-off, refresh-cw, x) | 24 px, stroke 2, `aria-hidden` when a label exists |

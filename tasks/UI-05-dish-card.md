@@ -16,6 +16,8 @@ The card students scan in the menu list.
 - `DishCard`: 64×64 photo (lazy), Korean name, translated name, IconRow, hidden-ingredient tag, price, WarningBadge, red outline for Avoid
 - Translation-pending marker when falling back (BR2)
 
+- Cards: `WarningBadge` without `showOk` (OK shows no badge on cards), but `unverified`, `caution` and `avoid` always show their badge; IconRow gets `vegetarian` from `dietCompatibility(dish).vegetarian`
+
 ## Do not
 - —
 

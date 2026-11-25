@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | S | hydrogen | P0 | 3.5, 3.6 | UI-01 | ☐ Todo |
+| Antigravity (Gemini) | S | hydrogen | P0 | 3.5, 3.6 | UI-01 | ✅ Done 2026-11-25 |
 
 ## Goal
 Small interactive controls used on S2 and S4.
@@ -19,8 +19,8 @@ Small interactive controls used on S2 and S4.
 - —
 
 ## Acceptance criteria
-- [ ] Touch targets ≥ 44 px
-- [ ] Keyboard operable
+- [x] Touch targets ≥ 44 px
+- [x] Keyboard operable
 
 ## Report back (in the pull request description)
 - Changed files and why

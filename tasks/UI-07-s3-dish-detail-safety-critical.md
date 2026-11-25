@@ -19,6 +19,8 @@ Full dish information with the safety rules always visible.
 - Safety footer on every dish: “Last verified {date}” + “Please confirm with staff if you have a severe allergy.”
 - Unverified dish: grey banner, never shown as OK. If `evaluate()` returns `avoid` with `unverified: true`, show the Avoid banner **and** the "Not verified" note
 
+- Detail page: `WarningBadge showOk` (OK is shown explicitly on S3)
+
 ## Do not
 - Never hide or shorten the safety footer
 

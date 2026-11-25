@@ -93,7 +93,7 @@ Seed from Korea's mandatory allergen labelling list (MFDS). Verify the current o
 | beef | Contains beef (incl. beef broth) | 🐄 |
 | chicken | Contains chicken | 🐔 |
 | seafood | Fish, shellfish, anchovy broth, fish sauce, 젓갈, 어묵 | 🐟 |
-| alcohol | Cooking wine, 미림 | — (used for halal) |
+| alcohol | Cooking wine, 미림 | 🍺 (used for halal) |
 
 ### ingredient_diet_tag
 `ingredient_id`, `diet_tag_code`. Dish tags are derived: union of tags of all its ingredients (BR5).

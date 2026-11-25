@@ -38,8 +38,8 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | 2 | [UI-01](UI-01-app-shell-theme-and.md) | App shell, theme and routing | Antigravity | M | argon | P0 | BE-01, BE-10 | ✅ 2026-11-25 |
 | 3 | [BE-03](BE-03-directus-schema.md) | Directus schema | Claude | M | — | P0 | BE-02 | ✅ 2026-11-25 |
 | 3 | [BE-09](BE-09-warning-logic-safety-critical.md) | Warning logic (safety-critical) | Claude | M | — | P0 | BE-08 | ✅ 2026-11-25 |
-| 3 | [UI-02](UI-02-icon-row-spice-meter.md) | Icon row, spice meter and badges | Antigravity | S | hydrogen | P0 | UI-01 | ☐ |
-| 3 | [UI-03](UI-03-filter-chips-and-language.md) | Filter chips and language switch | Antigravity | S | hydrogen | P0 | UI-01 | ☐ |
+| 3 | [UI-02](UI-02-icon-row-spice-meter.md) | Icon row, spice meter and badges | Antigravity | S | hydrogen | P0 | UI-01 | ✅ 2026-11-25 |
+| 3 | [UI-03](UI-03-filter-chips-and-language.md) | Filter chips and language switch | Antigravity | S | hydrogen | P0 | UI-01 | ✅ 2026-11-25 |
 | 3 | [UI-04](UI-04-s1-qr-entry-route.md) | S1 QR entry route | Antigravity | S | hydrogen | P0 | UI-01, BE-08 | ☐ |
 | 3 | [UI-05](UI-05-dish-card.md) | Dish card | Antigravity | S | hydrogen | P0 | UI-02 | ☐ |
 | 4 | [BE-04](BE-04-roles-and-permissions.md) | Roles and permissions | Claude | S | — | P0 | BE-03 | ✅ 2026-11-25 |

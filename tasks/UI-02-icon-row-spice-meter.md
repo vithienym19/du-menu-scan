@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | S | hydrogen | P0 | 3.2, 3.3 | UI-01 | ☐ Todo |
+| Antigravity (Gemini) | S | hydrogen | P0 | 3.2, 3.3 | UI-01 | ✅ Done 2026-11-25 |
 
 ## Goal
 Reusable visual building blocks for dish information.
@@ -19,9 +19,9 @@ Reusable visual building blocks for dish information.
 - Do not compute warning status inside components — take it as a prop
 
 ## Acceptance criteria
-- [ ] Meaning never relies on colour alone
-- [ ] Contrast WCAG AA
-- [ ] Storybook-style demo page or test renders each variant
+- [x] Meaning never relies on colour alone
+- [x] Contrast WCAG AA
+- [x] Storybook-style demo page or test renders each variant
 
 ## Report back (in the pull request description)
 - Changed files and why
