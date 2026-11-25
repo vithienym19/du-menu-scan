@@ -1,6 +1,6 @@
 # Directus + PostgreSQL (local backend)
 
-Runs the DU-Menu Scan backend locally with Docker Compose. The schema is added in BE-03; today you get an empty Directus.
+Runs the DU-Menu Scan backend locally with Docker Compose. The schema (13 collections, see `product/data-specification.md`) lives in `directus/snapshots/schema.yaml`; apply it after the first start (see "Schema" below).
 
 Requires Docker Desktop (or Docker Engine + Compose v2).
 
@@ -37,10 +37,25 @@ docker compose logs -f directus
 
 The admin account is created only on the first start of an empty database. If you change `ADMIN_PASSWORD` later, run `backend:reset` or change it in the admin UI.
 
+## Schema (snapshot)
+
+```bash
+npm run backend:schema:apply      # empty Directus: create everything from schema.yaml, then restart Directus
+npm run backend:schema:snapshot   # after changing the schema: export it to directus/snapshots/schema.yaml
+```
+
+Run `backend:schema:apply` once after a first start or `backend:reset`. The restart is needed because the CLI runs in a separate process, so the running server would otherwise keep its old schema cache (new collections would not appear in the API). Commit `schema.yaml` with every schema change.
+
+To rebuild the snapshot from scratch (rarely needed): start an empty stack, run
+`ADMIN_EMAIL=... ADMIN_PASSWORD=... DIRECTUS_URL=http://localhost:8055 node directus/scripts/create-schema.mjs`, then `npm run backend:schema:snapshot`.
+
+Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). `menu_item.dish_id` is ON DELETE RESTRICT, so a dish used in a menu cannot be deleted. Junction rows of a dish or ingredient, and the items of a menu, are deleted with their parent. Roles and permissions come in BE-04, derived tags and the publish guard in BE-05, seed data in BE-06.
+
 ## Folders
 
 - `directus/extensions/` mounted into Directus (custom endpoints, hooks).
-- `directus/snapshots/` schema snapshots (used from BE-03).
+- `directus/snapshots/schema.yaml` schema snapshot (collections, fields, relations).
+- `directus/scripts/create-schema.mjs` builds the schema on an empty Directus through the REST API; the snapshot is exported from the result.
 
 ## Troubleshooting
 
