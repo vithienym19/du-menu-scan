@@ -1,4 +1,5 @@
 import { LANGUAGES } from "@du-menu-scan/shared";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter } from "react-router-dom";
@@ -8,10 +9,15 @@ import { AppRoutes } from "./App";
 import { changeAppLanguage, detectInitialLanguage, LANGUAGE_STORAGE_KEY } from "./lib/i18n";
 
 function renderAt(route: string) {
+  const queryClient = new QueryClient({
+    defaultOptions: { queries: { retry: false } },
+  });
   return render(
-    <MemoryRouter initialEntries={[route]}>
-      <AppRoutes />
-    </MemoryRouter>,
+    <QueryClientProvider client={queryClient}>
+      <MemoryRouter initialEntries={[route]}>
+        <AppRoutes />
+      </MemoryRouter>
+    </QueryClientProvider>,
   );
 }
 
@@ -23,8 +29,9 @@ describe("UI-01 App shell, theme, routing and language picker", () => {
 
   it("renders placeholder pages for all required routes", () => {
     const routes = [
+      { path: "/", heading: "See what's in today's menu" },
       { path: "/welcome", heading: "See what's in today's menu" },
-      { path: "/r/main-hall", heading: "Choose a cafeteria" },
+      { path: "/r/main-hall", heading: "Loading…" },
       { path: "/r/main-hall/today", heading: "Today's menu" },
       { path: "/dish/dish-kimchi-jjigae", heading: "About this dish" },
       { path: "/settings", heading: "My diet" },

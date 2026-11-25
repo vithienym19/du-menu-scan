@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import { DishDetailPage } from "./pages/DishDetailPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -10,6 +10,7 @@ import { WelcomePage } from "./pages/WelcomePage";
 export function AppRoutes() {
   return (
     <Routes>
+      <Route path="/" element={<Navigate to="/welcome" replace />} />
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/r/:code" element={<QrEntryPage />} />
       <Route path="/r/:code/today" element={<TodayMenuPage />} />
