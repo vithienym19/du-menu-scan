@@ -49,12 +49,24 @@ Run `backend:schema:apply` once after a first start or `backend:reset`. The rest
 To rebuild the snapshot from scratch (rarely needed): start an empty stack, run
 `ADMIN_EMAIL=... ADMIN_PASSWORD=... DIRECTUS_URL=http://localhost:8055 node directus/scripts/create-schema.mjs`, then `npm run backend:schema:snapshot`.
 
-Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). Deletes are restricted where data would otherwise be lost silently: a dish used in a menu (`menu_item.dish_id`) and an ingredient used by a dish (`dish_ingredient.ingredient_id`) cannot be deleted; remove the references first. Junction rows of a dish (translations, ingredients, allergens), the diet tags of a deleted ingredient, and the items of a deleted menu are deleted with their parent. `dish_translation.lang` choices are frozen from `packages/shared/src/languages.json` when the schema is generated: to add a language, update that field (choices and validation) in Directus and re-export the snapshot. Roles and permissions come in BE-04, derived tags and the publish guard in BE-05, seed data in BE-06.
+Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). Deletes are restricted where data would otherwise be lost silently: a dish used in a menu (`menu_item.dish_id`) and an ingredient used by a dish (`dish_ingredient.ingredient_id`) cannot be deleted; remove the references first. Junction rows of a dish (translations, ingredients, allergens), the diet tags of a deleted ingredient, and the items of a deleted menu are deleted with their parent. `dish_translation.lang` choices are frozen from `packages/shared/src/languages.json` when the schema is generated: to add a language, update that field (choices and validation) in Directus and re-export the snapshot. Roles and permissions come in BE-04, derived tags and the publish guard in BE-05, reference seed data in BE-06 (see "Seed data").
+
+## Seed data (reference data)
+
+`directus/seed/` holds `allergens.csv` (MFDS 19-item list, source and date in its header: verify before launch), `diet_tags.csv` and `ingredients.csv` (vocabulary draft; diet-tag mapping to be confirmed by the Korean teammate, BE-07). Import into a running Directus after the schema is applied:
+
+```bash
+DIRECTUS_URL=http://localhost:8055 ADMIN_EMAIL=... ADMIN_PASSWORD=... npm run backend:seed
+# or with a static admin token: DIRECTUS_TOKEN=... npm run backend:seed
+```
+
+The import is idempotent: allergens and diet tags are matched by `code`, ingredients by `name_ko`; changed rows are updated, diet-tag pairs are added or removed to match the CSV, nothing else is deleted. It prints created/updated/unchanged/deleted counts per collection. Edit the CSV and run it again to roll out changes. `npm test` validates the CSV files (`directus/seed/seed.test.ts`).
 
 ## Folders
 
 - `directus/extensions/` mounted into Directus (custom endpoints, hooks).
 - `directus/snapshots/schema.yaml` schema snapshot (collections, fields, relations).
+- `directus/seed/*.csv` reference data; `directus/scripts/import-seed.mjs` imports it (`seed-lib.mjs` holds the CSV parser).
 - `directus/scripts/create-schema.mjs` builds the schema on an empty Directus through the REST API; the snapshot is exported from the result.
 
 ## Troubleshooting

@@ -1,0 +1,73 @@
+# Ingredient vocabulary. Vocabulary draft — diet-tag mapping to be confirmed by the Korean teammate (BE-07).
+# Includes hidden ingredients (broths, fish sauces, processed meats, cooking wine). Translations (en, vi, zh) are drafts.
+# diet_tags: pipe-separated codes from diet_tags.csv (may be empty). Tags describe the ingredient itself;
+# products whose recipe varies (돈가스 소스, 카레 루, 고추장, 된장) are left untagged until the teammate checks real labels.
+# Ingredients carry no allergen link in this schema. name_ko is the upsert key.
+name_ko,names,diet_tags
+"돼지고기","{""en"":""Pork"",""vi"":""Thịt heo"",""zh"":""猪肉""}",pork
+"삼겹살","{""en"":""Pork belly"",""vi"":""Thịt ba chỉ heo"",""zh"":""五花肉""}",pork
+"소고기","{""en"":""Beef"",""vi"":""Thịt bò"",""zh"":""牛肉""}",beef
+"닭고기","{""en"":""Chicken"",""vi"":""Thịt gà"",""zh"":""鸡肉""}",chicken
+"오리고기","{""en"":""Duck"",""vi"":""Thịt vịt"",""zh"":""鸭肉""}",
+"햄","{""en"":""Ham"",""vi"":""Giăm bông"",""zh"":""火腿""}",pork
+"소시지","{""en"":""Sausage"",""vi"":""Xúc xích"",""zh"":""香肠""}",pork
+"베이컨","{""en"":""Bacon"",""vi"":""Thịt xông khói"",""zh"":""培根""}",pork
+"스팸","{""en"":""Luncheon meat (Spam)"",""vi"":""Thịt hộp"",""zh"":""午餐肉""}",pork
+"라드","{""en"":""Lard"",""vi"":""Mỡ heo"",""zh"":""猪油""}",pork
+"돼지뼈 육수","{""en"":""Pork bone broth"",""vi"":""Nước hầm xương heo"",""zh"":""猪骨汤""}",pork
+"사골 육수","{""en"":""Beef bone broth"",""vi"":""Nước hầm xương bò"",""zh"":""牛骨汤""}",beef
+"소고기 육수","{""en"":""Beef broth"",""vi"":""Nước dùng bò"",""zh"":""牛肉高汤""}",beef
+"닭 육수","{""en"":""Chicken broth"",""vi"":""Nước dùng gà"",""zh"":""鸡汤""}",chicken
+"멸치 육수","{""en"":""Anchovy broth"",""vi"":""Nước dùng cá cơm"",""zh"":""鳀鱼高汤""}",seafood
+"가쓰오부시 육수","{""en"":""Bonito flake broth"",""vi"":""Nước dùng cá ngừ bào"",""zh"":""柴鱼高汤""}",seafood
+"다시마 육수","{""en"":""Kelp broth"",""vi"":""Nước dùng tảo bẹ"",""zh"":""海带高汤""}",
+"어묵","{""en"":""Fish cake"",""vi"":""Chả cá"",""zh"":""鱼糕""}",seafood
+"맛살","{""en"":""Imitation crab stick"",""vi"":""Thanh cua giả"",""zh"":""蟹肉棒""}",seafood
+"멸치","{""en"":""Anchovy"",""vi"":""Cá cơm"",""zh"":""鳀鱼""}",seafood
+"새우","{""en"":""Shrimp"",""vi"":""Tôm"",""zh"":""虾""}",seafood
+"새우젓","{""en"":""Salted shrimp"",""vi"":""Tôm muối (mắm tôm)"",""zh"":""腌虾酱""}",seafood
+"멸치액젓","{""en"":""Anchovy fish sauce"",""vi"":""Nước mắm cá cơm"",""zh"":""鳀鱼鱼露""}",seafood
+"까나리액젓","{""en"":""Sand lance fish sauce"",""vi"":""Nước mắm cá lượng"",""zh"":""玉筋鱼鱼露""}",seafood
+"굴소스","{""en"":""Oyster sauce"",""vi"":""Dầu hào"",""zh"":""蚝油""}",seafood
+"우스터소스","{""en"":""Worcestershire sauce"",""vi"":""Nước sốt Worcestershire"",""zh"":""伍斯特酱""}",seafood
+"굴","{""en"":""Oyster"",""vi"":""Hàu"",""zh"":""牡蛎""}",seafood
+"오징어","{""en"":""Squid"",""vi"":""Mực ống"",""zh"":""鱿鱼""}",seafood
+"고등어","{""en"":""Mackerel"",""vi"":""Cá thu"",""zh"":""鲭鱼""}",seafood
+"참치","{""en"":""Tuna"",""vi"":""Cá ngừ"",""zh"":""金枪鱼""}",seafood
+"조개","{""en"":""Clam"",""vi"":""Nghêu"",""zh"":""蛤蜊""}",seafood
+"게","{""en"":""Crab"",""vi"":""Cua"",""zh"":""螃蟹""}",seafood
+"김치","{""en"":""Kimchi (usually made with salted seafood)"",""vi"":""Kim chi (thường có hải sản muối)"",""zh"":""泡菜(通常含腌海鲜)""}",seafood
+"맛술","{""en"":""Cooking wine (matsul)"",""vi"":""Rượu nấu ăn"",""zh"":""料酒""}",alcohol
+"미림","{""en"":""Mirin"",""vi"":""Mirin (rượu gạo nấu ăn)"",""zh"":""味淋""}",alcohol
+"청주","{""en"":""Rice wine (cheongju)"",""vi"":""Rượu gạo"",""zh"":""清酒""}",alcohol
+"고추장","{""en"":""Gochujang (chili paste)"",""vi"":""Tương ớt Hàn Quốc"",""zh"":""辣椒酱""}",
+"된장","{""en"":""Doenjang (soybean paste)"",""vi"":""Tương đậu Hàn Quốc"",""zh"":""大酱""}",
+"쌈장","{""en"":""Ssamjang"",""vi"":""Tương ssamjang"",""zh"":""包饭酱""}",
+"간장","{""en"":""Soy sauce"",""vi"":""Nước tương"",""zh"":""酱油""}",
+"돈가스 소스","{""en"":""Tonkatsu sauce"",""vi"":""Sốt tonkatsu"",""zh"":""炸猪排酱""}",
+"카레 루","{""en"":""Curry roux"",""vi"":""Viên cà ri"",""zh"":""咖喱块""}",
+"마요네즈","{""en"":""Mayonnaise"",""vi"":""Mayonnaise"",""zh"":""蛋黄酱""}",
+"케첩","{""en"":""Ketchup"",""vi"":""Tương cà chua"",""zh"":""番茄酱""}",
+"고춧가루","{""en"":""Chili powder"",""vi"":""Bột ớt"",""zh"":""辣椒粉""}",
+"참기름","{""en"":""Sesame oil"",""vi"":""Dầu mè"",""zh"":""芝麻油""}",
+"들기름","{""en"":""Perilla oil"",""vi"":""Dầu tía tô"",""zh"":""紫苏油""}",
+"마늘","{""en"":""Garlic"",""vi"":""Tỏi"",""zh"":""大蒜""}",
+"양파","{""en"":""Onion"",""vi"":""Hành tây"",""zh"":""洋葱""}",
+"대파","{""en"":""Green onion"",""vi"":""Hành lá"",""zh"":""大葱""}",
+"두부","{""en"":""Tofu"",""vi"":""Đậu phụ"",""zh"":""豆腐""}",
+"계란","{""en"":""Egg"",""vi"":""Trứng"",""zh"":""鸡蛋""}",
+"치즈","{""en"":""Cheese"",""vi"":""Phô mai"",""zh"":""奶酪""}",
+"우유","{""en"":""Milk"",""vi"":""Sữa"",""zh"":""牛奶""}",
+"버터","{""en"":""Butter"",""vi"":""Bơ"",""zh"":""黄油""}",
+"밀가루","{""en"":""Wheat flour"",""vi"":""Bột mì"",""zh"":""面粉""}",
+"당면","{""en"":""Glass noodles"",""vi"":""Miến"",""zh"":""粉丝""}",
+"쌀","{""en"":""Rice"",""vi"":""Gạo"",""zh"":""大米""}",
+"떡","{""en"":""Rice cake"",""vi"":""Bánh gạo"",""zh"":""年糕""}",
+"김","{""en"":""Dried laver (gim)"",""vi"":""Rong biển khô"",""zh"":""紫菜""}",
+"미역","{""en"":""Seaweed (miyeok)"",""vi"":""Rong biển wakame"",""zh"":""海带芽""}",
+"감자","{""en"":""Potato"",""vi"":""Khoai tây"",""zh"":""土豆""}",
+"당근","{""en"":""Carrot"",""vi"":""Cà rốt"",""zh"":""胡萝卜""}",
+"배추","{""en"":""Napa cabbage"",""vi"":""Cải thảo"",""zh"":""白菜""}",
+"콩나물","{""en"":""Soybean sprouts"",""vi"":""Giá đỗ"",""zh"":""豆芽""}",
+"시금치","{""en"":""Spinach"",""vi"":""Rau chân vịt"",""zh"":""菠菜""}",
+"애호박","{""en"":""Zucchini"",""vi"":""Bí xanh"",""zh"":""西葫芦""}",

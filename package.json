@@ -14,7 +14,8 @@
     "build": "npm run build --workspaces --if-present",
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
-    "test": "npm run check:i18n && npm run test --workspaces --if-present",
+    "test": "npm run check:i18n && npm run test:backend && npm run test --workspaces --if-present",
+    "test:backend": "vitest run directus/seed",
     "check:i18n": "node scripts/check-i18n.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -22,6 +23,7 @@
     "backend:down": "docker compose down",
     "backend:reset": "docker compose down -v && docker compose up -d",
     "backend:schema:snapshot": "docker compose exec directus npx directus schema snapshot --yes /directus/snapshots/schema.yaml",
+    "backend:seed": "node directus/scripts/import-seed.mjs",
     "backend:schema:apply": "docker compose exec directus npx directus schema apply --yes /directus/snapshots/schema.yaml && docker compose restart directus"
   },
   "devDependencies": {
