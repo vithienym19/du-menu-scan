@@ -82,7 +82,7 @@ Notes:
 
 `dish.photo` points to `directus_files`; the relation has a reverse alias `directus_files.dishes_photo` (hidden). The Public policy reads `directus_files` only where `{ dishes_photo: { status: { _eq: "published" } } }`, with fields `id`, `type`, `width`, `height`. So anonymous `/assets/<id>` returns 200 for the photo of a published dish and 403 for draft-dish photos and unattached files; anonymous `GET /files` lists only those published-dish photos. A photo used by both a draft and a published dish is public. Unpublishing the dish hides the photo again.
 
-Check on a running stack (creates and deletes throwaway files and dishes): `npm run backend:verify:photos`.
+Check on a running stack (creates and deletes throwaway files and dishes; their activity/revision rows and cached thumbnails stay, with no student data — run it on local or staging, not production): `npm run backend:verify:photos`.
 
 Image transforms for UI-05 / UI-07 (Directus resizes on the fly and caches; public access works with the same filter):
 

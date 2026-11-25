@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 5.2, 5.3, BR8 | BE-04 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 5.2, 5.3, BR8 | BE-04 | ✅ 2026-11-25 |
 
 ## Goal
 Count usage without collecting personal data.
