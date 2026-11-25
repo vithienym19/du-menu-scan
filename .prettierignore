@@ -6,3 +6,4 @@ product
 tasks
 *.md
 directus/snapshots/
+.claude/worktrees

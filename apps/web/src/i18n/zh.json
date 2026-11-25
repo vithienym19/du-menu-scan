@@ -103,6 +103,7 @@
     "dietNone": "没有限制",
     "dietVegetarian": "素食",
     "dietHalal": "清真",
+    "includedInDiet": "已包含在你的饮食类型中",
     "privacyNote": "设置只保存在这部手机上。",
     "saved": "已保存"
   },
