@@ -56,6 +56,6 @@ React 18 + TypeScript (strict) + Vite · Tailwind CSS · React Router · TanStac
    - commands you ran and their results
    - screenshots at 375 px for each state
    - open questions / spec gaps
-4. Claude reviews. Fix requested changes on the same branch. Do not merge; the product owner merges.
+4. Claude reviews. Fix requested changes on the same branch. Do not merge; Claude merges after approval.
 
 Do not mark a task ✅ on the board yourself — Claude updates the board after review.

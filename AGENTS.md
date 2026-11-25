@@ -87,7 +87,7 @@ All four checks must pass before a commit. CI runs the same.
 5. **Design:** only tokens from `theme.css`; status colours only for warnings; icons always with text.
 6. **Fixtures** (`packages/shared/src/fixtures`) are fake data for UI work — never seed them into Directus or show them to real users.
 7. **Secrets:** never commit `.env`; only `.env.example`.
-8. **Git:** branch per task, conventional commits, never force-push, never rewrite history; only the owner merges to `main`.
+8. **Git:** branch per task, conventional commits, never force-push, never rewrite history; only Claude (lead engineer + reviewer) merges to `main`, after review and green checks (D-018).
 
 ## 7. Working language
 

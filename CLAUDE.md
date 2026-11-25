@@ -78,4 +78,4 @@ Report back: changed files, how you tested, open questions
 - Branch per story: `feat/<story-id>-<short-name>`, `fix/...`, `docs/...`.
 - Conventional commits: `feat(web): show hidden ingredient badge (3.3)`.
 - Never force-push, never push to `main` without the owner's approval. Never rewrite history.
-- As lead engineer you may commit your own work on task branches. Push and merge to `main` only when the owner asks.
+- As lead engineer you may commit your own work on task branches. After the `reviewer` approves and all checks pass on the merged result, you merge task branches into `main` and push yourself (owner delegation, D-018).

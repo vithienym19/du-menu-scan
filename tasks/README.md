@@ -10,7 +10,7 @@ Single source for who does what. Specs live in `../product/`; this folder turns 
 | Backend, data model, shared logic, infra, CI (`BE-*`) | Claude — lead engineer | `../CLAUDE.md` |
 | UI in `apps/web` (`UI-*`) | Antigravity (Gemini models) | `../GEMINI.md` |
 | Review of every pull request | Claude `reviewer` sub-agent | `../.claude/agents/reviewer.md` |
-| Merge to `main` | Thiện (product owner) | — |
+| Merge to `main` | Claude, after review (D-018) | — |
 
 ## Model per UI task (Antigravity)
 
@@ -70,7 +70,7 @@ Ready-to-paste prompts for every UI task, in order, are in [`DISPATCH.md`](DISPA
 2. Branch `feat/<task-id>-<name>`; work only inside the task's scope.
 3. Open a pull request; paste the task's acceptance criteria and the report.
 4. Claude reviews (reviewer sub-agent) → APPROVE or CHANGES REQUESTED (max 2 rounds).
-5. Thiện merges; Claude ticks the task here (☐ → ✅ + date) and the story in `../product/development-backlog.md`.
+5. Claude merges into `main` after APPROVE and green checks (D-018), then ticks the task here (☐ → ✅ + date) and the story in `../product/development-backlog.md`.
 
 ## Human-only items
 
