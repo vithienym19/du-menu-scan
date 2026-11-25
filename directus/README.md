@@ -131,3 +131,5 @@ npm run qr -- --domain menu.example.org \
 Output per cafeteria: `<code>.png` (1024 px, error correction Q) and `<code>.pdf` (A5 poster: name, QR, instruction in ko/en/vi/zh, URL). `qr-out/` is git-ignored. The poster needs one font covering Korean, Chinese and Vietnamese: macOS Arial Unicode or Noto Sans CJK on Linux are found automatically; otherwise pass `--font <file>` or set `QR_FONT`. Codes must match the `cafeteria.code` values in Directus.
 
 Before printing: scan the PDF on screen with an iPhone and an Android camera and check it opens `/r/<code>` on the team domain.
+
+The hosting-provider check is a denylist and cannot be complete: always pass the team's registered domain and check the URL printed on the poster before printing.

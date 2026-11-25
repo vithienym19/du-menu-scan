@@ -7,6 +7,7 @@ describe("validateDomain", () => {
   it("accepts the team domain with or without https://", () => {
     expect(validateDomain("menu.example.org")).toBe("menu.example.org");
     expect(validateDomain("https://Menu.Example.org/")).toBe("menu.example.org");
+    expect(validateDomain("menu.example.org.")).toBe("menu.example.org");
   });
 
   it.each([
@@ -17,6 +18,9 @@ describe("validateDomain", () => {
     "foo.onrender.com",
     "team.github.io",
     "abc.supabase.co",
+    "x.vercel.app.",
+    "x.vercel.app%2e",
+    "X.VERCEL.APP",
   ])("rejects hosting-provider host %s", (host) => {
     expect(() => validateDomain(host)).toThrow(/hosting-provider/);
   });
@@ -26,6 +30,11 @@ describe("validateDomain", () => {
     ["http://menu.example.org", /https/],
     ["menu.example.org/r/x", /only the host/],
     ["menu.example.org:8443", /only the host/],
+    ["menu.example.org:443", /only the host/],
+    ["user@menu.example.org", /only the host/],
+    ["localhost.", /localhost/],
+    ["app.localhost", /localhost/],
+    ["a..b", /Invalid/],
     ["localhost", /localhost/],
     ["192.168.0.10", /IP/],
     ["intranet", /Invalid/],

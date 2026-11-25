@@ -57,11 +57,28 @@ export function validateDomain(input) {
     throw new Error(`Invalid domain: ${input}`);
   }
   if (url.protocol !== "https:") throw new Error("The domain must use https");
-  if (url.pathname !== "/" || url.search || url.hash || url.port || url.username) {
+  // URL() silently drops default ports (":443") and user info, so check the raw authority too.
+  const authority = withScheme.slice(withScheme.indexOf("://") + 3).split(/[/?#]/)[0];
+  if (
+    url.pathname !== "/" ||
+    url.search ||
+    url.hash ||
+    url.port ||
+    url.username ||
+    authority.includes(":") ||
+    authority.includes("@")
+  ) {
     throw new Error("Give only the host name, without path, port or query");
   }
-  const host = url.hostname;
-  if (host === "localhost" || /^[\d.]+$/.test(host) || host.startsWith("[")) {
+  // A trailing dot ("x.vercel.app.") resolves to the same host; strip it before any check.
+  const host = url.hostname.replace(/\.+$/, "");
+  if (host.split(".").some((label) => label === "")) throw new Error(`Invalid domain: ${input}`);
+  if (
+    host === "localhost" ||
+    host.endsWith(".localhost") ||
+    /^[\d.]+$/.test(host) ||
+    host.startsWith("[")
+  ) {
     throw new Error("QR codes must point to the team domain, not localhost or an IP address");
   }
   if (!host.includes(".")) throw new Error(`Invalid domain: ${input}`);

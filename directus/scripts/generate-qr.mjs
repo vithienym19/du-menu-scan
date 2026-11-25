@@ -11,6 +11,7 @@
 import { existsSync, mkdirSync, createWriteStream } from "node:fs";
 import { writeFile } from "node:fs/promises";
 import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import PDFDocument from "pdfkit";
 import { INSTRUCTIONS, entryUrl, parseCafeterias, qrPng, validateDomain } from "./qr-lib.mjs";
@@ -117,7 +118,7 @@ async function main() {
   }
 }
 
-if (import.meta.url === `file://${process.argv[1]}`) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   main().catch((err) => {
     console.error(`error: ${err.message}`);
     process.exit(1);
