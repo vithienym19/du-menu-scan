@@ -194,7 +194,10 @@ describe("UI-04 S1 QR entry route", () => {
     renderWithQuery("/r/main-hall");
 
     await waitFor(() => {
-      expect(screen.getByRole("alert")).toHaveTextContent("Something went wrong");
+      expect(screen.getByRole("alert")).toHaveTextContent("Couldn't load the cafeteria");
+      expect(screen.getByRole("alert")).toHaveTextContent(
+        "Please check your connection and try again.",
+      );
     });
 
     await user.click(screen.getByRole("button", { name: "Try again" }));
@@ -204,6 +207,43 @@ describe("UI-04 S1 QR entry route", () => {
         `/welcome?next=${encodeURIComponent("/r/main-hall/today")}`,
       );
     });
+    expect(api.logScan).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows error state with retry when listCafeterias fails and recovers on retry", async () => {
+    const user = userEvent.setup();
+    vi.spyOn(api, "listCafeterias")
+      .mockRejectedValueOnce(new Error("Network error"))
+      .mockImplementationOnce(() => mockApi.listCafeterias());
+
+    renderWithQuery("/r/unknown-code");
+
+    await waitFor(() => {
+      expect(screen.getByRole("alert")).toHaveTextContent("Couldn't load the cafeteria");
+      expect(screen.getByRole("alert")).toHaveTextContent(
+        "Please check your connection and try again.",
+      );
+    });
+
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+
+    expect(await screen.findByRole("link", { name: "Student Union Cafeteria" })).toHaveAttribute(
+      "href",
+      "/r/main-hall",
+    );
+  });
+
+  it("swallows logScan errors without blocking redirect", async () => {
+    vi.spyOn(api, "logScan").mockRejectedValueOnce(new Error("Analytics unavailable"));
+
+    renderWithQuery("/r/main-hall");
+
+    await waitFor(() => {
+      expect(screen.getByTestId("location")).toHaveTextContent(
+        `/welcome?next=${encodeURIComponent("/r/main-hall/today")}`,
+      );
+    });
+
     expect(api.logScan).toHaveBeenCalledTimes(1);
   });
 });

@@ -40,11 +40,13 @@ export function QrEntryPage() {
 
     if (loggedCodeRef.current !== cafeteria.code) {
       loggedCodeRef.current = cafeteria.code;
-      void api.logScan({
-        cafeteriaCode: cafeteria.code,
-        lang: currentLang,
-        entry: "qr",
-      });
+      void api
+        .logScan({
+          cafeteriaCode: cafeteria.code,
+          lang: currentLang,
+          entry: "qr",
+        })
+        .catch(() => {});
     }
 
     const prefs = readPrefs();
@@ -57,8 +59,8 @@ export function QrEntryPage() {
     return (
       <AppShell title={t("common.appName")} showBack={false}>
         <section role="alert" className="rounded-md border border-line bg-surface p-4 shadow-card">
-          <h2 className="text-lg font-bold text-ink">{t("menu.errorTitle")}</h2>
-          <p className="mt-1 text-sm text-ink-muted">{t("menu.errorBody")}</p>
+          <h2 className="text-lg font-bold text-ink">{t("entry.errorTitle")}</h2>
+          <p className="mt-1 text-sm text-ink-muted">{t("entry.errorBody")}</p>
           <button
             type="button"
             onClick={() => void cafeteriaQuery.refetch()}
@@ -86,7 +88,8 @@ export function QrEntryPage() {
             </p>
           ) : cafeteriasQuery.isError ? (
             <div role="alert" className="mt-3">
-              <p className="text-sm text-ink-muted">{t("menu.errorTitle")}</p>
+              <p className="text-sm font-medium text-ink">{t("entry.errorTitle")}</p>
+              <p className="mt-1 text-sm text-ink-muted">{t("entry.errorBody")}</p>
               <button
                 type="button"
                 onClick={() => void cafeteriasQuery.refetch()}
