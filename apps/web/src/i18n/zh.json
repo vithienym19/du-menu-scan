@@ -65,7 +65,9 @@
     "vegetarian": "素食",
     "suitable": "适合",
     "notSuitable": "不适合",
+    "dietUnknown": "未知",
     "lastVerified": "最近确认 {{date}}",
+    "neverVerified": "尚未核实",
     "confirmWithStaff": "如有严重过敏，请向工作人员确认。",
     "backToMenu": "返回菜单",
     "otherLanguages": "其他语言"

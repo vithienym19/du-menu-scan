@@ -65,7 +65,9 @@
     "vegetarian": "채식",
     "suitable": "가능",
     "notSuitable": "불가",
+    "dietUnknown": "알 수 없음",
     "lastVerified": "최근 확인일 {{date}}",
+    "neverVerified": "아직 확인되지 않음",
     "confirmWithStaff": "알레르기가 심하다면 직원에게 꼭 확인해 주세요.",
     "backToMenu": "메뉴 목록으로",
     "otherLanguages": "다른 언어"
