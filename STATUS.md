@@ -14,12 +14,9 @@
 
 | Branch | Contains | On GitHub? | Next action |
 |---|---|---|---|
-| `main` | Specs, agent roles, tech-stack decision, task board (`73c58cb`) | ✅ pushed | Merge `feat/wave-2-languages-data` into it |
-| `feat/wave-1-foundation` | BE-01, DS-01, BE-10, BE-14 | ✅ pushed | Nothing — included in wave-2 |
-| `feat/wave-2-languages-data` | wave-1 + BE-18, BE-08, handoff docs | ✅ pushed up to `c056986`; later commits are local until the owner pushes | Owner: open a PR into `main` and merge; then `git push` for any newer commits |
-| `feat/be-09-warning-logic-safety-critical` | wave-2 + BE-09 warning logic, D-017, spec alignment, UI-06/07/08 dispatch prompts, this STATUS | local only | Owner: push + PR into `main` after wave-2 is merged |
-| `feat/be-02-docker-compose-postgresql-plus` | wave-2 + BE-02 Docker Compose (Postgres 16.16 + Directus 11.17.4) | local only (in worktree `.claude/worktrees/agent-ae760ad1d3c27d632`) | Owner: push + PR into `main` |
-| `claude/doc-project-progress-*` (4) | Leftovers from earlier Claude sessions, identical to `main` | local only | Safe to delete: `git branch -d claude/doc-project-progress-103cea claude/doc-project-progress-4cc341 claude/doc-project-progress-914bc0 claude/doc-project-progress-bb00a0` |
+| `main` | Everything up to wave 3: specs, BE-01/08/10/14/18, DS-01, BE-09, BE-02 | ✅ pushed | Start new task branches from here |
+| `feat/wave-1-foundation`, `feat/wave-2-languages-data`, `feat/be-09-…`, `feat/be-02-…` | Merged into `main` on 2026-11-25 (owner delegated review + merge to Claude) | ✅ | Can be deleted |
+| `claude/doc-project-progress-*` | Leftovers from Claude sessions, already in `main` | local only | Safe to delete |
 
 ## Done
 
@@ -36,7 +33,9 @@
 | 2026-11-25 | **BE-09** warning logic: `evaluate`, `sanitizePrefs`, `dietCompatibility`, `sortByStatus`, `applyFilters`; 100 % branch coverage enforced; decision D-017; reviewer APPROVE (round 2) |
 | 2026-11-25 | **BE-02** Docker Compose + `.env.example` + `directus/README.md`; fail-fast env, Directus healthcheck; tested up / down -v / up; reviewer APPROVE |
 
-Checks on the latest commit: format ✅ lint ✅ typecheck ✅ tests 77/77 ✅ (BE-09 branch) i18n 87 keys × 7 languages ✅
+| 2026-11-25 | Merged wave-2, BE-09 and BE-02 into `main` after review (owner delegated merging to Claude) |
+
+Checks on the latest commit: format ✅ lint ✅ typecheck ✅ tests 77/77 ✅ (`main`) i18n 87 keys × 7 languages ✅
 
 ## In progress
 
@@ -47,7 +46,7 @@ Nothing half-done. Working tree clean after the handoff-docs commit.
 | Who | Task | Notes |
 |---|---|---|
 | Antigravity (`agon`) | **UI-01** app shell, theme, routing, language picker | Unblocked. Prompt in `tasks/DISPATCH.md` |
-| Claude / lead engineer | **BE-03** Directus schema (then BE-04, BE-05, BE-06) | Needs BE-02 branch merged or rebased in |
+| Claude / lead engineer | **BE-03** Directus schema (then BE-04, BE-05, BE-06) | Unblocked |
 | Antigravity (`hydrogen`) | UI-02, UI-03, UI-04, UI-05 | After UI-01 is merged |
 | Antigravity | UI-06 (`nexon`), UI-07 (`nexon`), UI-08 (`agon`) | BE-09 done; prompts ready in `tasks/DISPATCH.md`; wait for UI-02..05 |
 
@@ -57,7 +56,6 @@ Note: port 8055 on the owner's Mac is used by another project's Directus (`trans
 
 | Item | Who | Blocks |
 |---|---|---|
-| Merge `feat/wave-2-languages-data`, then `feat/be-09-…` and `feat/be-02-…` into `main` (PRs on GitHub) | Thiện | Antigravity starting UI-01 from `main`; BE-03 |
 | Native-speaker review of zh, uz, mn, ne strings | International students | Pilot launch (not development) |
 | Korean teammate verifies dish ingredients/allergens | Korean teammate | BE-07 |
 | Check current MFDS allergen list | Team | BE-06 |

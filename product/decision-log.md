@@ -4,6 +4,7 @@ Newest first. Each entry: decision, why, alternatives considered. Change a decis
 
 | # | Date | Decision | Why | Alternatives rejected |
 |---|---|---|---|---|
+| D-018 | 2026-11-25 | Claude (lead engineer + reviewer) may review and merge task branches into `main` and push, without asking the owner each time | Owner's request; keeps waves moving | Owner merges every PR |
 | D-017 | 2026-11-25 | Warning precedence: known avoided item → Avoid (even on unverified data) → Not verified → Caution → OK. Active filters hide unverified dishes. S2 order OK → Caution → Not verified → Avoid | A halal student seeing "Not verified" on a dish we *know* contains pork might gamble; "Avoid" is safer and still never OK. A filter is a positive claim, so unverified dishes cannot pass it | Unverified always first (spec sketch); showing unverified dishes under filters |
 | D-016 | 2026-11-25 | Keep the repo at `~/Antigravity/du-menu-scan`, outside `~/Documents` | macOS privacy protection (and possible iCloud sync of Documents) blocked agent access; `node_modules` should not sync to iCloud | Granting Full Disk Access to every tool |
 | D-015 | 2026-11-25 | Handoff protocol: every session starts with `AGENTS.md` → `STATUS.md` → task board, and ends by updating `STATUS.md` | Work moves between Claude, Codex and Antigravity; none of them remember previous chats | Relying on chat history |
