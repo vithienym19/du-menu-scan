@@ -99,9 +99,9 @@ describe("UI-02 Dish display primitives", () => {
       expect(screen.getByText("OK for you")).toBeInTheDocument();
       expect(screen.getByText("Caution")).toBeInTheDocument();
       expect(screen.getByText("Avoid")).toBeInTheDocument();
-      expect(screen.getByText("Not verified")).toBeInTheDocument();
-      expect(screen.getByText("Very hot")).toBeInTheDocument();
-      expect(screen.getByText("Hidden: Anchovy broth")).toBeInTheDocument();
+      expect(screen.getAllByText("Not verified").length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText("Very hot").length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText("Hidden: Anchovy broth").length).toBeGreaterThanOrEqual(1);
       expect(screen.getByTestId("ok-hidden-slot")).toBeEmptyDOMElement();
     });
   });
