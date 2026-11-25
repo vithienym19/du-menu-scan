@@ -125,6 +125,7 @@ describe("GET /du/dishes/{id}", () => {
     const db = stubDb(tables);
     const r = await call(createHandlers(db, clock).dish, { params: { id: DISH_ID } });
     expect(db.has("dish", ["status", "=", "published"])).toBe(true);
+    expect(db.has("dish", ["id", "=", DISH_ID])).toBe(true);
     expect(db.has("dish_translation", ["status", "=", "approved"])).toBe(true);
     expect(r.body.data.name).toEqual({ ko: "김치찌개", en: "Kimchi stew" });
     expect(r.body.data.dietTags).toEqual(["pork"]);
@@ -132,6 +133,7 @@ describe("GET /du/dishes/{id}", () => {
   it("404 for a missing, draft or malformed id", async () => {
     const missing = await call(createHandlers(stubDb({}), clock).dish, { params: { id: DISH_ID } });
     expect(missing.status).toBe(404);
+    expect(missing.headers["Cache-Control"]).toBe("no-store");
     const draft = await call(
       createHandlers(stubDb({ dish: [{ ...dishRow, status: "draft" }] }), clock).dish,
       { params: { id: DISH_ID } },

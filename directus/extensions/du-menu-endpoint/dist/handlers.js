@@ -9,8 +9,12 @@ const MEALS = ["lunch", "dinner"];
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
+// Errors must never be cached: a 404 for a dish or cafeteria published a minute later would stick.
 const fail = (res, status, code, message) =>
-  res.status(status).json({ errors: [{ message, extensions: { code } }] });
+  res
+    .set("Cache-Control", "no-store")
+    .status(status)
+    .json({ errors: [{ message, extensions: { code } }] });
 
 function validDate(s) {
   if (!DATE_RE.test(s)) return false;
