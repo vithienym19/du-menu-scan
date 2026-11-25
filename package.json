@@ -26,7 +26,9 @@
     "backend:schema:apply": "docker compose exec directus npx directus schema apply --yes /directus/snapshots/schema.yaml && docker compose restart directus",
     "backend:permissions": "node --env-file-if-exists=.env directus/scripts/create-permissions.mjs",
     "backend:seed": "node --env-file-if-exists=.env directus/scripts/import-seed.mjs",
-    "qr": "node directus/scripts/generate-qr.mjs"
+    "qr": "node directus/scripts/generate-qr.mjs",
+    "backend:dashboard": "node --env-file-if-exists=.env directus/scripts/create-dashboard.mjs",
+    "backend:verify:photos": "node --env-file-if-exists=.env directus/scripts/verify-public-photos.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

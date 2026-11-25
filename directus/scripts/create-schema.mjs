@@ -240,6 +240,9 @@ const COLLECTIONS = [
   {
     collection: "scan_event",
     note: "Analytics, no personal data (BR8)",
+    // accountability null: no directus_activity / directus_revisions rows, which would store
+    // the visitor's IP and user agent for every anonymous create (BR8).
+    accountability: null,
     fields: [
       intPk("bigInteger"),
       fk("cafeteria_id"),
@@ -289,7 +292,11 @@ async function main() {
   for (const c of COLLECTIONS) {
     await api("POST", "/collections", {
       collection: c.collection,
-      meta: { note: c.note ?? null, icon: "box" },
+      meta: {
+        note: c.note ?? null,
+        icon: "box",
+        ...("accountability" in c ? { accountability: c.accountability } : {}),
+      },
       schema: {},
       fields: c.fields,
     });
@@ -301,7 +308,15 @@ async function main() {
     collection: "dish",
     field: "photo",
     related_collection: "directus_files",
+    meta: { one_field: "dishes_photo" },
     schema: { on_delete: "SET NULL" },
+  });
+  // Reverse alias on directus_files (BE-19): lets the Public policy filter files by the dish
+  // that uses them, e.g. { dishes_photo: { status: { _eq: "published" } } }.
+  await api("POST", "/fields/directus_files", {
+    field: "dishes_photo",
+    type: "alias",
+    meta: { interface: "list-o2m", special: ["o2m"], hidden: true },
   });
 
   for (const r of RELATIONS) {
