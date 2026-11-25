@@ -98,6 +98,9 @@ const STAFF = [
   p("menu_item", "read"),
   p("menu_item", "update"),
   p("menu_item", "delete"),
+  // BE-17: the app shows manual flow buttons (Copy menu to another date) only if the role can
+  // read the flow definition. Manual flows only; operations stay hidden.
+  p("directus_flows", "read", { permissions: eq("trigger", "manual") }),
   p("dish", "create"),
   p("dish", "read"),
   p("dish", "update"),
