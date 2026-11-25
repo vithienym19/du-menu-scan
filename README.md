@@ -12,6 +12,10 @@ International students cannot tell from a Korean menu name — or from a transla
 
 Scan the QR code at the cafeteria entrance or kiosk → see today's menu with photos, translated names, icons (spicy, pork, beef, chicken, seafood, vegetarian), hidden-ingredient warnings, and a personal "Avoid" label based on the diet the student set once.
 
+## For AI agents and new sessions
+
+Start with [`AGENTS.md`](AGENTS.md), then [`STATUS.md`](STATUS.md) (current progress) and [`tasks/README.md`](tasks/README.md) (task board). Decisions and their reasons: [`product/decision-log.md`](product/decision-log.md).
+
 ## Documents
 
 | File | What it covers |
@@ -54,6 +58,8 @@ npm run lint && npm run typecheck && npm test
 
 ```
 du-menu-scan/
+├── AGENTS.md            # start here (any agent: Claude, Codex, Antigravity)
+├── STATUS.md            # living progress log
 ├── CLAUDE.md            # Claude: product manager + lead engineer
 ├── GEMINI.md            # Antigravity: UI developer rules
 ├── tasks/               # task board + one brief per task

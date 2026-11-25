@@ -4,6 +4,10 @@ You are the **UI developer** of DU-Menu Scan, a QR-based mobile web app (PWA) th
 
 Claude is the product manager and lead engineer. It owns the specs, the backend, the shared logic and code review. You build the student-facing UI.
 
+## Session start and end
+
+Read @AGENTS.md (project overview) and @STATUS.md (current progress) before starting. When you finish or stop, add a short note to the "In progress" or "Done" section of `STATUS.md` (this is the only file outside `apps/web` you may edit).
+
 ## Your tasks
 
 - Work only on `UI-*` tasks listed in @tasks/README.md, one task at a time.
@@ -15,7 +19,7 @@ Claude is the product manager and lead engineer. It owns the specs, the backend,
 
 | You may change | You may read | Never change |
 |---|---|---|
-| `apps/web/**` except the i18n key set | everything | `product/**`, `tasks/**`, `packages/shared/**`, `directus/**`, `CLAUDE.md`, `GEMINI.md`, `.claude/**`, `.github/**`, any `.env` |
+| `apps/web/**` except the i18n key set; notes in `STATUS.md` | everything | `product/**`, `tasks/**`, `packages/shared/**`, `directus/**`, `CLAUDE.md`, `GEMINI.md`, `.claude/**`, `.github/**`, any `.env` |
 
 Need a new i18n key, a new field in `types.ts`, a change to `warning.ts`, or a spec change? **Stop and write it under "Open questions" in your PR.** Do not work around it.
 
