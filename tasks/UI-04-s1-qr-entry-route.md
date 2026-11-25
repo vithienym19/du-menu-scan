@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | S | hydrogen | P0 | 3.1 | UI-01, BE-08 | ☐ Todo |
+| Antigravity (Gemini) | S | hydrogen | P0 | 3.1 | UI-01, BE-08 | ✅ Done 2026-11-25 |
 
 ## Goal
 Every QR scan lands here and is routed correctly.
@@ -23,8 +23,8 @@ Every QR scan lands here and is routed correctly.
 - —
 
 ## Acceptance criteria
-- [ ] Works with mock fixtures
-- [ ] Invalid code shows the error state, not a blank page
+- [x] Works with mock fixtures
+- [x] Invalid code shows the error state, not a blank page
 
 ## Report back (in the pull request description)
 - Changed files and why

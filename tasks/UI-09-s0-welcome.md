@@ -16,6 +16,8 @@ First-visit onboarding in two taps.
 - Logo, 4 language buttons (pre-selected), “Set my diet” → S4, “Skip” → S2
 - Shown only when no prefs exist
 
+- Validate `?next=` before navigating: accept only an in-app path matching `/r/:code/today` (single leading `/`, never `//` or a URL); otherwise go to `/`
+
 ## Do not
 - —
 

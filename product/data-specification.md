@@ -127,6 +127,8 @@ Seed from Korea's mandatory allergen labelling list (MFDS). Verify the current o
 
 ## Client-side data (student phone, localStorage)
 
+Keys: `du-menu-scan:prefs` (Prefs below, read through `sanitizePrefs`, written only by `apps/web/src/lib/prefs.ts`) and `du-menu-scan:lang` (UI language, owned by `apps/web/src/lib/i18n.ts`).
+
 ```json
 {
   "lang": "vi",
