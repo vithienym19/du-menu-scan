@@ -60,13 +60,45 @@ product/design-system.md §6 (DishCard). Use localize() from @du-menu-scan/share
 Open a PR "UI-05: Dish card" with screenshots in vi, mn and ne.
 ```
 
-## Later (after Claude delivers BE-09 warning logic)
+## After UI-02 to UI-05 are merged (BE-09 warning logic is ready)
+
+Shared API for all three: `evaluate`, `sortByStatus`, `applyFilters`, `NO_FILTERS`, `dietCompatibility`,
+`expandDietType`, `sanitizePrefs`, `DEFAULT_PREFS` from `@du-menu-scan/shared` (see product/technical-architecture.md §4).
+
+### UI-08 — S4 My diet and local preferences · model `agon` (needs UI-03)
+
+```
+Implement task UI-08 as described in tasks/UI-08-s4-my-diet-and.md, following GEMINI.md and product/screen-specification.md § S4.
+lib/prefs.ts must read localStorage only through sanitizePrefs() and start from DEFAULT_PREFS; never send prefs to any server.
+Halal/vegetarian auto-tick comes from expandDietType(); do not hard-code the tag lists.
+Test: corrupt localStorage values (bad JSON, "Halal", missing spiceTolerance) must not crash and must route to S4.
+Open a PR "UI-08: S4 My diet" with screenshots of halal and vegetarian auto-tick.
+```
+
+### UI-07 — S3 Dish detail (safety-critical) · model `nexon` (needs UI-02)
+
+```
+Implement task UI-07 as described in tasks/UI-07-s3-dish-detail-safety-critical.md, following GEMINI.md and
+product/screen-specification.md § S3. Warning banner reasons come only from evaluate(); render each reason kind
+(tag / allergen / spice) with i18n keys, never string logic. Diet info from dietCompatibility(): null = "unknown", never ✓.
+If evaluate() gives status "avoid" with unverified: true, show the Avoid banner and the Not verified note.
+The safety footer (Last verified + confirm with staff) is always visible. Test with every fixture dish, incl. dish-sundubu-jjigae.
+Open a PR "UI-07: S3 Dish detail" with 375 px screenshots of ok, caution, avoid, unverified and translation-pending.
+```
+
+### UI-06 — S2 Today's menu · model `nexon` (needs UI-03, UI-04, UI-05)
+
+```
+Implement task UI-06 as described in tasks/UI-06-s2-todays-menu.md, following GEMINI.md and product/screen-specification.md § S2.
+Sort each corner with sortByStatus() (OK → Caution → Not verified → Avoid) and filter with applyFilters(); do not re-implement either.
+Filters are session-only state. Build loading, empty, closed, offline and error states from the fixtures (main-hall, dorm, engineering).
+Open a PR "UI-06: S2 Today's menu" with 375 px screenshots of each state and of each filter chip on.
+```
+
+## Later
 
 | Task | Model | Starts when |
 |---|---|---|
-| UI-06 S2 Today's menu | `nexon` | UI-03, UI-04, UI-05, BE-09 ✅ |
-| UI-07 S3 Dish detail | `nexon` | UI-02, BE-09 ✅ |
-| UI-08 S4 My diet | `agon` | UI-03, BE-09 ✅ |
 | UI-09 S0 Welcome | `hydrogen` | UI-08 ✅ |
 | UI-10 PWA and offline | `nexon` | UI-06, UI-07 ✅ |
 | UI-11 Accessibility and performance | `agon` | UI-06, UI-07, UI-08 ✅ |

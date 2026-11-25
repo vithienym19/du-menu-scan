@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | M | — | P0 | 4.3, BR6 | BE-08 | ☐ Todo |
+| Claude (lead engineer) | M | — | P0 | 4.3, BR6 | BE-08 | ✅ Done 2026-11-25 |
 
 ## Goal
 Single source of truth for OK / Caution / Avoid / Not verified.

@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 0.2 | BE-01 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 0.2 | BE-01 | ✅ Done 2026-11-25 |
 
 ## Goal
 One command starts the backend locally for the whole team.
@@ -19,8 +19,8 @@ One command starts the backend locally for the whole team.
 - Never commit a real `.env`
 
 ## Acceptance criteria
-- [ ] `docker compose up -d` gives a working Directus admin at localhost
-- [ ] `docker compose down -v` then up again starts from a clean state
+- [x] `docker compose up -d` gives a working Directus admin at localhost
+- [x] `docker compose down -v` then up again starts from a clean state
 
 ## Report back (in the pull request description)
 - Changed files and why

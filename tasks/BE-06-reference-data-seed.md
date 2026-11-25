@@ -15,7 +15,7 @@ Seed allergens, diet tags and the ingredient vocabulary.
 - `diet_tags.csv`, `ingredients.csv` (ko name + `names` json for other languages) with ingredient → diet tag mapping
 - Idempotent import script
 
-- Allergen codes must match `ALLERGEN_IMPLIES_TAG` in `packages/shared/src/warning.ts` (pork, beef, chicken, shrimp, crab, shellfish, squid, mackerel, oyster, abalone, mussel); update that map in the same PR if a code differs
+- Allergen codes must match `ALLERGEN_IMPLIES_TAG` in `packages/shared/src/warning.ts` (pork, beef, chicken, shrimp, crab, shellfish, squid, mackerel, oyster, abalone, mussel); update that map in the same PR if a code differs, and add a test that every key of the map exists in the seeded allergen list
 
 ## Do not
 - Do not invent allergens; use the official list only
