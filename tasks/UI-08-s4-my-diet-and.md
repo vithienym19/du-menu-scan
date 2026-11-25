@@ -15,6 +15,7 @@ Students set what they avoid once; it stays on their phone.
 
 ## Do
 - `lib/prefs.ts`: read/write prefs in localStorage (schema from `types.ts`). Always read through `sanitizePrefs()` and start from `DEFAULT_PREFS`; if it returns `onboarded: false` for stored data, send the student to S4 to check their diet
+- Language: the source of truth is `du-menu-scan:lang` owned by `src/lib/i18n.ts` (UI-01). `lib/prefs.ts` is the only writer of `du-menu-scan:prefs`; when the student changes language in S4 call `changeAppLanguage()` and keep `prefs.lang` as a mirror only
 - Form: language, avoid checkboxes, spice tolerance, diet type; halal/vegetarian auto-tick via `expandDietType`
 - Privacy note “Your settings stay on this phone.”
 

@@ -6,7 +6,7 @@
 agy -p "<prompt below>" --model <model id from tasks/README.md> --mode accept-edits
 ```
 
-from the repo root, then checks scope, runs format/lint/typecheck/test/build and commits; the `reviewer` reviews before Claude merges. Never `--dangerously-skip-permissions`.
+from the repo root (headless: `--mode accept-edits` stops at the first terminal command and `--mode auto` is not available on this account, so run without `--mode`; it then completes in the default mode — about 7–8 min for an M task), then checks scope, runs format/lint/typecheck/test/build and commits; the `reviewer` reviews before Claude merges. Never `--dangerously-skip-permissions`.
 
 **Manual alternative:**
 
