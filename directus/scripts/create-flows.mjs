@@ -42,6 +42,10 @@ const BUILD_PAYLOAD = `module.exports = function (data) {
   const form = data.$trigger.body ?? {};
   const date = String(form.date ?? "").slice(0, 10);
   if (!/^\\d{4}-\\d{2}-\\d{2}$/.test(date)) throw new Error("Choose a target date (YYYY-MM-DD).");
+  const parsed = new Date(date + "T00:00:00Z");
+  if (Number.isNaN(parsed.getTime()) || !parsed.toISOString().startsWith(date)) {
+    throw new Error("Choose a real calendar date.");
+  }
   if (!source) throw new Error("Source menu not found or not readable.");
   const meal = form.meal || source.meal;
   if (meal !== "lunch" && meal !== "dinner") throw new Error("Meal must be lunch or dinner.");
@@ -143,6 +147,8 @@ async function main() {
           "items.price",
           "items.sort",
         ],
+        // Nested o2m reads are capped by default; copy every item.
+        deep: { items: { _limit: -1 } },
       },
       permissions: "$trigger",
     },
