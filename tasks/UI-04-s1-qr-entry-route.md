@@ -17,6 +17,8 @@ Every QR scan lands here and is routed correctly.
 - Invalid code state with list of cafeterias
 - Call `api.logScan` once per visit
 
+- Add a `/` route that redirects to `/welcome` (Header back button falls back to `/` on deep links — UI-01 review)
+
 ## Do not
 - —
 
