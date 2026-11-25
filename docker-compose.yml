@@ -46,6 +46,8 @@ services:
       - ./directus/snapshots:/directus/snapshots
     environment:
       SECRET: ${SECRET:?set SECRET in .env (see .env.example)}
+      # Keep the server in UTC: date-only columns are compared as UTC keys in du-guards.
+      TZ: UTC
       DB_CLIENT: pg
       DB_HOST: postgres
       DB_PORT: 5432

@@ -1,0 +1,13 @@
+{
+  "name": "directus-extension-du-guards",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DU-Menu Scan data integrity: derived dish diet tags (BR5), publish guard (BR1), uniqueness rules (D-020)",
+  "type": "module",
+  "directus:extension": {
+    "type": "hook",
+    "path": "dist/index.js",
+    "source": "dist/index.js",
+    "host": "^11.0.0"
+  }
+}

@@ -161,6 +161,19 @@ const COLLECTIONS = [
       str("verified_by"),
       date("verified_at"),
       enumField("status", ["draft", "published"], { def: "draft", required: true }),
+      {
+        // Derived by the du-guards hook (BR5); never edited by hand.
+        field: "diet_tags",
+        type: "json",
+        meta: {
+          interface: "input-code",
+          special: ["cast-json"],
+          options: { language: "json" },
+          readonly: true,
+          note: "Derived from ingredients — do not edit",
+        },
+        schema: { default_value: "[]" },
+      },
     ],
   },
   {
