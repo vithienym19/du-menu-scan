@@ -7,9 +7,9 @@ services:
     image: postgres:16.16-alpine
     restart: unless-stopped
     environment:
-      POSTGRES_DB: ${DB_DATABASE}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE:?set DB_DATABASE in .env (see .env.example)}
+      POSTGRES_USER: ${DB_USER:?set DB_USER in .env (see .env.example)}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env (see .env.example)}
     ports:
       - "127.0.0.1:${DB_PORT_HOST:-5432}:5432"
     volumes:
@@ -26,6 +26,18 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://localhost:8055/server/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
     ports:
       - "127.0.0.1:${DIRECTUS_PORT:-8055}:8055"
     volumes:
@@ -33,15 +45,15 @@ services:
       - ./directus/extensions:/directus/extensions
       - ./directus/snapshots:/directus/snapshots
     environment:
-      SECRET: ${SECRET}
+      SECRET: ${SECRET:?set SECRET in .env (see .env.example)}
       DB_CLIENT: pg
       DB_HOST: postgres
       DB_PORT: 5432
-      DB_DATABASE: ${DB_DATABASE}
-      DB_USER: ${DB_USER}
-      DB_PASSWORD: ${DB_PASSWORD}
-      ADMIN_EMAIL: ${ADMIN_EMAIL}
-      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE:?set DB_DATABASE in .env (see .env.example)}
+      DB_USER: ${DB_USER:?set DB_USER in .env (see .env.example)}
+      DB_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD in .env (see .env.example)}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:?set ADMIN_EMAIL in .env (see .env.example)}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:?set ADMIN_PASSWORD in .env (see .env.example)}
       PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8055}
       CORS_ENABLED: "true"
       CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
@@ -51,7 +63,7 @@ services:
       CORS_MAX_AGE: 18000
       WEBSOCKETS_ENABLED: "false"
       TELEMETRY: "false"
-      EXTENSIONS_AUTO_RELOAD: "true"
+      EXTENSIONS_AUTO_RELOAD: ${EXTENSIONS_AUTO_RELOAD:-true} # dev only; staging (BE-15) sets false
 
 volumes:
   pgdata:
