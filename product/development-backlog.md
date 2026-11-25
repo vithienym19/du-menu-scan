@@ -38,7 +38,7 @@ Priority: **P0** = MVP must-have · **P1** = Phase 2 · **P2** = later. Size: S 
 | 3.3 | As a student, I see hidden ingredients flagged | ⚠ label on card; listed on S3 | P0 | S |
 | 3.4 | As a student, I open a dish detail | Matches S3 spec incl. safety footer and last verified date | P0 | M |
 | 3.5 | As a student, I switch language | All languages in `languages.json`; remembered; dish fallback per BR2 | P0 | M |
-| 3.6 | As a student, I use quick filters | Not spicy / No pork / Vegetarian; session only | P0 | S |
+| 3.6 | As a student, I use quick filters | Not spicy / No pork / Vegetarian; session only; Not verified dishes hidden while a filter is on | P0 | S |
 | 3.7 | As a student offline, I still see the last loaded menu | Marked "may be outdated" | P1 | S |
 
 ## Epic 4 — Personal warnings (S0, S4)
@@ -48,7 +48,7 @@ Priority: **P0** = MVP must-have · **P1** = Phase 2 · **P2** = later. Size: S 
 | 4.1 | As a first-time student, I choose language and optionally set my diet | S0 shown once; skip works | P1 | S |
 | 4.2 | As a student, I set what I avoid, spice tolerance, diet type | Saved in localStorage; halal/vegetarian auto-expand | P0 | M |
 | 4.3 | As a student, dishes are labelled OK / Caution / Avoid / Not verified | `warning.ts` per architecture § 4; ≥ 95% branch coverage | P0 | M |
-| 4.4 | As a student, Avoid dishes sort below OK dishes in each corner | Order OK → Caution → Avoid | P1 | S |
+| 4.4 | As a student, Avoid dishes sort below OK dishes in each corner | Order OK → Caution → Not verified → Avoid | P1 | S |
 
 ## Epic 5 — QR & analytics
 

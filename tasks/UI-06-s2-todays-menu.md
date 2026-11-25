@@ -15,7 +15,7 @@ The core screen: decide what to eat in under 10 seconds.
 - packages/shared/src/warning.ts (use, do not change)
 
 ## Do
-- Sections per corner; cards sorted OK → Caution → Avoid via `sortByStatus`
+- Sections per corner; cards sorted OK → Caution → Not verified → Avoid via `sortByStatus` (D-017)
 - Filters via `applyFilters` (session only)
 - States: loading skeleton, empty (menu not available + hours), closed, offline (last menu + “may be outdated”), error
 - ⚙ button to S4

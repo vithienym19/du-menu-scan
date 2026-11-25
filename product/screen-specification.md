@@ -39,9 +39,9 @@ Student screens S0–S4 are mobile-first (360–430 px wide). Staff screens M0�
 | Route | `/r/{cafeteriaCode}/today` |
 | Purpose | Decide what to eat in under 10 s |
 | Header | ◀, cafeteria name, date, ⚙ (→ S4) |
-| Filter chips | Not spicy · No pork · Vegetarian (toggle, session only) |
+| Filter chips | Not spicy · No pork · Vegetarian (toggle, session only; while any chip is on, Not verified dishes are hidden) |
 | Body | Sections per corner (e.g. Korean, Noodles, Special). Each **dish card**: photo (64×64), Korean name, translated name, icon row, ⚠ hidden ingredient label, price, warning status |
-| Sorting | Within a corner: OK first, then Caution, then Avoid |
+| Sorting | Within a corner: OK, Caution, Not verified, Avoid (D-017) |
 | Tap | Card → S3 |
 | States | Loading skeleton · Empty ("Menu not available yet" + opening hours) · Closed today · Offline (last loaded menu with "may be outdated") |
 
@@ -51,7 +51,7 @@ Student screens S0–S4 are mobile-first (360–430 px wide). Staff screens M0�
 |---|---|
 | Route | `/dish/{dishId}?date=` |
 | Components | Large photo · names (ko + selected language, other languages collapsible) · one-line description · spice meter 0–4 · Main ingredients · ⚠ Hidden ingredients · Allergens · Diet info (Halal ✕/✓, Vegetarian ✕/✓) · personal warning banner if Caution/Avoid (e.g. "Contains pork — you chose to avoid pork") · safety footer · button "Back to menu" |
-| States | Translation pending (shows fallback language with marker) · Not verified (grey banner, no OK) |
+| States | Translation pending (shows fallback language with marker) · Not verified (grey banner, no OK) · Avoid on unverified data (Avoid banner plus the Not verified note) · Diet info unknown (no ✓ on unverified data) |
 
 ## S4 My diet
 

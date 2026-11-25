@@ -90,6 +90,7 @@ Pure functions in `packages/shared/src/warning.ts`, used by S2, S3 and S4, cover
 | Function | Used by | Does |
 |---|---|---|
 | `evaluate(dish, prefs)` | S2 card, S3 banner | `{ status, reasons, unverified }` |
+| `sanitizePrefs(raw)` / `DEFAULT_PREFS` | S4, `lib/prefs.ts`, `evaluate` | Corrupt localStorage → strictest values and `onboarded: false`; never drops a warning |
 | `expandDietType(dietType)` / `effectiveAvoidTags(prefs)` | S4 auto-tick, `evaluate` | halal → pork, alcohol; vegetarian → pork, beef, chicken, seafood |
 | `dietCompatibility(dish)` | S3 "Diet info" | halal / vegetarian: `true` ✓, `false` ✕, `null` unknown |
 | `sortByStatus(items, prefs)` | S2 | stable order OK → Caution → Not verified → Avoid |
@@ -97,7 +98,7 @@ Pure functions in `packages/shared/src/warning.ts`, used by S2, S3 and S4, cover
 
 `evaluate` decides in this order (D-017):
 
-1. Any avoided diet tag or allergen present — hidden ingredients included → **avoid** (even if the dish is unverified: a known hit is the strongest signal).
+1. Any avoided diet tag or allergen present — hidden ingredients included, and tags implied by allergens (pork, beef, chicken, shellfish/fish → seafood) → **avoid** (even if the dish is unverified: a known hit is the strongest signal).
 2. Data unverified or incomplete (`allergensConfirmed` not true, no valid `verifiedAt`, invalid spice level, missing lists) → **unverified**.
 3. `spiceLevel > prefs.spiceTolerance` → **caution**.
 4. Otherwise → **ok**.

@@ -9,11 +9,13 @@ export type DietTag = (typeof DIET_TAGS)[number];
 /** Allergen codes follow Korea's MFDS labelling list (verified in BE-06). */
 export type AllergenCode = string;
 
-export type SpiceLevel = 0 | 1 | 2 | 3 | 4;
+export const SPICE_LEVELS = [0, 1, 2, 3, 4] as const;
+export type SpiceLevel = (typeof SPICE_LEVELS)[number];
 export type Meal = "lunch" | "dinner";
 export type MenuStatus = "published" | "empty" | "closed";
 export type WarningStatus = "ok" | "caution" | "avoid" | "unverified";
-export type DietType = "none" | "vegetarian" | "halal";
+export const DIET_TYPES = ["none", "vegetarian", "halal"] as const;
+export type DietType = (typeof DIET_TYPES)[number];
 export type ScanEntry = "qr" | "direct";
 
 export interface OpeningHours {

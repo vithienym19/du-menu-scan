@@ -14,7 +14,7 @@ Students set what they avoid once; it stays on their phone.
 - product/data-specification.md § Client-side data
 
 ## Do
-- `lib/prefs.ts`: read/write prefs in localStorage (schema from `types.ts`)
+- `lib/prefs.ts`: read/write prefs in localStorage (schema from `types.ts`). Always read through `sanitizePrefs()` and start from `DEFAULT_PREFS`; if it returns `onboarded: false` for stored data, send the student to S4 to check their diet
 - Form: language, avoid checkboxes, spice tolerance, diet type; halal/vegetarian auto-tick via `expandDietType`
 - Privacy note “Your settings stay on this phone.”
 

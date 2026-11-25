@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { fixtureDishes } from "./fixtures";
 import type { DishView, Prefs } from "./types";
 import {
+  DEFAULT_PREFS,
   NO_FILTERS,
   applyFilters,
   dietCompatibility,
@@ -9,6 +10,7 @@ import {
   evaluate,
   expandDietType,
   isVerified,
+  sanitizePrefs,
   sortByStatus,
 } from "./warning";
 
@@ -168,9 +170,9 @@ describe("BR6 — unknown data is never ok", () => {
     expect(evaluate(d, prefs({ avoidAllergens: ["egg"] })).status).toBe("avoid");
   });
 
-  it("invalid spice tolerance never produces caution or ok on its own", () => {
+  it("invalid spice tolerance is treated as 0 (strictest), never as 'any'", () => {
     const p = { ...prefs(), spiceTolerance: undefined } as unknown as Prefs;
-    expect(evaluate(dish({ spiceLevel: 4 }), p).status).toBe("ok");
+    expect(evaluate(dish({ spiceLevel: 4 }), p).status).toBe("caution");
     expect(evaluate(dish({ verifiedAt: null, spiceLevel: 4 }), p).status).toBe("unverified");
   });
 });
@@ -326,5 +328,98 @@ describe("applyFilters()", () => {
   it("any active filter hides unverified dishes (a filter is a positive claim)", () => {
     const out = ids(applyFilters(items, { ...NO_FILTERS, noPork: true }));
     expect(out).not.toContain("dish-sundubu-jjigae");
+  });
+});
+
+describe("BR6 — corrupt preferences never drop a warning (sanitizePrefs)", () => {
+  const stored = (over: Record<string, unknown>) => ({ ...prefs(), ...over }) as unknown as Prefs;
+
+  it("BR6-prefs-tolerance: missing or invalid spice tolerance falls back to 0 → caution", () => {
+    for (const bad of [undefined, Number.NaN, 9, -1, 1.5, "2"]) {
+      const r = evaluate(dish({ spiceLevel: 4 }), stored({ spiceTolerance: bad }));
+      expect(r.status).toBe("caution");
+    }
+  });
+
+  it("BR6-prefs-diettype: unknown diet type keeps every halal and vegetarian tag", () => {
+    const p = stored({ dietType: "pescatarian" });
+    expect(evaluate(dish({ dietTags: ["pork"] }), p).status).toBe("avoid");
+    expect(evaluate(dish({ dietTags: ["alcohol"] }), p).status).toBe("avoid");
+    expect(sanitizePrefs(p)).toMatchObject({ dietType: "none", onboarded: false });
+  });
+
+  it("BR6-prefs-diettype-case: 'Halal' is read as halal", () => {
+    const p = sanitizePrefs(stored({ dietType: " Halal " }));
+    expect(p.dietType).toBe("halal");
+    expect(p.onboarded).toBe(false);
+    expect(evaluate(dish({ dietTags: ["pork"] }), stored({ dietType: "Halal" })).status).toBe(
+      "avoid",
+    );
+  });
+
+  it("BR6-prefs-lists: missing avoid lists do not throw", () => {
+    const p = stored({ avoidTags: undefined, avoidAllergens: "egg" });
+    expect(() => evaluate(dish(), p)).not.toThrow();
+    expect(sanitizePrefs(p).onboarded).toBe(false);
+  });
+
+  it("drops unknown tags and non-string allergens and asks again", () => {
+    const p = sanitizePrefs(stored({ avoidTags: ["pork", "unicorn"], avoidAllergens: ["egg", 3] }));
+    expect(p).toMatchObject({ avoidTags: ["pork"], avoidAllergens: ["egg"], onboarded: false });
+  });
+
+  it("valid prefs pass through unchanged", () => {
+    const p = prefs({
+      avoidTags: ["beef"],
+      avoidAllergens: ["milk"],
+      spiceTolerance: 2,
+      dietType: "vegetarian",
+      lang: "vi",
+    });
+    expect(sanitizePrefs(p)).toEqual(p);
+  });
+
+  it("nothing stored → default prefs (not onboarded, no warnings, any spice)", () => {
+    expect(sanitizePrefs(null)).toEqual(DEFAULT_PREFS);
+    expect(sanitizePrefs(undefined)).toEqual(DEFAULT_PREFS);
+  });
+
+  it("non-object garbage → strictest prefs", () => {
+    const p = sanitizePrefs("{broken json");
+    expect(p).toMatchObject({ spiceTolerance: 0, onboarded: false, lang: "en" });
+    expect(p.avoidTags).toEqual(
+      expect.arrayContaining(["pork", "alcohol", "beef", "chicken", "seafood"]),
+    );
+  });
+
+  it("unknown language falls back to English", () => {
+    expect(sanitizePrefs(stored({ lang: "xx" })).lang).toBe("en");
+    expect(sanitizePrefs(stored({ lang: 5 })).lang).toBe("en");
+  });
+
+  it("DEFAULT_PREFS cannot be mutated", () => {
+    expect(Object.isFrozen(DEFAULT_PREFS)).toBe(true);
+  });
+});
+
+describe("allergens imply diet tags", () => {
+  it("BR5-allergen-pork: pork allergen without pork tag is still avoid / no-pork filtered / not halal", () => {
+    const d = dish({ allergens: [allergen("pork")] });
+    expect(evaluate(d, prefs({ dietType: "halal" })).reasons).toEqual([
+      { kind: "tag", code: "pork" },
+    ]);
+    expect(applyFilters([{ dish: d }], { ...NO_FILTERS, noPork: true })).toEqual([]);
+    expect(dietCompatibility(d).halal).toBe(false);
+  });
+
+  it("BR5-allergen-shrimp: shrimp allergen means seafood for vegetarians", () => {
+    const d = dish({ allergens: [allergen("shrimp")] });
+    expect(evaluate(d, prefs({ dietType: "vegetarian" })).status).toBe("avoid");
+    expect(dietCompatibility(d).vegetarian).toBe(false);
+  });
+
+  it("ignores unknown tag values in data", () => {
+    const d = broken({ dietTags: ["unicorn"] });
+    expect(evaluate(d, prefs({ dietType: "vegetarian" })).status).toBe("ok");
   });
 });

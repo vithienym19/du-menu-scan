@@ -73,7 +73,7 @@ Observed coping behaviour: picking only familiar dishes, copying the person in f
 | BR3 | Every dish detail shows "Last verified: {date}" and "Please confirm with staff if you have a severe allergy." |
 | BR4 | Allergens follow Korea's mandatory food-allergen labelling list (MFDS). Verify the list before launch. |
 | BR5 | Diet tags (pork, beef, chicken, seafood) are derived from ingredients, including hidden ones. |
-| BR6 | Personal warning: any avoided item present → Avoid; spice level above tolerance → Caution; otherwise OK. Unknown data never shows OK; it shows "Not verified". |
+| BR6 | Personal warning, in this order: any avoided item present (hidden ingredients and allergens included) → Avoid, even if the rest of the data is unverified; unverified or incomplete data → "Not verified"; spice level above tolerance → Caution; otherwise OK. Unknown data never shows OK. Corrupt saved preferences fall back to the strictest setting (D-017). |
 | BR7 | AI-generated translations must be approved by a reviewer before they are shown. |
 | BR8 | No student personal data is stored on the server. Scan analytics store only cafeteria, time and language. |
 | BR9 | If no menu is published for today, show the cafeteria's opening hours and "Menu not available yet". |
