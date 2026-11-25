@@ -6,7 +6,7 @@ import {
   type Prefs,
 } from "@du-menu-scan/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, waitFor, within } from "@testing-library/react";
+import { act, render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { MemoryRouter, useLocation } from "react-router-dom";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
@@ -14,7 +14,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { AppRoutes } from "../App";
 import { api } from "../lib/api";
 import { changeAppLanguage } from "../lib/i18n";
-import { PREFS_STORAGE_KEY } from "../lib/prefs";
+import { PREFS_STORAGE_KEY, writePrefs } from "../lib/prefs";
 
 function LocationDisplay() {
   const location = useLocation();
@@ -352,5 +352,33 @@ describe("UI-07 S3 Dish detail (safety-critical)", () => {
     await waitFor(() => {
       expect(screen.getByRole("heading", { level: 2, name: "된장찌개" })).toBeInTheDocument();
     });
+  });
+
+  it("updates warning status in place via usePrefs() when writePrefs() is called without remount", async () => {
+    setPrefs({ avoidTags: [], spiceTolerance: 4, dietType: "none", onboarded: true });
+    renderDishRoute("/dish/dish-jeyuk-bokkeum");
+
+    await waitFor(() => {
+      expect(screen.getByRole("heading", { level: 2, name: "제육볶음" })).toBeInTheDocument();
+    });
+
+    expect(screen.getByText("OK for you")).toBeInTheDocument();
+    expect(screen.queryByTestId("warning-banner-avoid")).not.toBeInTheDocument();
+
+    act(() => {
+      writePrefs({
+        ...DEFAULT_PREFS,
+        avoidTags: ["pork"],
+        dietType: "none",
+        spiceTolerance: 4,
+      });
+    });
+
+    expect(screen.queryByText("OK for you")).not.toBeInTheDocument();
+    const avoidBanner = screen.getByTestId("warning-banner-avoid");
+    expect(within(avoidBanner).getByText("Avoid")).toBeInTheDocument();
+    expect(
+      within(avoidBanner).getByText("Contains Pork — you chose to avoid it"),
+    ).toBeInTheDocument();
   });
 });

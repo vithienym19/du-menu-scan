@@ -164,7 +164,8 @@ export function SettingsPage() {
 
     const impliedTags = expandDietType(dietType);
     const visibleTags = avoidTags.filter((tag) => CHECKBOX_TAGS.has(tag));
-    const finalTags = [...new Set([...visibleTags, ...impliedTags])];
+    const preservedExtraTags = initialPrefs.avoidTags.filter((tag) => !CHECKBOX_TAGS.has(tag));
+    const finalTags = [...new Set([...preservedExtraTags, ...visibleTags, ...impliedTags])];
     const preservedExtraAllergens = initialPrefs.avoidAllergens.filter(
       (code) => !MANAGED_ALLERGEN_CODES.has(code),
     );

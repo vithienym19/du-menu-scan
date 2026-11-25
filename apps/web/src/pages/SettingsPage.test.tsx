@@ -147,6 +147,27 @@ describe("UI-08 S4 My diet and local preferences", () => {
     expect(readPrefs().avoidTags).toEqual(["pork", "beef", "chicken"]);
   });
 
+  it("preserves stored avoidTags not shown as checkboxes (e.g. alcohol) on save", async () => {
+    const user = userEvent.setup();
+    writePrefs({
+      ...DEFAULT_PREFS,
+      avoidTags: ["alcohol", "pork"],
+      avoidAllergens: ["soy"],
+      dietType: "none",
+      spiceTolerance: 4,
+      onboarded: true,
+    });
+
+    renderWithQuery(["/settings"]);
+
+    await user.click(screen.getByRole("checkbox", { name: /Beef/i }));
+    await user.click(screen.getByRole("button", { name: "Save" }));
+
+    const saved = readPrefs();
+    expect(saved.avoidTags).toEqual(expect.arrayContaining(["alcohol", "pork", "beef"]));
+    expect(saved.avoidAllergens).toEqual(expect.arrayContaining(["soy"]));
+  });
+
   it("rounds stored spiceTolerance values DOWN to radio options (0,1 -> 0; 2,3 -> 2; 4 -> 4) so saving never loosens a tolerance (D-023)", async () => {
     expect(normalizeSpiceOption(0)).toBe(0);
     expect(normalizeSpiceOption(1)).toBe(0);

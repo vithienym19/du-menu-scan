@@ -25,6 +25,8 @@ export interface DishCardProps {
   price?: number | null;
   /** Optional route to S3 dish detail (e.g. `/dish/${dish.id}?date=...`). */
   to?: string;
+  /** Optional router state passed to `<Link state={linkState}>`. */
+  linkState?: unknown;
   /** Optional prefs override (defaults to `usePrefs()` from localStorage). */
   prefs?: Prefs;
   className?: string;
@@ -35,7 +37,7 @@ const krwFormatter = new Intl.NumberFormat("ko-KR", {
   currency: "KRW",
 });
 
-export function DishCard({ dish, price, to, prefs, className = "" }: DishCardProps) {
+export function DishCard({ dish, price, to, linkState, prefs, className = "" }: DishCardProps) {
   const { t, i18n } = useTranslation();
   const [imageError, setImageError] = useState(false);
   const storedPrefs = usePrefs();
@@ -134,7 +136,7 @@ export function DishCard({ dish, price, to, prefs, className = "" }: DishCardPro
 
   if (to) {
     return (
-      <Link to={to} className="block rounded-md">
+      <Link to={to} state={linkState} className="block rounded-md">
         {content}
       </Link>
     );
