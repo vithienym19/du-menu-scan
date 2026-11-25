@@ -13,7 +13,9 @@
   "entry": {
     "invalidTitle": "找不到这个食堂",
     "invalidBody": "二维码可能已过期，请在下方选择食堂。",
-    "chooseCafeteria": "选择食堂"
+    "chooseCafeteria": "选择食堂",
+    "errorTitle": "无法加载食堂信息",
+    "errorBody": "请检查网络连接后重试。"
   },
   "welcome": {
     "title": "看看今天的菜里有什么",

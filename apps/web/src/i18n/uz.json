@@ -13,7 +13,9 @@
   "entry": {
     "invalidTitle": "Bu oshxona topilmadi",
     "invalidBody": "QR kod eskirgan bo‘lishi mumkin. Quyidan oshxonani tanlang.",
-    "chooseCafeteria": "Oshxonani tanlang"
+    "chooseCafeteria": "Oshxonani tanlang",
+    "errorTitle": "Oshxona ma'lumotlarini yuklab bo'lmadi",
+    "errorBody": "Internet aloqasini tekshirib, qayta urinib ko'ring."
   },
   "welcome": {
     "title": "Bugungi taomlar tarkibini ko‘ring",

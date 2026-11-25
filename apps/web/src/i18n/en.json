@@ -13,7 +13,9 @@
   "entry": {
     "invalidTitle": "We couldn't find this cafeteria",
     "invalidBody": "The QR code may be old. Choose your cafeteria below.",
-    "chooseCafeteria": "Choose a cafeteria"
+    "chooseCafeteria": "Choose a cafeteria",
+    "errorTitle": "Couldn't load the cafeteria",
+    "errorBody": "Please check your connection and try again."
   },
   "welcome": {
     "title": "See what's in today's menu",
