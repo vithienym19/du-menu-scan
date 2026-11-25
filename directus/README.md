@@ -104,9 +104,29 @@ Not covered: rows written straight into PostgreSQL, and deleting a dish (which c
 
 Reload after editing the extension: with `EXTENSIONS_AUTO_RELOAD=true` (default in `.env.example`) Directus reloads on file change; otherwise `docker compose restart directus`. Loaded extensions are listed in `docker compose logs directus` ("Loaded extensions: directus-extension-du-guards").
 
+## Today-menu endpoint (`du-menu-endpoint`, BE-11)
+
+`GET /du/menu/{code}/today` returns one pre-shaped `{ "data": MenuView }` (see `packages/shared/src/types.ts`); the web app calls it when `VITE_USE_MOCK=false`. No login needed.
+
+| Query | Meaning |
+|---|---|
+| `date=YYYY-MM-DD` | Optional, for testing. Default: today in `MENU_TIMEZONE` (default `Asia/Seoul`; a scan at 08:00 KST is still the previous UTC day). Invalid: 400 `INVALID_DATE`. |
+| `meal=lunch\|dinner` | Optional. Default: lunch before 15:00 local time, dinner after; if only the other meal is published it is returned. Invalid: 400 `INVALID_MEAL`. |
+
+- Unknown or inactive cafeteria code: 404 `{"errors":[{"message":"Cafeteria not found","extensions":{"code":"CAFETERIA_NOT_FOUND"}}]}` (the client maps it to `null`).
+- No published menu for that date/meal, or no published dish left: 200 with `status: "empty"`, `corners: []`. `closed` is never returned: the schema has no closed flag (spec gap).
+- Only published menus and dishes and approved translations are returned. The extension reads the database with knex (Directus permissions do not apply), so every query filters explicitly on `is_active`, `status=published` and `status=approved`; the mapper filters again (`dist/map.js`, unit tests in `directus/test/today-menu.test.mjs`).
+- Names are `{ ko, ...approved languages }`; the client falls back en -> ko (BR2). `dietTags` = union of ingredient tags and the stored derived tags. `verifiedAt` and `allergensConfirmed` pass through unchanged (never upgraded). `photoUrl` is `null` until the public role may read `directus_files`.
+- `Cache-Control: public, max-age=60`. Size: about 1.5 KB for a 1-dish menu and about 29 KB for 4 corners x 6 dishes with 5 ingredients and 3 allergens each (4 languages on ingredients; limit 100 KB).
+
+```bash
+curl -s localhost:8055/du/menu/main-hall/today
+curl -s "localhost:8055/du/menu/main-hall/today?date=2026-11-25&meal=dinner"
+```
+
 ## Folders
 
-- `directus/extensions/` mounted into Directus (custom endpoints, hooks); `du-guards/` is the integrity hook above.
+- `directus/extensions/` mounted into Directus (custom endpoints, hooks); `du-guards/` is the integrity hook above, `du-menu-endpoint/` the today-menu endpoint (below).
 - `directus/snapshots/schema.yaml` schema snapshot (collections, fields, relations).
 - `directus/scripts/create-permissions.mjs` roles, policies and permissions (idempotent).
 - `directus/seed/*.csv` reference data; `directus/scripts/import-seed.mjs` imports it (`seed-lib.mjs` holds the CSV parser).

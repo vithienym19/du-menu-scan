@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "test": "npm run check:i18n && npm run test:backend && npm run test --workspaces --if-present",
-    "test:backend": "vitest run directus/seed directus/scripts",
+    "test:backend": "vitest run directus",
     "check:i18n": "node scripts/check-i18n.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
