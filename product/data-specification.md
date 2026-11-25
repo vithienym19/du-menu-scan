@@ -2,6 +2,8 @@
 
 Backend: Directus collections on PostgreSQL. Field names are snake_case. `id` is UUID unless noted.
 
+Conventions (D-019): junction and child collections without an `id` in the tables below (`dish_translation`, `dish_ingredient`, `dish_allergen`, `ingredient_diet_tag`, `menu_item`) get an auto-increment integer `id`. One-to-many alias fields exist for the API in §3 of the architecture: `cafeteria.corners`, `dish.translations`, `dish.ingredients`, `dish.allergens`, `ingredient.diet_tags`, `daily_menu.items`. Schema snapshot lives in `directus/snapshots/schema.yaml`.
+
 ## Entity overview
 
 ```
@@ -21,7 +23,8 @@ scan_event n──1 cafeteria
 |---|---|---|
 | id | uuid | |
 | code | string, unique | Used in QR URL `/r/{code}` (e.g. `main-hall`) |
-| name_ko, name_en | string | |
+| name_ko | string | Source |
+| names | json | Other languages, e.g. `{ "en": "Main Hall" }` (D-012, D-019) |
 | opening_hours | json | `{ "lunch": "11:30-13:30", "dinner": "17:00-18:30" }` |
 | is_active | boolean | |
 
@@ -30,7 +33,8 @@ scan_event n──1 cafeteria
 |---|---|---|
 | id | uuid | |
 | cafeteria_id | fk | |
-| name_ko, name_en | string | e.g. 한식 / Korean |
+| name_ko | string | e.g. 한식 |
+| names | json | e.g. `{ "en": "Korean", "vi": "Món Hàn" }` (D-019) |
 | sort | int | Display order |
 
 ### dish (the dish dictionary)

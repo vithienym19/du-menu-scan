@@ -13,13 +13,13 @@ Implement every collection, field and relation in the data specification.
 ## Do
 - Collections: cafeteria, corner, dish, dish_translation, ingredient, dish_ingredient, allergen, dish_allergen, diet_tag, ingredient_diet_tag, daily_menu, menu_item, scan_event
 - Enums and defaults exactly as specified
-- Export `directus/snapshot.yaml` (`directus schema snapshot`)
+- Export `directus/snapshots/schema.yaml` (`directus schema snapshot`), conventions per data-specification.md (D-019)
 
 ## Do not
 - Do not add fields that are not in the spec; propose spec changes instead
 
 ## Acceptance criteria
-- [ ] `directus schema apply directus/snapshot.yaml` on an empty database recreates the schema
+- [ ] `directus schema apply directus/snapshots/schema.yaml` on an empty database recreates the schema
 - [ ] Names match `data-specification.md` 1:1
 
 ## Report back (in the pull request description)

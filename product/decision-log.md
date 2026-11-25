@@ -4,6 +4,7 @@ Newest first. Each entry: decision, why, alternatives considered. Change a decis
 
 | # | Date | Decision | Why | Alternatives rejected |
 |---|---|---|---|---|
+| D-019 | 2026-11-25 | Cafeteria and corner names use `name_ko` + `names` json (like ingredient/allergen); junctions get integer `id`; O2M alias fields as in the architecture API; snapshot in `directus/snapshots/schema.yaml` | Applies D-012 consistently (no per-language columns); Directus needs a primary key per collection; snapshot folder is already mounted by BE-02 | `name_en` columns; composite primary keys |
 | D-018 | 2026-11-25 | Claude (lead engineer + reviewer) may review and merge task branches into `main` and push, without asking the owner each time | Owner's request; keeps waves moving | Owner merges every PR |
 | D-017 | 2026-11-25 | Warning precedence: known avoided item → Avoid (even on unverified data) → Not verified → Caution → OK. Active filters hide unverified dishes. S2 order OK → Caution → Not verified → Avoid | A halal student seeing "Not verified" on a dish we *know* contains pork might gamble; "Avoid" is safer and still never OK. A filter is a positive claim, so unverified dishes cannot pass it | Unverified always first (spec sketch); showing unverified dishes under filters |
 | D-016 | 2026-11-25 | Keep the repo at `~/Antigravity/du-menu-scan`, outside `~/Documents` | macOS privacy protection (and possible iCloud sync of Documents) blocked agent access; `node_modules` should not sync to iCloud | Granting Full Disk Access to every tool |
