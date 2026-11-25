@@ -15,6 +15,9 @@ Lock down what the public can see and what staff can change.
 - Public: read published cafeteria/menu/dish data and approved translations only; create scan_event only
 - Roles: Staff (menus, dishes), Reviewer (translations), Admin (all)
 
+- Delete on `daily_menu`, `dish`, `ingredient` and `allergen` is admin-only (deleting a menu cascades its items)
+- `scan_event.created_at`: add DB default `CURRENT_TIMESTAMP` so rows are never undated
+
 ## Do not
 - Public must not read draft dishes, draft translations or scan_event
 
