@@ -1,0 +1,58 @@
+# Local backend for DU-Menu Scan: PostgreSQL + Directus.
+# Start: docker compose up -d   (copy .env.example to .env first; see directus/README.md)
+name: du-menu-scan
+
+services:
+  postgres:
+    image: postgres:16.16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${DB_DATABASE}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:${DB_PORT_HOST:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  directus:
+    image: directus/directus:11.17.4
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${DIRECTUS_PORT:-8055}:8055"
+    volumes:
+      - directus_uploads:/directus/uploads
+      - ./directus/extensions:/directus/extensions
+      - ./directus/snapshots:/directus/snapshots
+    environment:
+      SECRET: ${SECRET}
+      DB_CLIENT: pg
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD}
+      PUBLIC_URL: ${PUBLIC_URL:-http://localhost:8055}
+      CORS_ENABLED: "true"
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
+      CORS_METHODS: GET,POST,PATCH,DELETE,OPTIONS
+      CORS_ALLOWED_HEADERS: Content-Type,Authorization
+      CORS_CREDENTIALS: "true"
+      CORS_MAX_AGE: 18000
+      WEBSOCKETS_ENABLED: "false"
+      TELEMETRY: "false"
+      EXTENSIONS_AUTO_RELOAD: "true"
+
+volumes:
+  pgdata:
+  directus_uploads:
