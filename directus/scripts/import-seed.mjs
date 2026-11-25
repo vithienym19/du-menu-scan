@@ -8,7 +8,9 @@
 
 import { loadAllergens, loadDietTags, loadIngredients } from "./seed-lib.mjs";
 
-const BASE = (process.env.DIRECTUS_URL ?? `http://localhost:${process.env.DIRECTUS_PORT ?? 8055}`).replace(/\/$/, "");
+const BASE = (
+  process.env.DIRECTUS_URL ?? `http://localhost:${process.env.DIRECTUS_PORT ?? 8055}`
+).replace(/\/$/, "");
 let token = process.env.DIRECTUS_TOKEN;
 
 async function api(method, path, body) {
