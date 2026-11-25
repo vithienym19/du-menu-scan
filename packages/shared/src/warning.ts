@@ -117,7 +117,8 @@ export function sanitizePrefs(raw: unknown): Prefs {
 
 /**
  * Allergen codes that prove a diet tag even if the tag is missing in the data
- * (MFDS list: 돼지고기, 쇠고기, 닭고기, shellfish and fish). Keep in sync with BE-06 codes.
+ * (MFDS list: 돼지고기, 쇠고기, 닭고기, 새우, 게, 조개류 incl. 굴·전복·홍합, 오징어, 고등어).
+ * Codes must exist in directus/seed/allergens.csv (enforced by directus/seed/seed.test.ts).
  */
 const ALLERGEN_IMPLIES_TAG: Readonly<Record<string, DietTag>> = {
   pork: "pork",
@@ -128,9 +129,6 @@ const ALLERGEN_IMPLIES_TAG: Readonly<Record<string, DietTag>> = {
   shellfish: "seafood",
   squid: "seafood",
   mackerel: "seafood",
-  oyster: "seafood",
-  abalone: "seafood",
-  mussel: "seafood",
 };
 
 /** Diet tags a dish is known to carry: stored tags plus tags implied by its allergens. */

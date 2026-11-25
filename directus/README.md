@@ -53,7 +53,7 @@ Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). De
 
 ## Roles and permissions
 
-Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> seed (BE-06).
+Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> `backend:seed`.
 
 ```bash
 npm run backend:permissions   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PORT from .env
@@ -80,11 +80,23 @@ Notes:
 
 Known gap: the Public policy has no access to `directus_files`, so dish photos are not yet served to students (a filter cannot express "file used by a published dish" without a reverse relation on `directus_files`). To be decided with the PM.
 
+## Seed data (reference data)
+
+`directus/seed/` holds `allergens.csv` (MFDS 19-item list, source and date in its header: verify before launch), `diet_tags.csv` and `ingredients.csv` (vocabulary draft; diet-tag mapping to be confirmed by the Korean teammate, BE-07). Import into a running Directus after the schema is applied:
+
+```bash
+npm run backend:seed   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PORT from .env
+# or with a static admin token: DIRECTUS_TOKEN=... npm run backend:seed
+```
+
+The import is idempotent: allergens and diet tags are matched by `code`, ingredients by `name_ko`; changed rows are updated, diet-tag pairs are added or removed to match the CSV, nothing else is deleted. It prints created/updated/unchanged/deleted counts per collection. Edit the CSV and run it again to roll out changes. `npm test` validates the CSV files (`directus/seed/seed.test.ts`).
+
 ## Folders
 
 - `directus/extensions/` mounted into Directus (custom endpoints, hooks).
 - `directus/snapshots/schema.yaml` schema snapshot (collections, fields, relations).
 - `directus/scripts/create-permissions.mjs` roles, policies and permissions (idempotent).
+- `directus/seed/*.csv` reference data; `directus/scripts/import-seed.mjs` imports it (`seed-lib.mjs` holds the CSV parser).
 - `directus/scripts/create-schema.mjs` builds the schema on an empty Directus through the REST API; the snapshot is exported from the result.
 
 ## Troubleshooting
