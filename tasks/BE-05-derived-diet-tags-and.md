@@ -15,6 +15,8 @@ Make the safety rules enforced by the backend, not by people remembering them.
 - Compute dish diet tags from its ingredients (incl. hidden) — Directus hook extension or database view
 - Block `status=published` unless BR1 passes (ko name, approved en translation, spice level, allergens_confirmed)
 
+- Hook validation (D-020): reject a second `daily_menu` for the same cafeteria + date + meal, a second `dish_translation` for the same dish + lang, and duplicate junction pairs (`dish_ingredient`, `dish_allergen`, `ingredient_diet_tag`), with a clear 400 message
+
 ## Do not
 - Diet tags are never edited by hand
 

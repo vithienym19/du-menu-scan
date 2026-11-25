@@ -75,9 +75,11 @@ Deciding factor: **allergen data safety**. Each ingredient is stored once and di
 | Use | Request |
 |---|---|
 | Cafeteria by code | `GET /items/cafeteria?filter[code][_eq]={code}` |
-| Today's menu | `GET /items/daily_menu?filter[cafeteria_id][_eq]={id}&filter[date][_eq]={today}&filter[status][_eq]=published&fields=*,items.*,items.dish.*,items.dish.translations.*,items.dish.ingredients.*,items.dish.allergens.*` |
-| Dish detail | `GET /items/dish/{id}?fields=*,translations.*,ingredients.ingredient.*,allergens.*` |
+| Today's menu | `GET /items/daily_menu?filter[cafeteria_id][_eq]={id}&filter[date][_eq]={today}&filter[status][_eq]=published&fields=*,items.*,items.dish_id.*,items.dish_id.translations.*,items.dish_id.ingredients.ingredient_id.*,items.dish_id.ingredients.ingredient_id.diet_tags.*,items.dish_id.allergens.allergen_code.*` |
+| Dish detail | `GET /items/dish/{id}?fields=*,translations.*,ingredients.*,ingredients.ingredient_id.*,ingredients.ingredient_id.diet_tags.*,allergens.allergen_code.*` |
 | Log scan | `POST /items/scan_event` (public create, write-only) |
+
+Relation fields keep the spec names (`dish_id`, `ingredient_id`, `allergen_code` …), so nested fields use those names; a wrong name is silently ignored by Directus, so BE-11 tests must assert nested data is present (D-020).
 
 The public role can **read** only published items and approved translations, and **create** only `scan_event`. Staff roles write through the Directus admin UI.
 
