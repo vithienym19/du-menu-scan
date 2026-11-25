@@ -15,7 +15,7 @@ export function AppRoutes() {
       <Route path="/welcome" element={<WelcomePage />} />
       <Route path="/r/:code" element={<QrEntryPage />} />
       <Route path="/r/:code/today" element={<TodayMenuPage />} />
-      <Route path="/dish/:id" element={<DishDetailPage />} />
+      <Route path="/dish/:dishId" element={<DishDetailPage />} />
       <Route path="/settings" element={<SettingsPage />} />
       {import.meta.env.DEV && <Route path="/dev/components" element={<DevComponentsPage />} />}
       <Route path="*" element={<NotFoundPage />} />
