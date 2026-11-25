@@ -140,6 +140,8 @@ Keys: `du-menu-scan:prefs` (Prefs below, read through `sanitizePrefs`, written o
 }
 ```
 
+`spiceTolerance` is 0–4 (a dish with `spiceLevel > spiceTolerance` gets Caution). S4 writes only 0, 2 or 4 (D-023).
+
 Diet type expands automatically: `halal` → avoid `pork`, `alcohol`; `vegetarian` → avoid `pork`, `beef`, `chicken`, `seafood`.
 
 ## Derived values

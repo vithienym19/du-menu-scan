@@ -101,6 +101,7 @@ describe("toDishView", () => {
     expect(v.verifiedAt).toBeNull();
     expect(v.allergensConfirmed).toBe(false);
     expect(v.description).toBeUndefined();
+    expect(v.spiceLevel).toBe(4);
   });
 });
 

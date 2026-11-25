@@ -104,7 +104,8 @@ export function toDishView(dish, rel) {
     id: dish.id,
     name,
     photoUrl: null, // public role has no access to directus_files yet (see directus/README.md)
-    spiceLevel: Number.isInteger(dish.spice_level) ? dish.spice_level : 0,
+    // Unknown spice must fail towards the strict side (BR6): treat it as the hottest level.
+    spiceLevel: Number.isInteger(dish.spice_level) ? dish.spice_level : 4,
     ingredients,
     allergens,
     dietTags: DIET_TAGS.filter((t) => tags.has(t)),

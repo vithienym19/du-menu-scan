@@ -34,7 +34,6 @@ function now(zone) {
   return { date: `${parts.year}-${parts.month}-${parts.day}`, hour: Number(parts.hour) };
 }
 
-const none = () => Promise.resolve([]);
 
 export default {
   id: "du",
@@ -109,7 +108,7 @@ export default {
                   .whereIn("dish_id", ids)
                   .andWhere({ status: "approved" })
                   .select("dish_id", "lang", "name", "description", "status")
-              : await none(),
+              : [],
             ingredients: ingredientIds.length
               ? await db("ingredient").whereIn("id", ingredientIds).select("id", "name_ko", "names")
               : [],

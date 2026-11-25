@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | M | — | P1 | 3.2 | BE-05 | ☐ Todo |
+| Claude (lead engineer) | M | — | P1 | 3.2 | BE-05 | ✅ 2026-11-25 |
 
 ## Goal
 One small, pre-shaped response for S2 to keep first load fast after a QR scan.
