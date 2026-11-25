@@ -62,3 +62,6 @@ Thumbs.db
 # Scratch
 .write_test
 *.tmp
+
+# Directus extension builds are committed (no build step)
+!directus/extensions/*/dist/
