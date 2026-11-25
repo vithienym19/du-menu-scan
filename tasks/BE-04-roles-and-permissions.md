@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 0.3 | BE-03 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 0.3 | BE-03 | ✅ Done 2026-11-25 |
 
 ## Goal
 Lock down what the public can see and what staff can change.
@@ -22,8 +22,8 @@ Lock down what the public can see and what staff can change.
 - Public must not read draft dishes, draft translations or scan_event
 
 ## Acceptance criteria
-- [ ] Anonymous API call for a draft dish or draft translation returns nothing
-- [ ] Anonymous POST to any collection except scan_event is rejected
+- [x] Anonymous API call for a draft dish or draft translation returns nothing
+- [x] Anonymous POST to any collection except scan_event is rejected
 
 ## Report back (in the pull request description)
 - Changed files and why

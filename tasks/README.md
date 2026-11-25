@@ -42,9 +42,9 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | 3 | [UI-03](UI-03-filter-chips-and-language.md) | Filter chips and language switch | Antigravity | S | hydrogen | P0 | UI-01 | ☐ |
 | 3 | [UI-04](UI-04-s1-qr-entry-route.md) | S1 QR entry route | Antigravity | S | hydrogen | P0 | UI-01, BE-08 | ☐ |
 | 3 | [UI-05](UI-05-dish-card.md) | Dish card | Antigravity | S | hydrogen | P0 | UI-02 | ☐ |
-| 4 | [BE-04](BE-04-roles-and-permissions.md) | Roles and permissions | Claude | S | — | P0 | BE-03 | ☐ |
-| 4 | [BE-05](BE-05-derived-diet-tags-and.md) | Derived diet tags and publish guard | Claude | M | — | P0 | BE-03 | ☐ |
-| 4 | [BE-06](BE-06-reference-data-seed.md) | Reference data seed | Claude | S | — | P0 | BE-03 | ☐ |
+| 4 | [BE-04](BE-04-roles-and-permissions.md) | Roles and permissions | Claude | S | — | P0 | BE-03 | ✅ 2026-11-25 |
+| 4 | [BE-05](BE-05-derived-diet-tags-and.md) | Derived diet tags and publish guard | Claude | M | — | P0 | BE-03 | ✅ 2026-11-25 |
+| 4 | [BE-06](BE-06-reference-data-seed.md) | Reference data seed | Claude | S | — | P0 | BE-03 | ✅ 2026-11-25 |
 | 4 | [UI-06](UI-06-s2-todays-menu.md) | S2 Today's menu | Antigravity | L | neon | P0 | UI-03, UI-04, UI-05, BE-09 | ☐ |
 | 4 | [UI-07](UI-07-s3-dish-detail-safety-critical.md) | S3 Dish detail (safety-critical) | Antigravity | L | neon | P0 | UI-02, BE-09 | ☐ |
 | 4 | [UI-08](UI-08-s4-my-diet-and.md) | S4 My diet and local preferences | Antigravity | M | argon | P0 | UI-03, BE-09 | ☐ |
@@ -58,6 +58,7 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | 6 | [BE-13](BE-13-qr-code-generator.md) | QR code generator | Claude | S | — | P0 | BE-03 | ☐ |
 | 6 | [BE-15](BE-15-staging-deployment.md) | Staging deployment | Claude | M | — | P0 | BE-04, BE-14 | ☐ |
 | 6 | [BE-16](BE-16-translation-review-workflow.md) | Translation review workflow | Claude | S | — | P1 | BE-04 | ☐ |
+| 6 | [BE-19](BE-19-public-dish-photos.md) | Public dish photos | Claude | S | — | P0 | BE-04 | ☐ |
 | 6 | [BE-17](BE-17-copy-previous-menu.md) | Copy previous menu | Claude | S | — | P1 | BE-03 | ☐ |
 
 ## Dispatching to Antigravity

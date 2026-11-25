@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 1.2, BR4 | BE-03 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 1.2, BR4 | BE-03 | ✅ Done 2026-11-25 |
 
 ## Goal
 Seed allergens, diet tags and the ingredient vocabulary.
@@ -21,8 +21,8 @@ Seed allergens, diet tags and the ingredient vocabulary.
 - Do not invent allergens; use the official list only
 
 ## Acceptance criteria
-- [ ] Import runs twice without duplicates
-- [ ] Allergen source and date recorded
+- [x] Import runs twice without duplicates
+- [x] Allergen source and date recorded
 
 ## Report back (in the pull request description)
 - Changed files and why

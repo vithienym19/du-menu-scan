@@ -14,7 +14,7 @@
 
 | Branch | Contains | On GitHub? | Next action |
 |---|---|---|---|
-| `main` | Specs, DS-01, BE-01/02/03/08/09/10/14/18, UI-01 | ✅ pushed | Start new task branches from here |
+| `main` | Specs, DS-01, BE-01/02/03/04/05/06/08/09/10/14/18, UI-01 | ✅ pushed | Start new task branches from here |
 | `feat/wave-1-foundation`, `feat/wave-2-languages-data`, `feat/be-09-…`, `feat/be-02-…` | Merged into `main` on 2026-11-25 (owner delegated review + merge to Claude) | ✅ | Can be deleted |
 | `claude/doc-project-progress-*` | Leftovers from Claude sessions, already in `main` | local only | Safe to delete |
 
@@ -39,6 +39,8 @@
 
 | 2026-11-25 | **UI-01** app shell, routing, i18n, language sheet — built by Antigravity (`gemini-4-argon-medium` via `agy` CLI), 2 review rounds, APPROVE; checked at 375 px in the browser |
 
+| 2026-11-25 | **BE-04** roles/permissions, **BE-05** `du-guards` hooks (derived tags, BR1 publish guard, uniqueness, published menus only hold published dishes), **BE-06** MFDS allergens + 72 ingredients with conservative tags — all reviewed (APPROVE), merged, and smoke-tested together on a live stack |
+
 Checks on the latest commit: format ✅ lint ✅ typecheck ✅ tests 77/77 ✅ (`main`) i18n 87 keys × 7 languages ✅
 
 ## In progress
@@ -49,8 +51,8 @@ Nothing half-done. Working tree clean after the handoff-docs commit.
 
 | Who | Task | Notes |
 |---|---|---|
-| Claude / lead engineer | **BE-04**, **BE-05**, **BE-06** | Built on branches `feat/be-04-…`, `feat/be-05-…`, `feat/be-06-…` (local worktrees); in review |
-| Antigravity (`hydrogen`, via `agy`) | UI-02, UI-03, UI-04, UI-05 | Unblocked (UI-01 merged) |
+| Claude / lead engineer | **BE-19** public dish photos, **BE-11** today-menu endpoint, **BE-13** QR generator, **BE-17** copy menu | BE-07 needs the Korean teammate |
+| Antigravity (`hydrogen`, via `agy`) | UI-02, UI-03, UI-04 built, in review; UI-05 after UI-02 | |
 | Antigravity | UI-06 (`neon`), UI-07 (`neon`), UI-08 (`argon`) | BE-09 done; prompts ready in `tasks/DISPATCH.md`; wait for UI-02..05 |
 
 Note: port 8055 on the owner's Mac is used by another project's Directus (`translate-realtime-ai-directus-1`). Set `DIRECTUS_PORT=8056` and `PUBLIC_URL=http://localhost:8056` in `.env`, or stop that container.

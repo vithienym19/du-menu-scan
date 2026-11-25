@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | M | — | P0 | 1.3, BR1, BR5 | BE-03 | ☐ Todo |
+| Claude (lead engineer) | M | — | P0 | 1.3, BR1, BR5 | BE-03 | ✅ Done 2026-11-25 |
 
 ## Goal
 Make the safety rules enforced by the backend, not by people remembering them.
@@ -21,8 +21,8 @@ Make the safety rules enforced by the backend, not by people remembering them.
 - Diet tags are never edited by hand
 
 ## Acceptance criteria
-- [ ] Adding a pork ingredient to a dish makes `pork` appear in its tags without manual edits
-- [ ] Publishing an incomplete dish fails with a clear message
+- [x] Adding a pork ingredient to a dish makes `pork` appear in its tags without manual edits
+- [x] Publishing an incomplete dish fails with a clear message
 
 ## Report back (in the pull request description)
 - Changed files and why
