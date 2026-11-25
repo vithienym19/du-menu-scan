@@ -1,12 +1,19 @@
-import { LANGUAGES } from "@du-menu-scan/shared";
+import { createApi, DEFAULT_PREFS, LANGUAGES } from "@du-menu-scan/shared";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen, waitFor, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { MemoryRouter } from "react-router-dom";
-import { beforeEach, describe, expect, it } from "vitest";
+import { MemoryRouter, useLocation } from "react-router-dom";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
 import { AppRoutes } from "./App";
+import { api } from "./lib/api";
 import { changeAppLanguage, detectInitialLanguage, LANGUAGE_STORAGE_KEY } from "./lib/i18n";
+import { PREFS_STORAGE_KEY } from "./lib/prefs";
+
+function LocationDisplay() {
+  const location = useLocation();
+  return <output data-testid="location">{`${location.pathname}${location.search}`}</output>;
+}
 
 function renderAt(route: string) {
   const queryClient = new QueryClient({
@@ -16,6 +23,7 @@ function renderAt(route: string) {
     <QueryClientProvider client={queryClient}>
       <MemoryRouter initialEntries={[route]}>
         <AppRoutes />
+        <LocationDisplay />
       </MemoryRouter>
     </QueryClientProvider>,
   );
@@ -143,5 +151,86 @@ describe("UI-01 App shell, theme, routing and language picker", () => {
     await user.click(screen.getByRole("button", { name: "Close" }));
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     expect(langButton).toHaveFocus();
+  });
+});
+
+describe("RootRoute", () => {
+  const mockApi = createApi({ baseUrl: "", useMock: true });
+
+  beforeEach(async () => {
+    window.localStorage.clear();
+    await changeAppLanguage("en");
+    vi.spyOn(api, "listCafeterias").mockImplementation(() => mockApi.listCafeterias());
+  });
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
+  it("redirects non-onboarded visitors on / to /welcome", () => {
+    renderAt("/");
+
+    expect(screen.getByTestId("location")).toHaveTextContent("/welcome");
+    expect(screen.getByText("See what's in today's menu")).toBeInTheDocument();
+  });
+
+  it("renders cafeteria chooser on / for onboarded visitors without invalid-code wording", async () => {
+    window.localStorage.setItem(
+      PREFS_STORAGE_KEY,
+      JSON.stringify({ ...DEFAULT_PREFS, onboarded: true }),
+    );
+
+    renderAt("/");
+
+    expect(screen.getByTestId("location")).toHaveTextContent("/");
+    expect(
+      screen.getByRole("heading", { level: 2, name: "Choose a cafeteria" }),
+    ).toBeInTheDocument();
+    expect(screen.queryByText("We couldn't find this cafeteria")).not.toBeInTheDocument();
+    expect(
+      screen.queryByText("The QR code may be old. Choose your cafeteria below."),
+    ).not.toBeInTheDocument();
+
+    expect(within(screen.getByRole("main")).getByRole("status")).toHaveTextContent("Loading…");
+
+    expect(await screen.findByRole("link", { name: "Student Union Cafeteria" })).toHaveAttribute(
+      "href",
+      "/r/main-hall",
+    );
+    expect(screen.getByRole("link", { name: "Dormitory Cafeteria" })).toHaveAttribute(
+      "href",
+      "/r/dorm",
+    );
+    expect(screen.getByRole("link", { name: "Engineering Cafeteria" })).toHaveAttribute(
+      "href",
+      "/r/engineering",
+    );
+  });
+
+  it("shows error state with retry on / when listCafeterias fails and recovers on retry", async () => {
+    const user = userEvent.setup();
+    window.localStorage.setItem(
+      PREFS_STORAGE_KEY,
+      JSON.stringify({ ...DEFAULT_PREFS, onboarded: true }),
+    );
+    vi.spyOn(api, "listCafeterias")
+      .mockRejectedValueOnce(new Error("Network error"))
+      .mockImplementationOnce(() => mockApi.listCafeterias());
+
+    renderAt("/");
+
+    await waitFor(() => {
+      expect(screen.getByRole("alert")).toHaveTextContent("Couldn't load the cafeteria");
+      expect(screen.getByRole("alert")).toHaveTextContent(
+        "Please check your connection and try again.",
+      );
+    });
+
+    await user.click(screen.getByRole("button", { name: "Try again" }));
+
+    expect(await screen.findByRole("link", { name: "Student Union Cafeteria" })).toHaveAttribute(
+      "href",
+      "/r/main-hall",
+    );
   });
 });

@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 
 import { readPrefsWithMeta } from "./lib/prefs";
+import { CafeteriaChooserPage } from "./pages/CafeteriaChooserPage";
 import { DevComponentsPage } from "./pages/DevComponentsPage";
 import { DishDetailPage } from "./pages/DishDetailPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
@@ -14,7 +15,7 @@ function RootRoute() {
   if (!hasStoredData || !prefs.onboarded) {
     return <Navigate to="/welcome" replace />;
   }
-  return <NotFoundPage />;
+  return <CafeteriaChooserPage />;
 }
 
 export function AppRoutes() {

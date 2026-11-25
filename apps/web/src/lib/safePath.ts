@@ -1,11 +1,24 @@
 const VALID_TODAY_PATH_RE = /^\/r\/[a-z0-9-]+\/today$/;
+const SCHEME_PREFIX_RE = /^[a-zA-Z][a-zA-Z\d+\-.]*:/;
+const DUMMY_ORIGIN = "https://du-menu.local";
 
 /**
- * Checks that a redirect target is a relative in-app path (single leading `/`,
- * never protocol-relative `//`).
+ * Checks that a redirect target is a relative, same-origin in-app path:
+ * single leading `/`, no `//` prefix, no backslashes, and no URL scheme.
  */
 export function isSafeInternalPath(path: string | null): path is string {
-  return Boolean(path && path.startsWith("/") && !path.startsWith("//"));
+  if (!path || !path.startsWith("/") || path.startsWith("//") || path.includes("\\")) {
+    return false;
+  }
+  if (SCHEME_PREFIX_RE.test(path)) {
+    return false;
+  }
+  try {
+    const resolved = new URL(path, DUMMY_ORIGIN);
+    return resolved.origin === DUMMY_ORIGIN;
+  } catch {
+    return false;
+  }
 }
 
 /**
