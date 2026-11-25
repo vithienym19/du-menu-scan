@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | S | — | P0 | 5.1 | BE-03 | ☐ Todo |
+| Claude (lead engineer) | S | — | P0 | 5.1 | BE-03 | ✅ 2026-11-25 |
 
 ## Goal
 Printable QR codes that point to the team domain.

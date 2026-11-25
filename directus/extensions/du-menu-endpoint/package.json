@@ -1,0 +1,13 @@
+{
+  "name": "directus-extension-du-menu-endpoint",
+  "version": "1.0.0",
+  "private": true,
+  "description": "DU-Menu Scan public read endpoint: GET /du/menu/{code}/today returns one pre-shaped MenuView (BE-11)",
+  "type": "module",
+  "directus:extension": {
+    "type": "endpoint",
+    "path": "dist/index.js",
+    "source": "dist/index.js",
+    "host": "^11.0.0"
+  }
+}

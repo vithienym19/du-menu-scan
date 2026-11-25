@@ -65,7 +65,9 @@
     "vegetarian": "Vegetarian",
     "suitable": "Suitable",
     "notSuitable": "Not suitable",
+    "dietUnknown": "Unknown",
     "lastVerified": "Last verified {{date}}",
+    "neverVerified": "Not verified yet",
     "confirmWithStaff": "Please confirm with staff if you have a severe allergy.",
     "backToMenu": "Back to menu",
     "otherLanguages": "Other languages"
@@ -101,6 +103,7 @@
     "dietNone": "No restriction",
     "dietVegetarian": "Vegetarian",
     "dietHalal": "Halal",
+    "includedInDiet": "Included in your diet type",
     "privacyNote": "Your settings stay on this phone.",
     "saved": "Saved"
   },

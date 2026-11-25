@@ -65,7 +65,9 @@
     "vegetarian": "素食",
     "suitable": "适合",
     "notSuitable": "不适合",
+    "dietUnknown": "未知",
     "lastVerified": "最近确认 {{date}}",
+    "neverVerified": "尚未核实",
     "confirmWithStaff": "如有严重过敏，请向工作人员确认。",
     "backToMenu": "返回菜单",
     "otherLanguages": "其他语言"
@@ -101,6 +103,7 @@
     "dietNone": "没有限制",
     "dietVegetarian": "素食",
     "dietHalal": "清真",
+    "includedInDiet": "已包含在你的饮食类型中",
     "privacyNote": "设置只保存在这部手机上。",
     "saved": "已保存"
   },

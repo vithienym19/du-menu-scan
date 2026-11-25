@@ -65,7 +65,9 @@
     "vegetarian": "Vegetarian",
     "suitable": "Mos",
     "notSuitable": "Mos emas",
+    "dietUnknown": "Noma’lum",
     "lastVerified": "Oxirgi tekshiruv: {{date}}",
+    "neverVerified": "Hali tekshirilmagan",
     "confirmWithStaff": "Kuchli allergiyangiz bo‘lsa, xodimdan albatta so‘rang.",
     "backToMenu": "Menyuga qaytish",
     "otherLanguages": "Boshqa tillar"
@@ -101,6 +103,7 @@
     "dietNone": "Cheklov yo‘q",
     "dietVegetarian": "Vegetarian",
     "dietHalal": "Halol",
+    "includedInDiet": "Ovqatlanish turingizga kiritilgan",
     "privacyNote": "Sozlamalar faqat shu telefonda saqlanadi.",
     "saved": "Saqlandi"
   },

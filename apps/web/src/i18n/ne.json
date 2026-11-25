@@ -65,7 +65,9 @@
     "vegetarian": "शाकाहारी",
     "suitable": "उपयुक्त",
     "notSuitable": "उपयुक्त छैन",
+    "dietUnknown": "अज्ञात",
     "lastVerified": "अन्तिम पटक जाँचिएको: {{date}}",
+    "neverVerified": "अझै प्रमाणित गरिएको छैन",
     "confirmWithStaff": "गम्भीर एलर्जी छ भने कर्मचारीसँग अवश्य सोध्नुहोस्।",
     "backToMenu": "मेनुमा फर्कनुहोस्",
     "otherLanguages": "अन्य भाषा"
@@ -101,6 +103,7 @@
     "dietNone": "कुनै प्रतिबन्ध छैन",
     "dietVegetarian": "शाकाहारी",
     "dietHalal": "हलाल",
+    "includedInDiet": "तपाईंको आहार प्रकारमा समावेश छ",
     "privacyNote": "तपाईंको सेटिङ यही फोनमा मात्र रहन्छ।",
     "saved": "सेभ भयो"
   },

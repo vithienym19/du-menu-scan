@@ -65,7 +65,9 @@
     "vegetarian": "Цагаан хоол",
     "suitable": "Тохирно",
     "notSuitable": "Тохирохгүй",
+    "dietUnknown": "Тодорхойгүй",
     "lastVerified": "Сүүлд шалгасан: {{date}}",
+    "neverVerified": "Хараахан баталгаажаагүй",
     "confirmWithStaff": "Хүнд харшилтай бол ажилтнаас заавал асууна уу.",
     "backToMenu": "Цэс рүү буцах",
     "otherLanguages": "Бусад хэл"
@@ -101,6 +103,7 @@
     "dietNone": "Хязгаарлалтгүй",
     "dietVegetarian": "Цагаан хоол",
     "dietHalal": "Халал",
+    "includedInDiet": "Таны хоолны төрөлд багтсан",
     "privacyNote": "Тохиргоо зөвхөн энэ утсанд хадгалагдана.",
     "saved": "Хадгалсан"
   },

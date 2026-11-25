@@ -59,7 +59,7 @@ Student screens S0–S4 are mobile-first (360–430 px wide). Staff screens M0�
 |---|---|
 | Route | `/settings` |
 | Components | Language selector · "I avoid" checkboxes: pork, beef, chicken, seafood, nuts, milk & egg, wheat · Spice tolerance: Not spicy only / A little / Any · Diet type: None / Vegetarian / Halal · Save |
-| Behaviour | Saved to localStorage. Halal auto-ticks pork. Vegetarian auto-ticks pork, beef, chicken, seafood. Save → previous screen. |
+| Behaviour | Saved to localStorage. Halal auto-ticks pork. Vegetarian auto-ticks pork, beef, chicken, seafood. Auto-ticked items are disabled with the hint "Included in your diet type" (D-022). Spice: Not spicy only = 0, A little = 2, Any = 4 (D-023). Save → previous screen. |
 | Privacy note | "Your settings stay on this phone." |
 
 ---

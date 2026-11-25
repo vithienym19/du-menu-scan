@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | S | hydrogen | P0 | 3.2 | UI-02 | ☐ Todo |
+| Antigravity (Gemini) | S | hydrogen | P0 | 3.2 | UI-02 | ✅ 2026-11-25 |
 
 ## Goal
 The card students scan in the menu list.

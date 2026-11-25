@@ -1,12 +1,25 @@
-import { DIET_TAGS, SPICE_LEVELS, type WarningStatus } from "@du-menu-scan/shared";
+import {
+  DIET_TAGS,
+  fixtureDishes,
+  fixtureMenus,
+  SPICE_LEVELS,
+  type WarningStatus,
+} from "@du-menu-scan/shared";
 
 import { AppShell } from "../components/AppShell";
+import { DishCard } from "../components/DishCard";
 import { HiddenIngredientTag } from "../components/HiddenIngredientTag";
 import { IconRow } from "../components/IconRow";
 import { SpiceMeter } from "../components/SpiceMeter";
 import { WarningBadge } from "../components/WarningBadge";
 
 const WARNING_STATUSES: readonly WarningStatus[] = ["ok", "caution", "avoid", "unverified"];
+
+const fixturePriceByDishId = new Map<string, number | null>(
+  (fixtureMenus["main-hall"]?.corners ?? []).flatMap((corner) =>
+    corner.items.map((item) => [item.dish.id, item.price] as const),
+  ),
+);
 
 export function DevComponentsPage() {
   return (
@@ -65,6 +78,19 @@ export function DevComponentsPage() {
           <div className="flex flex-col gap-2">
             <HiddenIngredientTag name="Anchovy broth" />
             <HiddenIngredientTag name="Pork bone broth" />
+          </div>
+        </section>
+
+        <section className="space-y-3">
+          <h2 className="text-lg font-bold text-ink">DishCard (all fixture dishes)</h2>
+          <div className="space-y-3">
+            {fixtureDishes.map((dish) => (
+              <DishCard
+                key={dish.id}
+                dish={dish}
+                price={fixturePriceByDishId.get(dish.id) ?? null}
+              />
+            ))}
           </div>
         </section>
       </div>

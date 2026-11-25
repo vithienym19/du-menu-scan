@@ -65,7 +65,9 @@
     "vegetarian": "Món chay",
     "suitable": "Phù hợp",
     "notSuitable": "Không phù hợp",
+    "dietUnknown": "Chưa rõ",
     "lastVerified": "Xác nhận lần cuối {{date}}",
+    "neverVerified": "Chưa được xác minh",
     "confirmWithStaff": "Nếu bạn bị dị ứng nặng, hãy hỏi lại nhân viên để chắc chắn.",
     "backToMenu": "Về danh sách món",
     "otherLanguages": "Ngôn ngữ khác"
@@ -101,6 +103,7 @@
     "dietNone": "Không kiêng",
     "dietVegetarian": "Ăn chay",
     "dietHalal": "Halal",
+    "includedInDiet": "Đã bao gồm theo chế độ ăn của bạn",
     "privacyNote": "Cài đặt chỉ lưu trên điện thoại này.",
     "saved": "Đã lưu"
   },
