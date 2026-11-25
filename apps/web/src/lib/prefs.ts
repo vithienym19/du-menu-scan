@@ -1,5 +1,6 @@
 import { DEFAULT_PREFS, sanitizePrefs, type Prefs } from "@du-menu-scan/shared";
 import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const PREFS_STORAGE_KEY = "du-menu-scan:prefs";
 
@@ -35,6 +36,9 @@ export function readPrefsWithMeta(): ReadPrefsResult {
     }
     try {
       const parsed: unknown = JSON.parse(raw);
+      if (parsed === null) {
+        return { prefs: sanitizePrefs(raw), hasStoredData: true };
+      }
       return { prefs: sanitizePrefs(parsed), hasStoredData: true };
     } catch {
       // Corrupt JSON in localStorage: sanitizePrefs(raw) returns the strictest
@@ -118,4 +122,21 @@ export function usePrefs(): Prefs {
   }, []);
 
   return prefs;
+}
+
+/**
+ * Redirects to `/settings?next=...` if localStorage had stored preferences
+ * that were corrupt or not yet onboarded (fail-safe recovery to S4).
+ */
+export function useRequireOnboarding(): void {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const { prefs, hasStoredData } = readPrefsWithMeta();
+    if (hasStoredData && !prefs.onboarded) {
+      const currentPath = `${location.pathname}${location.search}`;
+      navigate(`/settings?next=${encodeURIComponent(currentPath)}`, { replace: true });
+    }
+  }, [location.pathname, location.search, navigate]);
 }

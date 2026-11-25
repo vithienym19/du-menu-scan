@@ -59,6 +59,10 @@ const AVOID_OPTIONS: readonly AvoidOption[] = [
   },
 ];
 
+const CHECKBOX_TAGS = new Set<DietTag>(
+  AVOID_OPTIONS.flatMap((opt) => (opt.kind === "tag" ? [opt.tag] : [])),
+);
+
 const MANAGED_ALLERGEN_CODES = new Set<AllergenCode>(
   AVOID_OPTIONS.flatMap((opt) => (opt.kind === "allergen" ? opt.codes : [])),
 );
@@ -81,9 +85,13 @@ const DIET_TYPE_OPTIONS: ReadonlyArray<{
   { value: "halal", labelKey: "settings.dietHalal" },
 ];
 
-function normalizeSpiceOption(level: SpiceLevel): SpiceLevel {
-  if (level === 0) return 0;
-  if (level <= 2) return 2;
+/**
+ * Maps any stored spiceTolerance (0..4) down to one of the S4 radio values (0, 2, 4)
+ * so saving S4 never loosens a student's spice tolerance (D-023).
+ */
+export function normalizeSpiceOption(level: SpiceLevel): SpiceLevel {
+  if (level <= 1) return 0;
+  if (level <= 3) return 2;
   return 4;
 }
 
@@ -101,7 +109,9 @@ export function SettingsPage() {
 
   const [avoidTags, setAvoidTags] = useState<DietTag[]>(() => {
     const implied = expandDietType(initialPrefs.dietType);
-    return [...new Set([...initialPrefs.avoidTags, ...implied])];
+    return [...new Set([...initialPrefs.avoidTags, ...implied])].filter((tag) =>
+      CHECKBOX_TAGS.has(tag),
+    );
   });
 
   const [avoidAllergens, setAvoidAllergens] = useState<AllergenCode[]>(
@@ -114,6 +124,8 @@ export function SettingsPage() {
 
   const [dietType, setDietType] = useState<DietType>(() => initialPrefs.dietType);
 
+  const impliedTagSet = new Set<DietTag>(expandDietType(dietType));
+
   const currentLang: Language = isLanguage(i18n.language) ? i18n.language : DEFAULT_LANGUAGE;
 
   const handleLanguageChange = (lang: Language) => {
@@ -122,13 +134,14 @@ export function SettingsPage() {
 
   const handleDietTypeChange = (nextDiet: DietType) => {
     setDietType(nextDiet);
-    const impliedTags = expandDietType(nextDiet);
+    const impliedTags = expandDietType(nextDiet).filter((tag) => CHECKBOX_TAGS.has(tag));
     if (impliedTags.length > 0) {
       setAvoidTags((prev) => [...new Set([...prev, ...impliedTags])]);
     }
   };
 
   const handleToggleTag = (tag: DietTag, checked: boolean) => {
+    if (impliedTagSet.has(tag)) return;
     setAvoidTags((prev) => {
       if (checked) {
         return prev.includes(tag) ? prev : [...prev, tag];
@@ -153,7 +166,8 @@ export function SettingsPage() {
     event.preventDefault();
 
     const impliedTags = expandDietType(dietType);
-    const finalTags = [...new Set([...avoidTags, ...impliedTags])];
+    const visibleTags = avoidTags.filter((tag) => CHECKBOX_TAGS.has(tag));
+    const finalTags = [...new Set([...visibleTags, ...impliedTags])];
     const preservedExtraAllergens = initialPrefs.avoidAllergens.filter(
       (code) => !MANAGED_ALLERGEN_CODES.has(code),
     );
@@ -251,15 +265,18 @@ export function SettingsPage() {
           <legend className="px-1 text-lg font-bold text-ink">{t("settings.iAvoid")}</legend>
           <div className="mt-2 flex flex-col gap-2">
             {AVOID_OPTIONS.map((option) => {
+              const isImplied = option.kind === "tag" && impliedTagSet.has(option.tag);
               const checked =
                 option.kind === "tag"
-                  ? avoidTags.includes(option.tag)
+                  ? isImplied || avoidTags.includes(option.tag)
                   : isAllergenGroupChecked(option.codes);
 
               return (
                 <label
                   key={option.id}
-                  className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-md border px-3 py-2 text-base transition-colors duration-150 ${
+                  className={`flex min-h-11 items-center gap-3 rounded-md border px-3 py-2 text-base transition-colors duration-150 ${
+                    isImplied ? "cursor-not-allowed opacity-80" : "cursor-pointer"
+                  } ${
                     checked
                       ? "border-brand bg-brand-soft font-semibold text-brand"
                       : "border-line bg-surface font-normal text-ink hover:bg-surface-muted"
@@ -269,6 +286,7 @@ export function SettingsPage() {
                     type="checkbox"
                     name={`avoid-${option.id}`}
                     checked={checked}
+                    disabled={isImplied}
                     onChange={(e) => {
                       if (option.kind === "tag") {
                         handleToggleTag(option.tag, e.target.checked);
@@ -286,7 +304,14 @@ export function SettingsPage() {
                       {option.emoji}
                     </span>
                   ) : null}
-                  <span>{t(option.labelKey)}</span>
+                  <span className="flex flex-1 flex-wrap items-baseline justify-between gap-x-2">
+                    <span>{t(option.labelKey)}</span>
+                    {isImplied ? (
+                      <span className="text-xs font-normal text-ink-muted">
+                        {t("settings.includedInDiet")}
+                      </span>
+                    ) : null}
+                  </span>
                 </label>
               );
             })}

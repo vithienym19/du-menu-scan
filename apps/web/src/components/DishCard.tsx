@@ -13,7 +13,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { readPrefs } from "../lib/prefs";
+import { usePrefs } from "../lib/prefs";
 import { HiddenIngredientTag } from "./HiddenIngredientTag";
 import { IconRow } from "./IconRow";
 import { SpiceMeter } from "./SpiceMeter";
@@ -25,7 +25,7 @@ export interface DishCardProps {
   price?: number | null;
   /** Optional route to S3 dish detail (e.g. `/dish/${dish.id}?date=...`). */
   to?: string;
-  /** Optional prefs override (defaults to `readPrefs()` from localStorage). */
+  /** Optional prefs override (defaults to `usePrefs()` from localStorage). */
   prefs?: Prefs;
   className?: string;
 }
@@ -38,9 +38,10 @@ const krwFormatter = new Intl.NumberFormat("ko-KR", {
 export function DishCard({ dish, price, to, prefs, className = "" }: DishCardProps) {
   const { t, i18n } = useTranslation();
   const [imageError, setImageError] = useState(false);
+  const storedPrefs = usePrefs();
 
   const lang: Language = isLanguage(i18n.language) ? i18n.language : DEFAULT_LANGUAGE;
-  const activePrefs = prefs ?? readPrefs();
+  const activePrefs = prefs ?? storedPrefs;
   const warning = evaluate(dish, activePrefs);
   const { vegetarian } = dietCompatibility(dish);
   const localizedName = localize(dish.name, lang);
