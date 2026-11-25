@@ -44,9 +44,14 @@ describe("readPrefs", () => {
     expect(readPrefs()).toEqual(DEFAULT_PREFS);
   });
 
-  it("returns DEFAULT_PREFS when localStorage contains invalid JSON", () => {
+  it("returns strictest fail-safe prefs when localStorage contains invalid JSON", () => {
     window.localStorage.setItem(PREFS_STORAGE_KEY, "{not-valid-json");
-    expect(readPrefs()).toEqual(DEFAULT_PREFS);
+    const prefs = readPrefs();
+    expect(prefs.onboarded).toBe(false);
+    expect(prefs.spiceTolerance).toBe(0);
+    expect(prefs.avoidTags).toEqual(
+      expect.arrayContaining(["pork", "alcohol", "beef", "chicken", "seafood"]),
+    );
   });
 
   it("sanitizes corrupt safety fields", () => {

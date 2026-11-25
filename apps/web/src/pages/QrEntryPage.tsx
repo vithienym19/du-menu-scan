@@ -7,7 +7,7 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { AppShell } from "../components/AppShell";
 import { api } from "../lib/api";
-import { readPrefs } from "../lib/prefs";
+import { readPrefsWithMeta } from "../lib/prefs";
 
 export function QrEntryPage() {
   const { t, i18n } = useTranslation();
@@ -47,9 +47,13 @@ export function QrEntryPage() {
       });
     }
 
-    const prefs = readPrefs();
+    const { prefs, hasStoredData } = readPrefsWithMeta();
     const todayPath = `/r/${encodeURIComponent(cafeteria.code)}/today`;
-    const target = prefs.onboarded ? todayPath : `/welcome?next=${encodeURIComponent(todayPath)}`;
+    const target = prefs.onboarded
+      ? todayPath
+      : hasStoredData
+        ? `/settings?next=${encodeURIComponent(todayPath)}`
+        : `/welcome?next=${encodeURIComponent(todayPath)}`;
     navigate(target, { replace: true });
   }, [cafeteriaQuery.data, currentLang, navigate]);
 
