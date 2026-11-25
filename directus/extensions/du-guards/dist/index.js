@@ -149,6 +149,46 @@ async function assertUnique(db, collection, existing, payload, keys) {
   }
 }
 
+// ---------- 4. published menus only reference published dishes ----------
+
+const todayKey = () => new Date().toISOString().slice(0, 10);
+
+async function unpublishedDishesInMenu(db, menuId) {
+  const rows = await db("menu_item as mi")
+    .join("dish as d", "d.id", "mi.dish_id")
+    .where("mi.daily_menu_id", menuId)
+    .whereNot("d.status", "published")
+    .distinct("d.id", "d.name_ko");
+  return rows.map((r) => `${r.name_ko} (${r.id})`);
+}
+
+async function assertMenuItemAllowed(db, item) {
+  if (!item.daily_menu_id || !item.dish_id) return;
+  const menu = await db("daily_menu").where({ id: item.daily_menu_id }).first("status", "date");
+  if (menu?.status !== "published") return;
+  const dish = await db("dish").where({ id: item.dish_id }).first("status", "name_ko");
+  if (dish && dish.status !== "published") {
+    reject(
+      `A published menu (${dateKey(menu.date)}) can only contain published dishes: ${dish.name_ko} (${item.dish_id}) is ${dish.status}.`,
+    );
+  }
+}
+
+async function assertDishNotLive(db, dishId) {
+  const rows = await db("menu_item as mi")
+    .join("daily_menu as dm", "dm.id", "mi.daily_menu_id")
+    .where({ "mi.dish_id": dishId, "dm.status": "published" })
+    .where("dm.date", ">=", todayKey())
+    .select("dm.date")
+    .orderBy("dm.date");
+  if (rows.length) {
+    const dates = [...new Set(rows.map((r) => dateKey(r.date)))].join(", ");
+    reject(
+      `Cannot unpublish dish ${dishId}: it is used by a published menu dated ${dates}. Remove it from the menu or unpublish the menu first.`,
+    );
+  }
+}
+
 // ---------- registration ----------
 
 export default ({ filter, action }) => {
@@ -193,9 +233,51 @@ export default ({ filter, action }) => {
       const existing = await database("dish").where({ id: key }).first();
       if (!existing) continue;
       const merged = { ...existing, ...payload };
+      if (existing.status === "published" && merged.status !== "published") {
+        await assertDishNotLive(database, key);
+      }
       if (merged.status !== "published") continue;
       const missing = missingForPublish(merged, await hasApprovedEnglish(database, key));
       if (missing.length) reject(`Cannot publish dish ${key}. Missing: ${missing.join("; ")}.`);
+    }
+    return payload;
+  });
+
+  // published menus only reference published dishes
+  filter("daily_menu.items.create", async (payload, _meta, { database }) => {
+    if (payload.status === "published") {
+      for (const it of nestedCreates(payload.items)) {
+        if (it.dish_id) {
+          const d = await database("dish").where({ id: it.dish_id }).first("status", "name_ko");
+          if (d && d.status !== "published") {
+            reject(
+              `A published menu can only contain published dishes: ${d.name_ko} (${it.dish_id}) is ${d.status}.`,
+            );
+          }
+        }
+      }
+    }
+    return payload;
+  });
+  filter("daily_menu.items.update", async (payload, meta, { database }) => {
+    if (payload.status === "published") {
+      for (const key of meta.keys ?? []) {
+        const bad = await unpublishedDishesInMenu(database, key);
+        if (bad.length) {
+          reject(`Cannot publish menu ${key}: it contains unpublished dishes: ${bad.join(", ")}.`);
+        }
+      }
+    }
+    return payload;
+  });
+  filter("menu_item.items.create", async (payload, _meta, { database }) => {
+    await assertMenuItemAllowed(database, payload);
+    return payload;
+  });
+  filter("menu_item.items.update", async (payload, meta, { database }) => {
+    for (const key of meta.keys ?? []) {
+      const existing = await database("menu_item").where({ id: key }).first();
+      if (existing) await assertMenuItemAllowed(database, { ...existing, ...payload });
     }
     return payload;
   });
