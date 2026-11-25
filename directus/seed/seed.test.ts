@@ -43,10 +43,7 @@ const OFFICIAL_CODES = [
   "pine_nut",
 ];
 
-// warning.ts keys that are NOT official allergen codes: they are members of the 조개류 group
-// (oyster, abalone, mussel). Reconciling warning.ts is a lead-engineer task; any other
-// unknown key makes this test fail.
-const KNOWN_SUBGROUP_KEYS = ["oyster", "abalone", "mussel"];
+// Every ALLERGEN_IMPLIES_TAG key in warning.ts must be an official allergen code.
 
 function impliesTagKeys(): string[] {
   const source = readFileSync(
@@ -140,7 +137,7 @@ describe("warning.ts ALLERGEN_IMPLIES_TAG vs allergens.csv", () => {
     expect(keys.length).toBeGreaterThan(0);
   });
   it("every key is an allergen code, or a known 조개류 member", () => {
-    const unknown = keys.filter((k) => !codes.has(k) && !KNOWN_SUBGROUP_KEYS.includes(k));
+    const unknown = keys.filter((k) => !codes.has(k));
     expect(unknown).toEqual([]);
   });
   it("official keys exist in the seed", () => {
