@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Claude (lead engineer) | M | — | P0 | 0.2, 1.1 | BE-02 | ☐ Todo |
+| Claude (lead engineer) | M | — | P0 | 0.2, 1.1 | BE-02 | ✅ Done 2026-11-25 |
 
 ## Goal
 Implement every collection, field and relation in the data specification.
@@ -19,8 +19,8 @@ Implement every collection, field and relation in the data specification.
 - Do not add fields that are not in the spec; propose spec changes instead
 
 ## Acceptance criteria
-- [ ] `directus schema apply directus/snapshots/schema.yaml` on an empty database recreates the schema
-- [ ] Names match `data-specification.md` 1:1
+- [x] `directus schema apply directus/snapshots/schema.yaml` on an empty database recreates the schema
+- [x] Names match `data-specification.md` 1:1
 
 ## Report back (in the pull request description)
 - Changed files and why

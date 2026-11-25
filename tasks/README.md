@@ -36,7 +36,7 @@ Tasks in the same wave can run in parallel once their dependencies are done. UI 
 | 2 | [BE-08](BE-08-shared-types-api-client.md) | Shared types, API client and mock fixtures | Claude | M | — | P0 | BE-01 | ✅ 2026-11-25 |
 | 2 | [BE-14](BE-14-ci-pipeline.md) | CI pipeline | Claude | S | — | P0 | BE-01 | ✅ 2026-11-24 |
 | 2 | [UI-01](UI-01-app-shell-theme-and.md) | App shell, theme and routing | Antigravity | M | agon | P0 | BE-01, BE-10 | ☐ |
-| 3 | [BE-03](BE-03-directus-schema.md) | Directus schema | Claude | M | — | P0 | BE-02 | ☐ |
+| 3 | [BE-03](BE-03-directus-schema.md) | Directus schema | Claude | M | — | P0 | BE-02 | ✅ 2026-11-25 |
 | 3 | [BE-09](BE-09-warning-logic-safety-critical.md) | Warning logic (safety-critical) | Claude | M | — | P0 | BE-08 | ✅ 2026-11-25 |
 | 3 | [UI-02](UI-02-icon-row-spice-meter.md) | Icon row, spice meter and badges | Antigravity | S | hydrogen | P0 | UI-01 | ☐ |
 | 3 | [UI-03](UI-03-filter-chips-and-language.md) | Filter chips and language switch | Antigravity | S | hydrogen | P0 | UI-01 | ☐ |

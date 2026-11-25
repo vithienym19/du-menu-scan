@@ -8,13 +8,13 @@
 
 ## Where we are
 
-**Phase 1 — MVP build**, wave 3 of 6. Foundation, design system, i18n (7 languages), shared data layer, warning logic (BE-09) and local Docker backend (BE-02) are done. No UI code yet; Directus has no schema yet (BE-03 next).
+**Phase 1 — MVP build**, wave 4 of 6. Foundation, design system, i18n (7 languages), shared data layer, warning logic (BE-09) and local Docker backend (BE-02) are done. No UI code yet; Directus schema is in `directus/snapshots/schema.yaml` (BE-03); no roles or seed yet.
 
 ## Branches
 
 | Branch | Contains | On GitHub? | Next action |
 |---|---|---|---|
-| `main` | Everything up to wave 3: specs, BE-01/08/10/14/18, DS-01, BE-09, BE-02 | ✅ pushed | Start new task branches from here |
+| `main` | Specs, DS-01, BE-01/02/03/08/09/10/14/18 | ✅ pushed | Start new task branches from here |
 | `feat/wave-1-foundation`, `feat/wave-2-languages-data`, `feat/be-09-…`, `feat/be-02-…` | Merged into `main` on 2026-11-25 (owner delegated review + merge to Claude) | ✅ | Can be deleted |
 | `claude/doc-project-progress-*` | Leftovers from Claude sessions, already in `main` | local only | Safe to delete |
 
@@ -35,6 +35,8 @@
 
 | 2026-11-25 | Merged wave-2, BE-09 and BE-02 into `main` after review (owner delegated merging to Claude) |
 
+| 2026-11-25 | **BE-03** Directus schema: 13 collections, script `directus/scripts/create-schema.mjs`, snapshot apply verified on an empty DB; ingredient/allergen/dish delete refused while in use; decisions D-019, D-020; reviewer APPROVE (round 2) |
+
 Checks on the latest commit: format ✅ lint ✅ typecheck ✅ tests 77/77 ✅ (`main`) i18n 87 keys × 7 languages ✅
 
 ## In progress
@@ -45,8 +47,8 @@ Nothing half-done. Working tree clean after the handoff-docs commit.
 
 | Who | Task | Notes |
 |---|---|---|
-| Antigravity (`agon`) | **UI-01** app shell, theme, routing, language picker | Unblocked. Prompt in `tasks/DISPATCH.md` |
-| Claude / lead engineer | **BE-03** Directus schema (then BE-04, BE-05, BE-06) | Unblocked |
+| Antigravity (`agon`) | **UI-01** app shell, theme, routing, language picker | Owner is starting it in Antigravity (branch `feat/ui-01-app-shell-theme-and`) |
+| Claude / lead engineer | **BE-04** roles, **BE-05** derived tags + publish guard + uniqueness hooks, **BE-06** reference seed | All unblocked by BE-03; can run in parallel |
 | Antigravity (`hydrogen`) | UI-02, UI-03, UI-04, UI-05 | After UI-01 is merged |
 | Antigravity | UI-06 (`nexon`), UI-07 (`nexon`), UI-08 (`agon`) | BE-09 done; prompts ready in `tasks/DISPATCH.md`; wait for UI-02..05 |
 
