@@ -234,7 +234,7 @@ const COLLECTIONS = [
         field: "created_at",
         type: "timestamp",
         meta: { interface: "datetime", special: ["date-created"], readonly: true },
-        schema: {},
+        schema: { default_value: "CURRENT_TIMESTAMP", is_nullable: false },
       },
       str("lang", { required: true }),
       enumField("entry", ["qr", "direct"], { required: true }),

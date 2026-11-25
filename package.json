@@ -22,7 +22,8 @@
     "backend:down": "docker compose down",
     "backend:reset": "docker compose down -v && docker compose up -d",
     "backend:schema:snapshot": "docker compose exec directus npx directus schema snapshot --yes /directus/snapshots/schema.yaml",
-    "backend:schema:apply": "docker compose exec directus npx directus schema apply --yes /directus/snapshots/schema.yaml && docker compose restart directus"
+    "backend:schema:apply": "docker compose exec directus npx directus schema apply --yes /directus/snapshots/schema.yaml && docker compose restart directus",
+    "backend:permissions": "node --env-file-if-exists=.env directus/scripts/create-permissions.mjs"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

@@ -2917,11 +2917,11 @@ fields:
       name: created_at
       table: scan_event
       data_type: timestamp with time zone
-      default_value: null
+      default_value: CURRENT_TIMESTAMP
       max_length: null
       numeric_precision: null
       numeric_scale: null
-      is_nullable: true
+      is_nullable: false
       is_unique: false
       is_indexed: false
       is_primary_key: false

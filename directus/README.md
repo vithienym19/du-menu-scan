@@ -49,12 +49,42 @@ Run `backend:schema:apply` once after a first start or `backend:reset`. The rest
 To rebuild the snapshot from scratch (rarely needed): start an empty stack, run
 `ADMIN_EMAIL=... ADMIN_PASSWORD=... DIRECTUS_URL=http://localhost:8055 node directus/scripts/create-schema.mjs`, then `npm run backend:schema:snapshot`.
 
-Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). Deletes are restricted where data would otherwise be lost silently: a dish used in a menu (`menu_item.dish_id`) and an ingredient used by a dish (`dish_ingredient.ingredient_id`) cannot be deleted; remove the references first. Junction rows of a dish (translations, ingredients, allergens), the diet tags of a deleted ingredient, and the items of a deleted menu are deleted with their parent. `dish_translation.lang` choices are frozen from `packages/shared/src/languages.json` when the schema is generated: to add a language, update that field (choices and validation) in Directus and re-export the snapshot. Roles and permissions come in BE-04, derived tags and the publish guard in BE-05, seed data in BE-06.
+Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). Deletes are restricted where data would otherwise be lost silently: a dish used in a menu (`menu_item.dish_id`) and an ingredient used by a dish (`dish_ingredient.ingredient_id`) cannot be deleted; remove the references first. Junction rows of a dish (translations, ingredients, allergens), the diet tags of a deleted ingredient, and the items of a deleted menu are deleted with their parent. `dish_translation.lang` choices are frozen from `packages/shared/src/languages.json` when the schema is generated: to add a language, update that field (choices and validation) in Directus and re-export the snapshot. Derived tags and the publish guard in BE-05, seed data in BE-06.
+
+## Roles and permissions
+
+Setup order on a fresh stack: `backend:up` -> `backend:schema:apply` -> `backend:permissions` -> seed (BE-06).
+
+```bash
+npm run backend:permissions   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PORT from .env
+```
+
+`directus/scripts/create-permissions.mjs` is idempotent: it creates the Staff and Reviewer roles and policies if missing and replaces all permission rows of the Public, Staff and Reviewer policies with the definitions in the script (manual edits to those three policies are overwritten). Admin is the built-in Administrator role. Create users in the admin UI and assign the role; the script creates none.
+
+| Role | Can do |
+|---|---|
+| Public (no login) | Read active cafeterias and their corners, published menus, published dishes with their approved translations, ingredients and allergens, plus the reference vocabularies. Create `scan_event` (fields `cafeteria_id`, `lang`, `entry` only). Nothing else. |
+| Staff | Create/read/update menus (`daily_menu`, `menu_item`), dishes, ingredients, junction rows and corners; delete only `menu_item` and junction rows; add and edit draft translations only (cannot set `approved`); upload dish photos; read `scan_event`. No delete on `daily_menu`, `dish`, `ingredient`, `allergen`; allergen and diet tag vocabularies are read-only. |
+| Reviewer | Read dishes and translations; update translations (`name`, `description`, `status`, including `approved`). |
+| Admin | Everything (built-in). |
+
+Staff and Reviewer have app access, no admin access. `scan_event.created_at` is set by the database (`DEFAULT CURRENT_TIMESTAMP`, not null) and cannot be written by the public.
+
+Notes:
+
+- If the script fails midway, re-run it. New rows are created before old ones are deleted, so there is never a moment without permissions.
+- The ingredient vocabulary (`ingredient`, `ingredient_diet_tag`) is public by design: it is reference data, not tied to a dish status.
+- Directus filters cannot enforce relations across rows. A published menu must never contain a draft dish; the public `menu_item` filter hides such items, and BE-05 hooks must prevent publishing them.
+- Rate limiting for anonymous `scan_event` writes is a BE-15 (deployment) item.
+- `dish.verified_by` must hold a role name (for example "Cafeteria staff"), not a personal name (BR8).
+
+Known gap: the Public policy has no access to `directus_files`, so dish photos are not yet served to students (a filter cannot express "file used by a published dish" without a reverse relation on `directus_files`). To be decided with the PM.
 
 ## Folders
 
 - `directus/extensions/` mounted into Directus (custom endpoints, hooks).
 - `directus/snapshots/schema.yaml` schema snapshot (collections, fields, relations).
+- `directus/scripts/create-permissions.mjs` roles, policies and permissions (idempotent).
 - `directus/scripts/create-schema.mjs` builds the schema on an empty Directus through the REST API; the snapshot is exported from the result.
 
 ## Troubleshooting
