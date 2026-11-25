@@ -16,6 +16,7 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { AppShell } from "../components/AppShell";
 import { changeAppLanguage } from "../lib/i18n";
 import { readPrefs, writePrefs } from "../lib/prefs";
+import { isSafeInternalPath } from "../lib/safePath";
 
 interface AvoidTagOption {
   kind: "tag";
@@ -93,10 +94,6 @@ export function normalizeSpiceOption(level: SpiceLevel): SpiceLevel {
   if (level <= 1) return 0;
   if (level <= 3) return 2;
   return 4;
-}
-
-function isSafeInternalPath(path: string | null): path is string {
-  return Boolean(path && path.startsWith("/") && !path.startsWith("//"));
 }
 
 export function SettingsPage() {
