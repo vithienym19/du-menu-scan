@@ -257,7 +257,7 @@ const RELATIONS = [
   R("corner", "cafeteria_id", "cafeteria", "RESTRICT", "corners", "sort"),
   R("dish_translation", "dish_id", "dish", "CASCADE", "translations"),
   R("dish_ingredient", "dish_id", "dish", "CASCADE", "ingredients"),
-  R("dish_ingredient", "ingredient_id", "ingredient", "CASCADE"),
+  R("dish_ingredient", "ingredient_id", "ingredient", "RESTRICT"),
   R("dish_allergen", "dish_id", "dish", "CASCADE", "allergens"),
   R("dish_allergen", "allergen_code", "allergen", "RESTRICT"),
   R("ingredient_diet_tag", "ingredient_id", "ingredient", "CASCADE", "diet_tags"),

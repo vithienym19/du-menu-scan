@@ -112,7 +112,7 @@ collections:
       hidden: false
       icon: box
       item_duplication_fields: null
-      note: "Codes: pork, beef, chicken, seafood, alcohol"
+      note: 'Codes: pork, beef, chicken, seafood, alcohol'
       preview_url: null
       singleton: false
       sort: null
@@ -1064,7 +1064,7 @@ fields:
               _in:
                 - lunch
                 - dinner
-      validation_message: "meal must be one of: lunch, dinner"
+      validation_message: 'meal must be one of: lunch, dinner'
       width: full
     schema:
       name: meal
@@ -1114,7 +1114,7 @@ fields:
               _in:
                 - draft
                 - published
-      validation_message: "status must be one of: draft, published"
+      validation_message: 'status must be one of: draft, published'
       width: full
     schema:
       name: status
@@ -1556,7 +1556,7 @@ fields:
               _in:
                 - draft
                 - published
-      validation_message: "status must be one of: draft, published"
+      validation_message: 'status must be one of: draft, published'
       width: full
     schema:
       name: status
@@ -2097,7 +2097,7 @@ fields:
                 - uz
                 - mn
                 - ne
-      validation_message: "lang must be one of: en, vi, zh, uz, mn, ne"
+      validation_message: 'lang must be one of: en, vi, zh, uz, mn, ne'
       width: full
     schema:
       name: lang
@@ -2227,7 +2227,7 @@ fields:
               _in:
                 - ai
                 - human
-      validation_message: "source must be one of: ai, human"
+      validation_message: 'source must be one of: ai, human'
       width: full
     schema:
       name: source
@@ -2277,7 +2277,7 @@ fields:
               _in:
                 - draft
                 - approved
-      validation_message: "status must be one of: draft, approved"
+      validation_message: 'status must be one of: draft, approved'
       width: full
     schema:
       name: status
@@ -3001,7 +3001,7 @@ fields:
               _in:
                 - qr
                 - direct
-      validation_message: "entry must be one of: qr, direct"
+      validation_message: 'entry must be one of: qr, direct'
       width: full
     schema:
       name: entry
@@ -3180,7 +3180,7 @@ relations:
       foreign_key_column: id
       constraint_name: dish_ingredient_ingredient_id_foreign
       on_update: NO ACTION
-      on_delete: CASCADE
+      on_delete: RESTRICT
   - collection: dish_translation
     field: dish_id
     related_collection: dish

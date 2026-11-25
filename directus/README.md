@@ -49,7 +49,7 @@ Run `backend:schema:apply` once after a first start or `backend:reset`. The rest
 To rebuild the snapshot from scratch (rarely needed): start an empty stack, run
 `ADMIN_EMAIL=... ADMIN_PASSWORD=... DIRECTUS_URL=http://localhost:8055 node directus/scripts/create-schema.mjs`, then `npm run backend:schema:snapshot`.
 
-Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). `menu_item.dish_id` is ON DELETE RESTRICT, so a dish used in a menu cannot be deleted. Junction rows of a dish or ingredient, and the items of a menu, are deleted with their parent. Roles and permissions come in BE-04, derived tags and the publish guard in BE-05, seed data in BE-06.
+Notes: relation fields keep the spec names (`dish_id`, `ingredient_id`, ...). Deletes are restricted where data would otherwise be lost silently: a dish used in a menu (`menu_item.dish_id`) and an ingredient used by a dish (`dish_ingredient.ingredient_id`) cannot be deleted; remove the references first. Junction rows of a dish (translations, ingredients, allergens), the diet tags of a deleted ingredient, and the items of a deleted menu are deleted with their parent. `dish_translation.lang` choices are frozen from `packages/shared/src/languages.json` when the schema is generated: to add a language, update that field (choices and validation) in Directus and re-export the snapshot. Roles and permissions come in BE-04, derived tags and the publish guard in BE-05, seed data in BE-06.
 
 ## Folders
 
