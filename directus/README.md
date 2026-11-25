@@ -118,3 +118,16 @@ Reload after editing the extension: with `EXTENSIONS_AUTO_RELOAD=true` (default 
 - **Directus restarts or exits:** `docker compose logs directus`. Usually a missing `SECRET`, `ADMIN_EMAIL` or `ADMIN_PASSWORD` in `.env`.
 - **"password authentication failed":** `DB_PASSWORD` was changed after the volume was created. Run `npm run backend:reset`.
 - **Browser blocks requests from the web app (CORS):** `CORS_ORIGIN` must equal the origin of the dev server (default `http://localhost:5173`). For several origins (e.g. `127.0.0.1:5173` or a LAN IP for phone testing) use a comma-separated list.
+
+## QR codes (BE-13)
+
+Printable QR codes per cafeteria (Flow 8). The QR encodes `https://<team domain>/r/<code>` — the S1 route. The script refuses hosting-provider hosts (`*.vercel.app`, `*.pages.dev`, `*.railway.app`, …), localhost and IPs, so codes survive a hosting change.
+
+```bash
+npm run qr -- --domain menu.example.org \
+  --cafeteria "main-hall=학생회관 식당" --cafeteria dorm --out qr-out
+```
+
+Output per cafeteria: `<code>.png` (1024 px, error correction Q) and `<code>.pdf` (A5 poster: name, QR, instruction in ko/en/vi/zh, URL). `qr-out/` is git-ignored. The poster needs one font covering Korean, Chinese and Vietnamese: macOS Arial Unicode or Noto Sans CJK on Linux are found automatically; otherwise pass `--font <file>` or set `QR_FONT`. Codes must match the `cafeteria.code` values in Directus.
+
+Before printing: scan the PDF on screen with an iPhone and an Android camera and check it opens `/r/<code>` on the team domain.

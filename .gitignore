@@ -65,3 +65,6 @@ Thumbs.db
 
 # Directus extension builds are committed (no build step)
 !directus/extensions/*/dist/
+
+# Generated QR codes (BE-13)
+qr-out/
