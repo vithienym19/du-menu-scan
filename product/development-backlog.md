@@ -34,7 +34,7 @@ Priority: **P0** = MVP must-have · **P1** = Phase 2 · **P2** = later. Size: S 
 | ID | Story | Acceptance criteria | Pri | Size |
 |---|---|---|---|---|
 | 3.1 ✅ 2026-11-25 | As a student, scanning the QR opens today's menu | `/r/{code}` resolves; invalid code shows error state | P0 | S |
-| 3.2 ✅ 2026-11-25 | As a student, I see dishes grouped by corner with photo, names, icons, price | Matches S2 spec; loading/empty/closed states | P0 | M |
+| 3.2 ✅ 2026-11-25 (closed state unreachable until the schema has a closed flag, D-024; photo sizing in UI-11) | As a student, I see dishes grouped by corner with photo, names, icons, price | Matches S2 spec; loading/empty/closed states | P0 | M |
 | 3.3 ✅ 2026-11-25 | As a student, I see hidden ingredients flagged | ⚠ label on card; listed on S3 | P0 | S |
 | 3.4 ✅ 2026-11-25 | As a student, I open a dish detail | Matches S3 spec incl. safety footer and last verified date | P0 | M |
 | 3.5 ✅ 2026-11-25 | As a student, I switch language | All languages in `languages.json`; remembered; dish fallback per BR2 | P0 | M |
@@ -55,7 +55,7 @@ Priority: **P0** = MVP must-have · **P1** = Phase 2 · **P2** = later. Size: S 
 | ID | Story | Acceptance criteria | Pri | Size |
 |---|---|---|---|---|
 | 5.1 ✅ 2026-11-25 (phone scan test after domain) | As admin, I download a printable QR per cafeteria | PNG + A5 PDF with 4-language instruction | P0 | S |
-| 5.2 ✅ 2026-11-25 | As the team, we count scans | scan_event logged on S2 load (no personal data) | P0 | S |
+| 5.2 ✅ 2026-11-25 (logged on QR entry S1, not on direct S2 visits) | As the team, we count scans | scan_event logged on S2 load (no personal data) | P0 | S |
 | 5.3 ✅ 2026-11-25 | As staff, I see scans per day and language | Simple dashboard (Directus Insights) | P1 | S |
 
 ## Epic 6 — Quality & launch
