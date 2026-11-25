@@ -8,7 +8,13 @@ import { BrowserRouter } from "react-router-dom";
 
 import { AppRoutes } from "./App";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+    },
+  },
+});
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
