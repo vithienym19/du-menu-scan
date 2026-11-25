@@ -14,7 +14,8 @@ Meet the non-functional requirements before the usability test.
 
 ## Do
 - Audit and fix contrast, labels, focus order, 44 px targets, alt text
-- Image sizes/WebP, lazy-loading, bundle size check
+- Image sizes/WebP, lazy-loading, bundle size check (photo URLs: `/assets/<id>?format=webp&width=400` on cards, `width=800` on S3 — BE-19)
+- Run Lighthouse on S2 with throttled 4G and record the result: UI-06 acceptance "interactive ≤ 2 s" is still unverified (backlog 6.2)
 
 ## Do not
 - —

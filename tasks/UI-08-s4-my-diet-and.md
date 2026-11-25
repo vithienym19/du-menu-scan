@@ -2,7 +2,7 @@
 
 | Owner | Size | Model | Priority | Stories | Depends on | Status |
 |---|---|---|---|---|---|---|
-| Antigravity (Gemini) | M | argon | P0 | 4.2, BR8 | UI-03, BE-09 | ☐ Todo |
+| Antigravity (Gemini) | M | argon | P0 | 4.2, BR8 | UI-03, BE-09 | ✅ 2026-11-25 |
 
 ## Goal
 Students set what they avoid once; it stays on their phone.
