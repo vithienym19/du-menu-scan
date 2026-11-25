@@ -43,6 +43,18 @@ describe("http api", () => {
     expect(fetchImpl.mock.calls[0]![0]).toBe(`https://api.test${ENDPOINTS.cafeteria("main-hall")}`);
   });
 
+  it("fetches today's menu from the BE-11 endpoint and maps an unknown code to null", async () => {
+    const menu = { date: "2026-11-25", meal: "lunch", status: "empty", corners: [] };
+    const fetchImpl = vi
+      .fn<typeof fetch>()
+      .mockResolvedValueOnce(json(200, menu))
+      .mockResolvedValueOnce(json(404));
+    const api = createApi({ baseUrl: "https://api.test", useMock: false, fetchImpl });
+    expect(await api.getTodayMenu("main hall")).toMatchObject({ status: "empty" });
+    expect(await api.getTodayMenu("nope")).toBeNull();
+    expect(fetchImpl.mock.calls[0]![0]).toBe("https://api.test/du/menu/main%20hall/today");
+  });
+
   it("throws ApiError on server errors and returns [] for empty lists", async () => {
     const fetchImpl = vi
       .fn<typeof fetch>()

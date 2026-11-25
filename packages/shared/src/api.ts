@@ -31,7 +31,10 @@ export class ApiError extends Error {
   }
 }
 
-/** Custom Directus endpoints (BE-11). They return the view types above. */
+/**
+ * Custom Directus endpoints under /du. They return the view types above.
+ * Implemented so far: todayMenu (BE-11). cafeterias, cafeteria and dish are not built yet.
+ */
 export const ENDPOINTS = {
   cafeterias: "/du/cafeterias",
   cafeteria: (code: string) => `/du/cafeterias/${encodeURIComponent(code)}`,
