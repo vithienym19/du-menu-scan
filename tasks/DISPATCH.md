@@ -70,6 +70,20 @@ product/design-system.md §6 (DishCard). Use localize() from @du-menu-scan/share
 Open a PR "UI-05: Dish card" with screenshots in vi, mn and ne.
 ```
 
+## Ready now (UI-01 to UI-04 merged)
+
+### UI-04 follow-up · model `gemini-4-hydrogen-medium` · branch `fix/ui-04-followups`
+
+```
+Small follow-up to UI-04 in apps/web only, following GEMINI.md: (1) QrEntryPage uses entry.errorTitle / entry.errorBody (keys already exist) instead of menu.errorTitle / menu.errorBody, including the cafeteria-list error; update tests. (2) main.tsx: new QueryClient({ defaultOptions: { queries: { retry: 1 } } }). (3) add .catch(() => {}) to the api.logScan call. Run npm run format, lint, typecheck, test and build -w @du-menu-scan/web and fix every failure. Do not commit.
+```
+
+### UI-05 — Dish card · model `gemini-4-hydrogen-medium` · branch `feat/ui-05-dish-card`
+
+```
+Implement task UI-05 as described in tasks/UI-05-dish-card.md, following GEMINI.md and product/design-system.md §6 (DishCard). Work only in apps/web. Reuse WarningBadge, IconRow, SpiceMeter, HiddenIngredientTag from UI-02. Status comes from evaluate(dish, readPrefs()) and vegetarian from dietCompatibility(dish).vegetarian (both from @du-menu-scan/shared); never compute them yourself. Names via localize() and show "translation pending" when isFallback is true. Render every fixture dish on /dev/components. Run npm run format, lint, typecheck, test and build -w @du-menu-scan/web and fix every failure. Do not commit. Report missing i18n keys.
+```
+
 ## After UI-02 to UI-05 are merged (BE-09 warning logic is ready)
 
 Shared API for all three: `evaluate`, `sortByStatus`, `applyFilters`, `NO_FILTERS`, `dietCompatibility`,

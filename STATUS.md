@@ -2,21 +2,28 @@
 
 > Living progress log. **Every agent updates this file at the end of each session** (see `AGENTS.md` §2).
 
-**Last updated:** 2026-11-25 (evening) by Claude (lead engineer)
+**Last updated:** 2026-11-25 (night) by Claude (lead engineer) — handoff point
 
 **Local path:** `~/Antigravity/du-menu-scan` (moved out of `~/Documents` on 2026-11-25 — see D-016)
 
-## Where we are
+## Handoff — read this first
 
-**Phase 1 — MVP build**, wave 4 of 6. Foundation, design system, i18n (7 languages), shared data layer, warning logic (BE-09) and local Docker backend (BE-02) are done. No UI code yet; Directus schema is in `directus/snapshots/schema.yaml` (BE-03); no roles or seed yet.
+- **Phase 1 — MVP build, wave 4 of 6.** Backend data layer is complete (schema, permissions, integrity hooks, reference seed). Student UI has the app shell (UI-01), the dish primitives (UI-02), filter chips (UI-03) and the QR entry route (UI-04). No S2/S3/S4 screens yet.
+- **Everything is merged into `main` and pushed.** No open branches with unmerged work.
+- **How work flows now:** Claude (lead engineer) writes specs/tasks, builds `BE-*`, dispatches `UI-*` to Antigravity through the `agy` CLI (D-021, `tasks/DISPATCH.md`), runs the `reviewer` sub-agent on every branch, and merges into `main` itself after APPROVE + green checks (D-018).
+- **Run it locally:**
+  - Web (mock data): `VITE_USE_MOCK=true npm run dev -w @du-menu-scan/web` → http://localhost:5173/r/main-hall (also `dorm`, `engineering`, and an invalid code).
+  - Backend: `cp .env.example .env` (fill secrets; on this Mac set `DIRECTUS_PORT=8056` because 8055 is taken), then `npm run backend:up && npm run backend:schema:apply && npm run backend:permissions && npm run backend:seed`. Details in `directus/README.md`.
+  - Checks: `npm run format:check && npm run lint && npm run typecheck && npm test && npm run build -w @du-menu-scan/web`.
+- **Next tasks (in order):** UI-05 dish card → UI-06 S2 menu, UI-07 S3 detail, UI-08 S4 diet (prompts ready in `tasks/DISPATCH.md`); backend BE-19 public photos, BE-11 today-menu endpoint, BE-13 QR generator, BE-17 copy menu; BE-07 needs the Korean teammate.
 
 ## Branches
 
 | Branch | Contains | On GitHub? | Next action |
 |---|---|---|---|
-| `main` | Specs, DS-01, BE-01/02/03/04/05/06/08/09/10/14/18, UI-01 | ✅ pushed | Start new task branches from here |
-| `feat/wave-1-foundation`, `feat/wave-2-languages-data`, `feat/be-09-…`, `feat/be-02-…` | Merged into `main` on 2026-11-25 (owner delegated review + merge to Claude) | ✅ | Can be deleted |
-| `claude/doc-project-progress-*` | Leftovers from Claude sessions, already in `main` | local only | Safe to delete |
+| `main` | Specs, DS-01, BE-01/02/03/04/05/06/08/09/10/14/18, UI-01/02/03/04 | ✅ pushed | Start new task branches from here |
+| `feat/*` task branches (wave-1/2, be-02…06, be-09, ui-01…04) | All merged into `main` | ✅ | Can be deleted |
+| `claude/doc-project-progress-*`, `worktree-agent-*` | Claude session/agent worktrees, nothing unmerged | local only | Safe to delete with `git worktree prune` after closing sessions |
 
 ## Done
 
@@ -41,21 +48,28 @@
 
 | 2026-11-25 | **BE-04** roles/permissions, **BE-05** `du-guards` hooks (derived tags, BR1 publish guard, uniqueness, published menus only hold published dishes), **BE-06** MFDS allergens + 72 ingredients with conservative tags — all reviewed (APPROVE), merged, and smoke-tested together on a live stack |
 
-Checks on the latest commit: format ✅ lint ✅ typecheck ✅ tests 77/77 ✅ (`main`) i18n 87 keys × 7 languages ✅
+| 2026-11-25 | **UI-02** icon row, spice meter, badges · **UI-03** filter chips · **UI-04** S1 QR entry (`/r/:code`, invalid-code state, one `logScan` per visit) — Antigravity `gemini-4-hydrogen-medium` via `agy`, reviewer APPROVE, merged |
+
+Checks on `main` (5ed5985): format ✅ lint ✅ typecheck ✅ tests 12 backend + 31 web + 77 shared ✅ build ✅ i18n 89 keys × 7 languages ✅
 
 ## In progress
 
-Nothing half-done. Working tree clean after the handoff-docs commit.
+Nothing half-done.
 
 ## Next
 
 | Who | Task | Notes |
 |---|---|---|
-| Claude / lead engineer | **BE-19** public dish photos, **BE-11** today-menu endpoint, **BE-13** QR generator, **BE-17** copy menu | BE-07 needs the Korean teammate |
-| Antigravity (`hydrogen`, via `agy`) | UI-02, UI-03, UI-04 built, in review; UI-05 after UI-02 | |
-| Antigravity | UI-06 (`neon`), UI-07 (`neon`), UI-08 (`argon`) | BE-09 done; prompts ready in `tasks/DISPATCH.md`; wait for UI-02..05 |
+| Antigravity (`hydrogen`) | **UI-04 follow-up** (small): use `entry.errorTitle/errorBody`, QueryClient `retry: 1`, `.catch` on logScan | Prompt in `tasks/DISPATCH.md` |
+| Antigravity (`hydrogen`) | **UI-05** dish card | Unblocked; prompt in `tasks/DISPATCH.md` |
+| Antigravity | UI-08 (`argon`, needs UI-03 ✅), UI-07 (`neon`, needs UI-02 ✅), UI-06 (`neon`, needs UI-05) | Prompts ready |
+| Claude | **BE-19** public dish photos, **BE-11** today-menu endpoint, **BE-13** QR generator, **BE-17** copy menu, **BE-12** scan analytics | All unblocked |
+| Claude + Korean teammate | **BE-07** ~30 verified dishes | Needs the teammate to confirm ingredients/allergens and relax conservative tags |
 
-Note: port 8055 on the owner's Mac is used by another project's Directus (`translate-realtime-ai-directus-1`). Set `DIRECTUS_PORT=8056` and `PUBLIC_URL=http://localhost:8056` in `.env`, or stop that container.
+Notes:
+- Port 8055 on the owner's Mac is used by another project's Directus (`translate-realtime-ai-directus-1`). Use `DIRECTUS_PORT=8056` in `.env`.
+- `agy` headless: run without `--mode` (accept-edits stalls on commands; auto is not available on this account).
+- Known non-blocking items: diet-tag recompute is an async action hook (rare stale read for a few ms); uniqueness is hook-only (D-020); empty spice dot contrast is low (decorative, text label carries meaning).
 
 ## Blockers and waiting on humans
 
@@ -69,4 +83,4 @@ Note: port 8055 on the owner's Mac is used by another project's Directus (`trans
 ## Open questions
 
 - Which cafeteria(s) and meal times does the pilot cover? (assumed: one cafeteria, lunch)
-- Exact Antigravity model names/tiers — assumed S `hydrogen`, M `argon`, L `neon`; change in `tasks/README.md` if different.
+- Antigravity model ids confirmed with `agy models`: S `gemini-4-hydrogen-medium`, M `gemini-4-argon-medium`, L `gemini-4-neon-high` (D-021).
