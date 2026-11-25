@@ -132,7 +132,17 @@ Not covered: rows written straight into PostgreSQL, and deleting a dish (which c
 
 Reload after editing the extension: with `EXTENSIONS_AUTO_RELOAD=true` (default in `.env.example`) Directus reloads on file change; otherwise `docker compose restart directus`. Loaded extensions are listed in `docker compose logs directus` ("Loaded extensions: directus-extension-du-guards").
 
-## Today-menu endpoint (`du-menu-endpoint`, BE-11)
+## Public read endpoints (`du-menu-endpoint`, BE-11 and BE-20)
+
+Four GET routes, all without login, all answering `{ "data": ... }` with `Cache-Control: public, max-age=60`: `/du/menu/{code}/today` (MenuView, below), `/du/cafeterias` (active cafeterias, `CafeteriaView[]` sorted by code), `/du/cafeterias/{code}` (404 `CAFETERIA_NOT_FOUND` if unknown or inactive) and `/du/dishes/{id}` (`DishView`, same mapping as the menu; published dishes and approved translations only; a draft, unknown or malformed id is 404 `DISH_NOT_FOUND`). Code: `dist/handlers.js` (routes), `dist/map.js` (mapping). Tests: `directus/test/handlers.test.mjs` uses a stub knex and asserts the safety filters (`is_active`, `status=published`, `status=approved`), so removing one fails the test.
+
+```bash
+curl -s localhost:8055/du/cafeterias
+curl -s localhost:8055/du/cafeterias/main-hall
+curl -s localhost:8055/du/dishes/<dish-uuid>
+```
+
+### Today-menu endpoint (BE-11)
 
 `GET /du/menu/{code}/today` returns one pre-shaped `{ "data": MenuView }` (see `packages/shared/src/types.ts`); the web app calls it when `VITE_USE_MOCK=false`. No login needed.
 
@@ -154,7 +164,7 @@ curl -s "localhost:8055/du/menu/main-hall/today?date=2026-11-25&meal=dinner"
 
 ## Folders
 
-- `directus/extensions/` mounted into Directus (custom endpoints, hooks); `du-guards/` is the integrity hook above, `du-menu-endpoint/` the today-menu endpoint (below).
+- `directus/extensions/` mounted into Directus (custom endpoints, hooks); `du-guards/` is the integrity hook above, `du-menu-endpoint/` the public read endpoints (below).
 - `directus/snapshots/schema.yaml` schema snapshot (collections, fields, relations).
 - `directus/scripts/create-permissions.mjs` roles, policies and permissions (idempotent).
 - `directus/seed/*.csv` reference data; `directus/scripts/import-seed.mjs` imports it (`seed-lib.mjs` holds the CSV parser).
