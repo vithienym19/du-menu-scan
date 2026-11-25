@@ -65,7 +65,9 @@
     "vegetarian": "Món chay",
     "suitable": "Phù hợp",
     "notSuitable": "Không phù hợp",
+    "dietUnknown": "Chưa rõ",
     "lastVerified": "Xác nhận lần cuối {{date}}",
+    "neverVerified": "Chưa được xác minh",
     "confirmWithStaff": "Nếu bạn bị dị ứng nặng, hãy hỏi lại nhân viên để chắc chắn.",
     "backToMenu": "Về danh sách món",
     "otherLanguages": "Ngôn ngữ khác"
