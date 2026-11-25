@@ -63,7 +63,7 @@ npm run backend:permissions   # reads ADMIN_EMAIL / ADMIN_PASSWORD / DIRECTUS_PO
 
 | Role | Can do |
 |---|---|
-| Public (no login) | Read active cafeterias and their corners, published menus, published dishes with their approved translations, ingredients and allergens, plus the reference vocabularies. Create `scan_event` (fields `cafeteria_id`, `lang`, `entry` only). Nothing else. |
+| Public (no login) | Read active cafeterias and their corners, published menus, published dishes with their approved translations, ingredients and allergens, plus the reference vocabularies. Files used as the photo of a published dish (`/assets/<id>`, fields `id`, `type`, `width`, `height`). Create `scan_event` (fields `cafeteria_id`, `lang`, `entry` only). Nothing else. |
 | Staff | Create/read/update menus (`daily_menu`, `menu_item`), dishes, ingredients, junction rows and corners; delete only `menu_item` and junction rows; add and edit draft translations only (cannot set `approved`); upload dish photos; read `scan_event`. No delete on `daily_menu`, `dish`, `ingredient`, `allergen`; allergen and diet tag vocabularies are read-only. |
 | Reviewer | Read dishes and translations; update translations (`name`, `description`, `status`, including `approved`). |
 | Admin | Everything (built-in). |
@@ -78,7 +78,20 @@ Notes:
 - Rate limiting for anonymous `scan_event` writes is a BE-15 (deployment) item.
 - `dish.verified_by` must hold a role name (for example "Cafeteria staff"), not a personal name (BR8).
 
-Known gap: the Public policy has no access to `directus_files`, so dish photos are not yet served to students (a filter cannot express "file used by a published dish" without a reverse relation on `directus_files`). Follow-up task BE-19 adds a reverse relation and a public filter.
+## Dish photos (BE-19)
+
+`dish.photo` points to `directus_files`; the relation has a reverse alias `directus_files.dishes_photo` (hidden). The Public policy reads `directus_files` only where `{ dishes_photo: { status: { _eq: "published" } } }`, with fields `id`, `type`, `width`, `height`. So anonymous `/assets/<id>` returns 200 for the photo of a published dish and 403 for draft-dish photos and unattached files; anonymous `GET /files` lists only those published-dish photos. A photo used by both a draft and a published dish is public. Unpublishing the dish hides the photo again.
+
+Check on a running stack (creates and deletes throwaway files and dishes): `npm run backend:verify:photos`.
+
+Image transforms for UI-05 / UI-07 (Directus resizes on the fly and caches; public access works with the same filter):
+
+```
+{DIRECTUS_URL}/assets/<file-id>?format=webp&width=400    dish card (list)
+{DIRECTUS_URL}/assets/<file-id>?format=webp&width=800    dish detail (also for 2x screens)
+```
+
+Add `&fit=cover&height=300` for a fixed crop and `&quality=80` to tune size. Use only these two widths so the cache stays small. `packages/shared` has no photo URL builder yet: the web app builds the URL from `dish.photo` (a file id) and the API base URL.
 
 ## Seed data (reference data)
 

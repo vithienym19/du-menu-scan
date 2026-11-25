@@ -1197,6 +1197,30 @@ fields:
       has_auto_increment: false
       foreign_key_table: null
       foreign_key_column: null
+  - collection: directus_files
+    field: dishes_photo
+    type: alias
+    meta:
+      collection: directus_files
+      conditions: null
+      display: null
+      display_options: null
+      field: dishes_photo
+      group: null
+      hidden: true
+      interface: list-o2m
+      note: null
+      options: null
+      readonly: false
+      required: false
+      searchable: true
+      sort: 1
+      special:
+        - o2m
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
   - collection: dish
     field: id
     type: uuid
@@ -3129,7 +3153,7 @@ relations:
       one_collection: directus_files
       one_collection_field: null
       one_deselect_action: nullify
-      one_field: null
+      one_field: dishes_photo
       sort_field: null
     schema:
       table: dish

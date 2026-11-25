@@ -77,7 +77,12 @@ const PUBLIC = [
       _and: [{ lang: { _in: LANG_CODES } }, { entry: { _in: ["qr", "direct"] } }],
     },
   }),
-  // directus_files: intentionally NOT granted (see directus/README.md, open question)
+  // BE-19: only files used as the photo of a published dish (reverse alias dishes_photo on
+  // directus_files). Never all files. Minimal fields: enough to serve /assets/<id>.
+  p("directus_files", "read", {
+    permissions: { dishes_photo: eq("status", "published") },
+    fields: ["id", "type", "width", "height"],
+  }),
 ];
 
 // ---- Staff: menus and dishes. No delete on daily_menu, dish, ingredient, allergen. ----

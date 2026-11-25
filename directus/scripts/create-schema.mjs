@@ -301,7 +301,15 @@ async function main() {
     collection: "dish",
     field: "photo",
     related_collection: "directus_files",
+    meta: { one_field: "dishes_photo" },
     schema: { on_delete: "SET NULL" },
+  });
+  // Reverse alias on directus_files (BE-19): lets the Public policy filter files by the dish
+  // that uses them, e.g. { dishes_photo: { status: { _eq: "published" } } }.
+  await api("POST", "/fields/directus_files", {
+    field: "dishes_photo",
+    type: "alias",
+    meta: { interface: "list-o2m", special: ["o2m"], hidden: true },
   });
 
   for (const r of RELATIONS) {
