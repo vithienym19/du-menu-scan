@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
+import { DevComponentsPage } from "./pages/DevComponentsPage";
 import { DishDetailPage } from "./pages/DishDetailPage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { QrEntryPage } from "./pages/QrEntryPage";
@@ -15,6 +16,7 @@ export function AppRoutes() {
       <Route path="/r/:code/today" element={<TodayMenuPage />} />
       <Route path="/dish/:id" element={<DishDetailPage />} />
       <Route path="/settings" element={<SettingsPage />} />
+      {import.meta.env.DEV && <Route path="/dev/components" element={<DevComponentsPage />} />}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
